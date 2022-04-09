@@ -1,0 +1,28 @@
+PODS:
+  - iOSSnapshotTestCase (8.0.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 8.0.0)
+  - iOSSnapshotTestCase/Core (8.0.0)
+  - iOSSnapshotTestCase/SwiftSupport (8.0.0):
+    - iOSSnapshotTestCase/Core
+  - SnapshotTesting (1.9.0)
+  - SwiftLint (0.47.0)
+
+DEPENDENCIES:
+  - iOSSnapshotTestCase (~> 8.0.0)
+  - SnapshotTesting (~> 1.9.0)
+  - SwiftLint (~> 0.47.0)
+
+SPEC REPOS:
+  trunk:
+    - iOSSnapshotTestCase
+    - SnapshotTesting
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  iOSSnapshotTestCase: a670511f9ee3829c2b9c23e6e68f315fd7b6790f
+  SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
+  SwiftLint: d41cc46a2ae58ac6d9f26954bc89f1d72e71fdef
+
+PODFILE CHECKSUM: 3acc517f85e07a1c864ca134d6ff7f9e4c86d34b
+
+COCOAPODS: 1.11.3
