@@ -19,7 +19,7 @@ build_project:
   tags:
     - ios
 
-unit_tests
+unit_tests:
   stage: test
   script:
     - xcodebuild -scheme Calculator-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.4' test | xcpretty color
