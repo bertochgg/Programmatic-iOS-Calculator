@@ -1,0 +1,2 @@
+# Gemfile
+gem "xcpretty"
