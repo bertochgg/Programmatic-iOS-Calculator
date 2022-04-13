@@ -44,7 +44,7 @@ Left Side Menu -> Project Information -> Members.
 
 3.5 Project Issues page -> top part of the page -> "Import" button ("Import issues" hint is displayer above button) -> select "Import CSV" option.
 
-3.6 Select file from step #3.3 and press "Import issues" confirmation button.
+3.6 Select file from step number 3.3 and press "Import issues" confirmation button.
 
 Congratulations! Now you are ready to go!
 
