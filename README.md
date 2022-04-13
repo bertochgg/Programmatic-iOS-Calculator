@@ -1,43 +1,60 @@
 iOS internship
 
-Branching strategy for internship
+Project development strategy:
 
-Inside your project, create a branch named like [ldap]/main, where [ldap] - your username in Grid Dynamics system. 
+1. Create your own project copy via "fork project" Gitlab capability:
 
-This will be your main branch with all your changes.
+1.1 Main Project Page -> press "Fork" button
 
-Before each new task, you must create a new branch from [ldap]/main and name it like [ldap]/[task_description].
+Create project fork page settings:
 
-After the task on which you worked is completed, you must create a Merge Request from the branch [ldap]/[task_description] to [ldap]/main.
+Project URL - Namespace - select your LDAP
 
-Mentors review your changes.
+Visibility level - Private.
 
-When review is over and you have received approval from the mentor, you have to merge the branch [ldap]/[task_description] to [ldap]/main.
+Press "Fork project" button.
 
-How to update your fork from upstream
+2. Grant access to the project for your mentor:
 
-First in your forked repo add this repository as an upstream (upstream is just an alias):
+2.1 Main Project Page:
 
-git remote add upstream https://gitlab.griddynamics.net/ios-internship/ios-calculator
+Left Side Menu -> Project Information -> Members.
 
-Then on your main branch run:
+2.2 Project members page:
 
-git fetch upstream (get all updates from the upstream)
-git rebase upstream/main
-git push
+"Invite members button" -> invite member popup is presented.
 
-Then you main branch will be up-to-date with upstream
+2.3 Invite project member popup:
 
-To update a specific branch:
+"GitLab member or email address" - your mentor work email - <LDAP>@griddynamics.com
 
-Checkout your branch
-git fetch upstream
-git rebase upstream/main or git merge upstream/main
-git push
+"Select a role" - Maintainer
+
+2.4 Ping your mentor and ask them to accept an invitaion to project that was sent to their email.
+
+3. Export your work plan (gitlab issues) from project template repository and import them to your repository.
+
+3.1 Template Project Main Page -> Left Side Menu -> "Issues".
+
+3.2 Project Issues page -> top part of the page -> "Share" button ("Export as CSV" hint is displayed above button) -> press "Export Issuses" button at confirmation dialog.
+
+3.3 Download CSV file
+
+3.4 Your Project copy Main Page -> Left Side Menu -> "Issues".
+
+3.5 Project Issues page -> top part of the page -> "Import" button ("Import issues" hint is displayer above button) -> select "Import CSV" option.
+
+3.6 Select file from step #3.3 and press "Import issues" confirmation button.
+
+Congratulations! Now you are ready to go!
 
 # iOS Calculator: First Milestone Project
 
-# UI / UX Spec, Product specification, Behaviour and etc:
+# UI / UX Spec:
+
+### https://www.figma.com/file/TXvsOpe8MIf2bopr9byxhu/Calculator-App-Ui-Design-Download-Free-(Community)?node-id=65%3A0
+
+# Product specification, Behaviour and etc:
 
 ### https://apps.apple.com/ua/app/calculator/id1069511488
 
