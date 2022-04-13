@@ -26,7 +26,7 @@ Left Side Menu -> Project Information -> Members.
 
 2.3 Invite project member popup:
 
-"GitLab member or email address" - your mentor work email - <LDAP>@griddynamics.com
+"GitLab member or email address" - your mentor work email - 'LDAP'@griddynamics.com
 
 "Select a role" - Maintainer
 
