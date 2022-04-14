@@ -3,6 +3,7 @@
 //  Calculator-iOSUITests
 //
 //  Created by Serhii Liamtsev on 4/9/22.
+//  Copyright © 2022 Grid Dynamics. All rights reserved.
 //
 
 import XCTest

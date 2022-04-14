@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04607E092808B1B000C402AB /* XCUIElementQuery+Tap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04607E022808B1B000C402AB /* XCUIElementQuery+Tap.swift */; };
+		04607E0A2808B1B000C402AB /* XCTestCase+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04607E032808B1B000C402AB /* XCTestCase+Screenshot.swift */; };
+		04607E0B2808B1B000C402AB /* UIDevice+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04607E052808B1B000C402AB /* UIDevice+Model.swift */; };
+		04607E0C2808B1B000C402AB /* UIImage+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04607E062808B1B000C402AB /* UIImage+StatusBar.swift */; };
+		04607E0D2808B1B000C402AB /* FBSnapshotTestCase+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04607E082808B1B000C402AB /* FBSnapshotTestCase+Screenshot.swift */; };
+		04607E102808B1C400C402AB /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04607E0F2808B1C400C402AB /* SnapshotHelper.swift */; };
 		049296772807560800878EDB /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 049296762807560800878EDB /* TODO.txt */; };
 		04B8E8ED2801F3B800EF70CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E8EC2801F3B800EF70CD /* AppDelegate.swift */; };
 		04B8E8EF2801F3B800EF70CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E8EE2801F3B800EF70CD /* SceneDelegate.swift */; };
@@ -40,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04607E022808B1B000C402AB /* XCUIElementQuery+Tap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIElementQuery+Tap.swift"; sourceTree = "<group>"; };
+		04607E032808B1B000C402AB /* XCTestCase+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Screenshot.swift"; sourceTree = "<group>"; };
+		04607E052808B1B000C402AB /* UIDevice+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Model.swift"; sourceTree = "<group>"; };
+		04607E062808B1B000C402AB /* UIImage+StatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+StatusBar.swift"; sourceTree = "<group>"; };
+		04607E082808B1B000C402AB /* FBSnapshotTestCase+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FBSnapshotTestCase+Screenshot.swift"; sourceTree = "<group>"; };
+		04607E0F2808B1C400C402AB /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		049296762807560800878EDB /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		04B8E8E92801F3B800EF70CD /* Calculator-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B8E8EC2801F3B800EF70CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +105,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04607E002808B1B000C402AB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04607E012808B1B000C402AB /* XCTest */,
+				04607E042808B1B000C402AB /* UIKit */,
+				04607E072808B1B000C402AB /* FBSnapshotTestCase */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04607E012808B1B000C402AB /* XCTest */ = {
+			isa = PBXGroup;
+			children = (
+				04607E022808B1B000C402AB /* XCUIElementQuery+Tap.swift */,
+				04607E032808B1B000C402AB /* XCTestCase+Screenshot.swift */,
+			);
+			path = XCTest;
+			sourceTree = "<group>";
+		};
+		04607E042808B1B000C402AB /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				04607E052808B1B000C402AB /* UIDevice+Model.swift */,
+				04607E062808B1B000C402AB /* UIImage+StatusBar.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		04607E072808B1B000C402AB /* FBSnapshotTestCase */ = {
+			isa = PBXGroup;
+			children = (
+				04607E082808B1B000C402AB /* FBSnapshotTestCase+Screenshot.swift */,
+			);
+			path = FBSnapshotTestCase;
+			sourceTree = "<group>";
+		};
+		04607E0E2808B1C400C402AB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				04607E0F2808B1C400C402AB /* SnapshotHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		04987FA42801FCB0001D303B /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +204,8 @@
 		04B8E90C2801F3C300EF70CD /* Calculator-iOSUITests */ = {
 			isa = PBXGroup;
 			children = (
+				04607E0E2808B1C400C402AB /* Utilities */,
+				04607E002808B1B000C402AB /* Extensions */,
 				04B8E90D2801F3C300EF70CD /* CalculatoriOSUITests.swift */,
 				04B8E90F2801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift */,
 			);
@@ -339,6 +397,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
+				ORGANIZATIONNAME = "Grid Dynamics";
 				TargetAttributes = {
 					04B8E8E82801F3B800EF70CD = {
 						CreatedOnToolsVersion = 13.3;
@@ -579,6 +638,12 @@
 			files = (
 				04B8E9102801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift in Sources */,
 				04B8E90E2801F3C300EF70CD /* CalculatoriOSUITests.swift in Sources */,
+				04607E0A2808B1B000C402AB /* XCTestCase+Screenshot.swift in Sources */,
+				04607E0C2808B1B000C402AB /* UIImage+StatusBar.swift in Sources */,
+				04607E0D2808B1B000C402AB /* FBSnapshotTestCase+Screenshot.swift in Sources */,
+				04607E092808B1B000C402AB /* XCUIElementQuery+Tap.swift in Sources */,
+				04607E0B2808B1B000C402AB /* UIDevice+Model.swift in Sources */,
+				04607E102808B1C400C402AB /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
