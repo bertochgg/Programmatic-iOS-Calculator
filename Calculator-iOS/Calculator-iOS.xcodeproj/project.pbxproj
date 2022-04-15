@@ -188,7 +188,7 @@
 				04B8E91E2801F53A00EF70CD /* Resources */,
 				04B8E9262801F5CF00EF70CD /* Services */,
 				04B8E9232801F58F00EF70CD /* UserStory */,
-				04B8E9242801F59D00EF70CD /* CoreUI */,
+				04D52D4E2809EBB600D4C010 /* CoreUI */,
 			);
 			path = "Calculator-iOS";
 			sourceTree = "<group>";
@@ -277,13 +277,6 @@
 			path = UserStory;
 			sourceTree = "<group>";
 		};
-		04B8E9242801F59D00EF70CD /* CoreUI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreUI;
-			sourceTree = "<group>";
-		};
 		04B8E9252801F5C500EF70CD /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +292,13 @@
 				049296762807560800878EDB /* TODO.txt */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		04D52D4E2809EBB600D4C010 /* CoreUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreUI;
 			sourceTree = "<group>";
 		};
 		2515173EBCF14E4529C55904 /* Frameworks */ = {
