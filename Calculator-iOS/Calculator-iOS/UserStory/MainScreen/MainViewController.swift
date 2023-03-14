@@ -36,7 +36,7 @@ extension MainViewController {
     }
     
     func add() {
-        let commonButton = CommonButton(frame: CGRect(x: <#T##Int#>, y: <#T##Int#>, width: <#T##Int#>, height: <#T##Int#>))
+        let commonButton = CommonButton()
         view.addSubview(commonButton)
         commonButton.setupButton(with: ReusableCommonButton(key: "Ac", fontName: "Poppins", fontSize: 32, colorText: .white, cornerRadius: 16, borderWidght: 1.2, borderColor: .white, bgColor: .white))
         commonButton.translatesAutoresizingMaskIntoConstraints = false
