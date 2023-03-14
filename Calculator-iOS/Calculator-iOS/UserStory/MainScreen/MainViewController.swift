@@ -13,12 +13,14 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setupBackground()
-        setupCCalculatorButtons()
+        add()
+        
     }
     
 }
 
 extension MainViewController {
+    
     func setupBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
@@ -33,58 +35,14 @@ extension MainViewController {
         view.addSubview(effectView)
     }
     
-    func setupCCalculatorButtons() {
-        
-        // MARK: - Main Stack View
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        view.addSubview(stackView)
-        
-        let calculatorButtons = [
-            ["Ac", "deleteBtn", "/", "*"],
-            ["7", "8", "9", "-"],
-            ["4", "5", "6", "+"],
-            ["1", "2", "3"],
-            ["0", ".", "="]
-        ]
-        
-        for row in calculatorButtons {
-            let rowStackView = UIStackView()
-            rowStackView.axis = .horizontal
-            rowStackView.distribution = .fillEqually
-            rowStackView.spacing = 10
-            
-            for buttonTitle in row {
-                let button = OperatorButton()
-                
-                if buttonTitle == "deleteBtn" {
-                    let imageButton = ImageButton()
-                    guard let UIImageSetup = UIImage(systemName: "delete.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)) else { return }
-                    imageButton.setupButtonWithImage(image: UIImageSetup)
-                    rowStackView.addArrangedSubview(imageButton)
-                }else if buttonTitle == "/" || buttonTitle == "*" || buttonTitle == "-" || buttonTitle == "+" {
-                    button.setupButton(with: buttonTitle, color: .blue, bgColor: .systemBlue)
-                    rowStackView.addArrangedSubview(button)
-                }else if buttonTitle == "=" {
-                    button.setupButton(with: "=", color: .white, bgColor: .blue)
-                    rowStackView.addArrangedSubview(button)
-                }else {
-                    button.setupButton(with: buttonTitle, color: .blue, bgColor: .white)
-                    rowStackView.addArrangedSubview(button)
-                }
-                stackView.addArrangedSubview(rowStackView)
-            }
-            
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-                stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
-            ])
-        }
+    func add() {
+        let commonButton = CommonButton(frame: CGRect(x: <#T##Int#>, y: <#T##Int#>, width: <#T##Int#>, height: <#T##Int#>))
+        view.addSubview(commonButton)
+        commonButton.setupButton(with: ReusableCommonButton(key: "Ac", fontName: "Poppins", fontSize: 32, colorText: .white, cornerRadius: 16, borderWidght: 1.2, borderColor: .white, bgColor: .white))
+        commonButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            commonButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            commonButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
-    
 }
