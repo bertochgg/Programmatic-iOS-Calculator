@@ -9,6 +9,15 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let calculatorButton = ReusableCommonButton(fontName: "Poppins",
+                                      fontSize: 32,
+                                      colorText: .systemIndigo,
+                                      cornerRadius: 16,
+                                      borderWidght: 1.2,
+                                      borderColor: .white,
+                                      bgColor: UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.33),
+                                      shadowColor: .white)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,20 +48,14 @@ extension MainViewController {
         let commonButton = CalculatorButton(frame: CGRect(x: 0, y: 0, width: 62, height: 62))
         commonButton.center = view.center
         view.addSubview(commonButton)
-        commonButton.setupButton(with: ReusableCommonButton(fontName: "Poppins",
-                                                            fontSize: 32,
-                                                            colorText: .systemIndigo,
-                                                            cornerRadius: 16,
-                                                            borderWidght: 1.2,
-                                                            borderColor: .white,
-                                                            bgColor: UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.33),
-                                                            shadowColor: .white), content: .symbol("delete.left"))
         
-//        commonButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            commonButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            commonButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-//        ])
+        commonButton.setupButton(with: calculatorButton, content: .symbol("delete.left"))
+        
+        //        commonButton.translatesAutoresizingMaskIntoConstraints = false
+        //        NSLayoutConstraint.activate([
+        //            commonButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        //            commonButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        //        ])
     }
 }
 
