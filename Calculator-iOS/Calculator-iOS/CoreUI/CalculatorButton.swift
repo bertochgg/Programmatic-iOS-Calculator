@@ -13,8 +13,9 @@ protocol ReusableCommonButtonProtocol {
 }
 
 enum ButtonContent {
-    case text(String)
-    case symbol(String)
+    case digit(String)
+    case sfSymbol(String)
+    case specialSymbol(String)
 }
 
 final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
@@ -35,13 +36,16 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
     func setupButton(with viewModel: ReusableCommonButton, content: ButtonContent) {
         
         switch content {
-        case .text(let text):
+        case .digit(let text):
             self.setTitle(text, for: .normal)
             self.setImage(nil, for: .normal)
-        case .symbol(let symbolName):
+        case .sfSymbol(let symbolName):
             let buttonIcon = UIImage(systemName: symbolName, withConfiguration: UIImage.SymbolConfiguration(scale: .large))
             self.setTitle(nil, for: .normal)
-            self.setImage(buttonIcon!.withTintColor(.gray, renderingMode: .alwaysOriginal), for: .normal)
+            self.setImage(buttonIcon!.withTintColor(viewModel.colorText, renderingMode: .alwaysOriginal), for: .normal)
+        case .specialSymbol(let text):
+            self.setTitle(text, for: .normal)
+            self.setImage(nil, for: .normal)
         }
         
         self.titleLabel?.textAlignment = .center

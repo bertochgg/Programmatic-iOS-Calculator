@@ -9,11 +9,47 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let deleteButton = ReusableCommonButton(fontName: "Poppins",
+                                            fontSize: 32,
+                                            colorText: .gray,
+                                            cornerRadius: 16,
+                                            borderWidght: 1.2,
+                                            borderColor: .white,
+                                            bgColor: UIConstants.transparent,
+                                            shadowColor: .white)
+    
+    let operatorButton = ReusableCommonButton(fontName: "Poppins",
+                                            fontSize: 32,
+                                            colorText: .systemBlue,
+                                            cornerRadius: 12,
+                                            borderWidght: 1.2,
+                                            borderColor: .white,
+                                            bgColor: UIConstants.transparent,
+                                            shadowColor: .systemBlue)
+    
+    let normalCommonButton = ReusableCommonButton(fontName: "Poppins",
+                                                  fontSize: 32,
+                                                  colorText: .systemIndigo,
+                                                  cornerRadius: 16,
+                                                  borderWidght: 1.2,
+                                                  borderColor: .white,
+                                                  bgColor: UIConstants.transparent,
+                                                  shadowColor: .white)
+    
+    let equalButton = ReusableCommonButton(fontName: "Poppins",
+                                           fontSize: 32,
+                                           colorText: .white,
+                                           cornerRadius: 12,
+                                           borderWidght: 1.2,
+                                           borderColor: .white,
+                                           bgColor: UIConstants.transparent,
+                                           shadowColor: .blue)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBackground()
-        addCalculatorButton()
+        addMainStackViewWithRows()
         
     }
     
@@ -35,93 +71,63 @@ extension MainViewController {
         view.addSubview(effectView)
     }
     
-    func addCalculatorButton() {
-        let commonButton = CalculatorButton(frame: CGRect(x: 0, y: 0, width: 62, height: 62))
-        view.addSubview(commonButton)
+    func addMainStackViewWithRows() {
         
-        commonButton.setupButton(with: calculatorButton, content: .operatorSymbol("delete.left"))
-    }
-    
-    func addStackViewWithButtons() {
-        
-        //        let buttonTypes: [ButtonContent] = [
-        //            .digit("Ac"), .specialSymbol("delete.left"), .operatorSymbol("divide"), .operatorSymbol("multiply"),
-        //            .digit("7"), .digit("8"), .digit("9"), .operatorSymbol("minus"),
-        //            .digit("4"), .digit("5"), .digit("6"), .operatorSymbol("plus"),
-        //            .digit("1"), .digit("2"), .digit("3"),
-        //            .digit("0"), .digit("."), .specialSymbol("equal")
-        //        ]
-        
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        view.addSubview(stackView)
-        
-        let transparent = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.33)
-        
-        let calculatorButtons = [
-            [
-                ["key": "Ac",          "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 62, "cornerRadious": 16],
-                ["key": "delete.left", "colorText": UIColor.gray,         "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 62, "cornerRadious": 16],
-                ["key": "divide",      "colorText": UIColor.blue,         "bgColor": transparent, "shadowColor": UIColor.blue,  "width": 62, "height": 62, "cornerRadious": 12],
-                ["key": "multiply",    "colorText": UIColor.blue,         "bgColor": transparent, "shadowColor": UIColor.blue,  "width": 62, "height": 62, "cornerRadious": 12]
-            ],
-            [
-                ["key": "7",     "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 60, "cornerRadious": 16],
-                ["key": "8",     "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 60, "cornerRadious": 16],
-                ["key": "9",     "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white,  "width": 62, "height": 60, "cornerRadious": 16],
-                ["key": "minus", "colorText": UIColor.blue,         "bgColor": transparent, "shadowColor": UIColor.blue,  "width": 62, "height": 60, "cornerRadious": 12]
-            ],
-            [
-                ["key": "4",    "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 60, "cornerRadious": 16],
-                ["key": "5",    "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 60, "cornerRadious": 16],
-                ["key": "6",    "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white,  "width": 62, "height": 60, "cornerRadious": 16],
-                ["key": "plus", "colorText": UIColor.blue,         "bgColor": transparent, "shadowColor": UIColor.blue,  "width": 62, "height": 96, "cornerRadious": 12]
-            ],
-            [
-                ["key": "1", "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 60, "cornerRadious": 16],
-                ["key": "2", "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 60, "cornerRadious": 16],
-                ["key": "3", "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white,  "width": 62, "height": 60, "cornerRadious": 16]
-            ],
-            [
-                ["key": "0",     "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 144, "height": 60, "cornerRadious": 16],
-                ["key": ".",     "colorText": UIColor.systemIndigo, "bgColor": transparent, "shadowColor": UIColor.white, "width": 62, "height": 62, "cornerRadious": 16],
-                ["key": "equal", "colorText": UIColor.white,        "bgColor": transparent, "shadowColor": UIColor.blue,  "width": 62, "height": 96, "cornerRadious": 12]
-            ]
+        let buttonData: [[(ButtonContent, ReusableCommonButton)]] = [
+            [(.specialSymbol("Ac"), normalCommonButton),
+             (.sfSymbol("delete.left"), deleteButton),
+             (.sfSymbol("divide"), operatorButton),
+             (.sfSymbol("multiply"), operatorButton)],
+            
+            [(.digit("7"), normalCommonButton),
+             (.digit("8"), normalCommonButton),
+             (.digit("9"), normalCommonButton),
+             (.sfSymbol("minus"), operatorButton)],
+            
+            [(.digit("4"), normalCommonButton),
+             (.digit("5"), normalCommonButton),
+             (.digit("6"), normalCommonButton),
+             (.sfSymbol("plus"), operatorButton)],
+            
+            [(.digit("1"), normalCommonButton),
+             (.digit("2"), normalCommonButton),
+             (.digit("3"), normalCommonButton)],
+            
+            [(.digit("0"), normalCommonButton),
+             (.digit("."), normalCommonButton),
+             (.specialSymbol("="), equalButton)]
         ]
         
-        // Tinte/Color Letra
-        // shadowColor
-        // widght
-        // height
-        //cornerRadious
-        
-        for row in calculatorButtons {
-            let rowStackView = UIStackView()
-            rowStackView.axis = .horizontal
-            rowStackView.distribution = .fillEqually
-            rowStackView.spacing = 10
-            
-            for buttonData in row {
-                let button = CalculatorButton(frame: CGRect(x: 0, y: 0, width: 62, height: 62))
-                let calculatorButton = ReusableCommonButton(fontName: "Poppins",
-                                                            fontSize: 32,
-                                                            colorText: buttonData["colorText"] as! UIColor,
-                                                            cornerRadius: buttonData["cornerRadius"] as! CGFloat,
-                                                            borderWidght: 1.2,
-                                                            borderColor: .white,
-                                                            bgColor: buttonData["bgColor"] as! UIColor,
-                                                            shadowColor: buttonData["shadowColor"] as! UIColor)
-                
-                button.setupButton(with: calculatorButton, content: .digit(buttonData["key"] as! String))
-                
-//                button.setupButton(with: ReusableCommonButton(key: buttonData["title"] as! String, fontName: "Poppins", fontSize: 32, colorText: buttonData["color"] as! UIColor, cornerRadius: 16, borderWidght: 1.2, borderColor: .white, bgColor: buttonData["bgColor"] as! UIColor))
-                rowStackView.addArrangedSubview(button)
-                
+        let rowStackViews = buttonData.map { row in
+            let stackView = UIStackView()
+            stackView.axis = .horizontal
+            stackView.distribution = .fillEqually
+            stackView.spacing = 10
+            for (content, viewModel) in row {
+                let button = CalculatorButton()
+                button.setupButton(with: viewModel, content: content)
+                stackView.addArrangedSubview(button)
             }
-            
-            stackView.addArrangedSubview(rowStackView)
+            return stackView
         }
+        
+        let overallStackView = UIStackView(arrangedSubviews: rowStackViews)
+        overallStackView.axis = .vertical
+        overallStackView.spacing = 10
+        overallStackView.distribution = .fillEqually
+        view.addSubview(overallStackView)
+        
+        setMainStackViewConstraints(stack: overallStackView)
     }
+    
+    func setMainStackViewConstraints(stack: UIStackView) {
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 300)
+        ])
+    }
+    
 }

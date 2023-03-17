@@ -25,6 +25,7 @@
 		04B8E9102801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E90F2801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift */; };
 		20716530858533A383C96833 /* Pods_App_Calculator_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C2F048D6901DC5382FCCED /* Pods_App_Calculator_iOSTests.framework */; };
 		5F167CBB29C230680003799F /* ReusableCommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F167CBA29C230680003799F /* ReusableCommonButton.swift */; };
+		5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A921729C4E0BA00A11472 /* UIConstants.swift */; };
 		5F405CA029BF859A00FB8687 /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F405C9F29BF859A00FB8687 /* ReusableLabel.swift */; };
 		5F405CB729BF864B00FB8687 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CA529BF864A00FB8687 /* Poppins-BoldItalic.ttf */; };
 		5F405CB829BF864B00FB8687 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CA629BF864A00FB8687 /* Poppins-ExtraBold.ttf */; };
@@ -90,6 +91,7 @@
 		341ABA3C7AC3E3F4BAF7250F /* Pods-App-Calculator-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOSTests/Pods-App-Calculator-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44ECBB306DB0E87790B171D8 /* Pods_App_Calculator_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Calculator_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F167CBA29C230680003799F /* ReusableCommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCommonButton.swift; sourceTree = "<group>"; };
+		5F3A921729C4E0BA00A11472 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		5F405C9F29BF859A00FB8687 /* ReusableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
 		5F405CA529BF864A00FB8687 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		5F405CA629BF864A00FB8687 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		04B8E8EB2801F3B800EF70CD /* Calculator-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5F3A921629C4E09D00A11472 /* Constants */,
 				5F405CA329BF85FD00FB8687 /* Fonts */,
 				04B8E91F2801F54700EF70CD /* BundleFiles */,
 				04987FA42801FCB0001D303B /* Application */,
@@ -355,6 +358,14 @@
 				44ECBB306DB0E87790B171D8 /* Pods_App_Calculator_iOSUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5F3A921629C4E09D00A11472 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A921729C4E0BA00A11472 /* UIConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		5F405CA329BF85FD00FB8687 /* Fonts */ = {
@@ -718,6 +729,7 @@
 				04B8E8F12801F3B800EF70CD /* MainViewController.swift in Sources */,
 				5F167CBB29C230680003799F /* ReusableCommonButton.swift in Sources */,
 				5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */,
+				5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */,
 				04B8E8ED2801F3B800EF70CD /* AppDelegate.swift in Sources */,
 				5F405CA029BF859A00FB8687 /* ReusableLabel.swift in Sources */,
 				04B8E8EF2801F3B800EF70CD /* SceneDelegate.swift in Sources */,
