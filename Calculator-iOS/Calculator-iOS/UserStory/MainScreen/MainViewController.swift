@@ -19,13 +19,13 @@ class MainViewController: UIViewController {
                                             shadowColor: .white)
     
     let operatorButton = ReusableCommonButton(fontName: "Poppins",
-                                            fontSize: 32,
-                                            colorText: .systemBlue,
-                                            cornerRadius: 12,
-                                            borderWidght: 1.2,
-                                            borderColor: .white,
-                                            bgColor: UIConstants.transparent,
-                                            shadowColor: .systemBlue)
+                                              fontSize: 32,
+                                              colorText: .systemBlue,
+                                              cornerRadius: 12,
+                                              borderWidght: 1.2,
+                                              borderColor: .white,
+                                              bgColor: UIConstants.transparent,
+                                              shadowColor: .systemBlue)
     
     let normalCommonButton = ReusableCommonButton(fontName: "Poppins",
                                                   fontSize: 32,
@@ -49,6 +49,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setupBackground()
+        setupOutputLabels()
         addMainStackViewWithRows()
         
     }
@@ -73,61 +74,180 @@ extension MainViewController {
     
     func addMainStackViewWithRows() {
         
-        let buttonData: [[(ButtonContent, ReusableCommonButton)]] = [
+        let leftStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
             [(.specialSymbol("Ac"), normalCommonButton),
              (.sfSymbol("delete.left"), deleteButton),
-             (.sfSymbol("divide"), operatorButton),
-             (.sfSymbol("multiply"), operatorButton)],
+             (.sfSymbol("divide"), operatorButton)],
             
             [(.digit("7"), normalCommonButton),
              (.digit("8"), normalCommonButton),
-             (.digit("9"), normalCommonButton),
-             (.sfSymbol("minus"), operatorButton)],
+             (.digit("9"), normalCommonButton)],
             
             [(.digit("4"), normalCommonButton),
              (.digit("5"), normalCommonButton),
-             (.digit("6"), normalCommonButton),
-             (.sfSymbol("plus"), operatorButton)],
+             (.digit("6"), normalCommonButton)],
             
             [(.digit("1"), normalCommonButton),
              (.digit("2"), normalCommonButton),
-             (.digit("3"), normalCommonButton)],
-            
-            [(.digit("0"), normalCommonButton),
-             (.digit("."), normalCommonButton),
+             (.digit("3"), normalCommonButton)]
+        ]
+        
+        let rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+            [(.sfSymbol("multiply"), operatorButton),
+             (.sfSymbol("minus"), operatorButton),
+             (.sfSymbol("plus"), operatorButton),
              (.specialSymbol("="), equalButton)]
         ]
         
-        let rowStackViews = buttonData.map { row in
+        let zeroSVData: [[(ButtonContent, ReusableCommonButton)]] = [
+            [(.digit("0"), normalCommonButton),
+             (.digit("."), normalCommonButton)]
+        ]
+        
+        // MARK: - Main Stack View
+        let mainStackView = UIStackView()
+        mainStackView.axis = .horizontal
+        mainStackView.spacing = 10
+        mainStackView.alignment = .fill
+        mainStackView.distribution = .fillProportionally
+        view.addSubview(mainStackView)
+        setMainStackViewConstraints(stack: mainStackView)
+        
+        // MARK: - Main Stack -> Left Stack View
+        let leftStackView = UIStackView()
+        leftStackView.axis = .vertical
+        leftStackView.spacing = 20
+        leftStackView.distribution = .fillProportionally
+        
+        let leftTopRowStackViews = leftStackViewData.map { row in
             let stackView = UIStackView()
             stackView.axis = .horizontal
             stackView.distribution = .fillEqually
             stackView.spacing = 10
+            
             for (content, viewModel) in row {
                 let button = CalculatorButton()
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
             }
             return stackView
+            
         }
         
-        let overallStackView = UIStackView(arrangedSubviews: rowStackViews)
-        overallStackView.axis = .vertical
-        overallStackView.spacing = 10
-        overallStackView.distribution = .fillEqually
-        view.addSubview(overallStackView)
+        let leftTopStackView = UIStackView(arrangedSubviews: leftTopRowStackViews)
+        leftTopStackView.axis = .vertical
+        leftTopStackView.spacing = 10
         
-        setMainStackViewConstraints(stack: overallStackView)
+        leftTopStackView.distribution = .fillEqually
+        
+        let leftBottomRowStackView = zeroSVData.map { row in
+            let stackView = UIStackView()
+            stackView.axis = .horizontal
+            stackView.distribution = .fill
+            stackView.spacing = 10
+            
+            for (content, viewModel) in row {
+                let button = CalculatorButton()
+                button.setupButton(with: viewModel, content: content)
+                stackView.addArrangedSubview(button)
+                
+                if content == .digit("0") {
+                    button.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 2 / 3).isActive = true
+                    
+                }
+            }
+            return stackView
+        }
+        
+        let leftBottomStackView = UIStackView(arrangedSubviews: leftBottomRowStackView)
+        leftBottomStackView.axis = .vertical
+        leftBottomStackView.spacing = 10
+        leftBottomStackView.distribution = .fill
+        
+        leftStackView.addArrangedSubview(leftTopStackView)
+        leftStackView.addArrangedSubview(leftBottomStackView)
+        
+        // MARK: - Main Stack -> Right Stack View
+        let rightTopRowStackViews = rightStackViewData.map { row in
+            let stackView = UIStackView()
+            stackView.axis = .vertical
+            stackView.distribution = .fill
+            stackView.spacing = 10
+            
+            for (content, viewModel) in row {
+                let button = CalculatorButton()
+                button.setupButton(with: viewModel, content: content)
+                stackView.addArrangedSubview(button)
+                
+                if content == .sfSymbol("plus") {
+                    
+                    button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.28).isActive = true
+                    
+                }else if content == .sfSymbol("multiply") || content == .sfSymbol("minus") {
+                    button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.178).isActive = true
+                }
+            }
+            return stackView
+        }
+        
+        let rightTopStackView = UIStackView(arrangedSubviews: rightTopRowStackViews)
+        rightTopStackView.axis = .vertical
+        rightTopStackView.spacing = 10
+        rightTopStackView.distribution = .fill
+        
+        // MARK: - Add subStackViews to Main Stack View
+        mainStackView.addArrangedSubview(leftStackView)
+        mainStackView.addArrangedSubview(rightTopStackView)
+        
     }
     
     func setMainStackViewConstraints(stack: UIStackView) {
         stack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 300)
+            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            stack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3 / 5)
         ])
+    }
+    
+    func setupOutputLabels() {
+        let stackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.axis = .vertical
+            stackView.alignment = .trailing
+            return stackView
+        }()
+        view.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            stackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2/10)
+        ])
+        
+        let operationsLabel: UILabel = {
+            let label = UILabel()
+            label.text = "6000/2+3227*2"
+            label.font = UIFont(name: "Poppins", size: 24)
+            label.textColor = .gray
+            label.textAlignment = .right
+            return label
+        }()
+        
+        let resultLabel: UILabel = {
+            let label = UILabel()
+            label.text = "=12,454"
+            label.font = UIFont(name: "Poppins", size: 48)
+            label.font = .systemFont(ofSize: 48, weight: .medium)
+            label.textColor = .black
+            label.textAlignment = .right
+            return label
+        }()
+        
+        stackView.addArrangedSubview(operationsLabel)
+        stackView.addArrangedSubview(resultLabel)
     }
     
 }

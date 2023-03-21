@@ -12,7 +12,7 @@ protocol ReusableCommonButtonProtocol {
     func setupButton(with viewModel: ReusableCommonButton, content: ButtonContent)
 }
 
-enum ButtonContent {
+enum ButtonContent: Equatable {
     case digit(String)
     case sfSymbol(String)
     case specialSymbol(String)
@@ -39,10 +39,12 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         case .digit(let text):
             self.setTitle(text, for: .normal)
             self.setImage(nil, for: .normal)
+            
         case .sfSymbol(let symbolName):
             let buttonIcon = UIImage(systemName: symbolName, withConfiguration: UIImage.SymbolConfiguration(scale: .large))
             self.setTitle(nil, for: .normal)
             self.setImage(buttonIcon!.withTintColor(viewModel.colorText, renderingMode: .alwaysOriginal), for: .normal)
+            
         case .specialSymbol(let text):
             self.setTitle(text, for: .normal)
             self.setImage(nil, for: .normal)
