@@ -9,6 +9,16 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    lazy var mainStackView = createMainStackView()
+    
+    lazy var leftStackView = createLeftStackView()
+    
+    lazy var leftTopStackView = createLeftTopStackView()
+    
+    lazy var leftBottomStackView = createLeftBottomStackView()
+    
+    lazy var rightStackView = createRightStackView()
+    
     let deleteButton = ReusableCommonButton(fontName: "Poppins",
                                             fontSize: 32,
                                             colorText: .gray,
@@ -77,9 +87,9 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         setupBackground()
-        exampleImage()
+        // exampleImage()
         setupOutputLabels()
         addMainStackViewWithRows()
         
@@ -89,22 +99,10 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     
-    func exampleImage() {
-        let exampleImage: UIImageView = {
-            let image = UIImageView()
-            image.image = UIImage(named: "X - 3")
-            image.alpha = 0.4
-            image.frame = view.bounds
-            return image
-        }()
-        view.addSubview(exampleImage)
-        
-    }
-    
     func setupBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
-        gradientLayer.colors = [UIColor.white.cgColor, UIColor.blue.cgColor]
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor.systemIndigo.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0)
         
@@ -117,21 +115,37 @@ extension MainViewController {
     
     func addMainStackViewWithRows() {
         
+        view.addSubview(mainStackView)
+        setMainStackViewConstraints(stack: mainStackView)
+        
+        mainStackView.addArrangedSubview(leftStackView)
+        leftStackView.addArrangedSubview(leftTopStackView)
+        leftStackView.addArrangedSubview(leftBottomStackView)
+        
+        mainStackView.addArrangedSubview(rightStackView)
+        
+    }
+    
+    func createMainStackView() -> UIStackView {
         // MARK: - Main Stack View
         let mainStackView = UIStackView()
         mainStackView.axis = .horizontal
         mainStackView.spacing = 20
         mainStackView.alignment = .fill
         mainStackView.distribution = .fillProportionally
-        view.addSubview(mainStackView)
-        setMainStackViewConstraints(stack: mainStackView)
-        
+        return mainStackView
+    }
+    
+    func createLeftStackView() -> UIStackView {
         // MARK: - Main Stack -> Left Stack View
         let leftStackView = UIStackView()
         leftStackView.axis = .vertical
         leftStackView.spacing = 30
         leftStackView.distribution = .fillProportionally
-        
+        return leftStackView
+    }
+    
+    func createLeftTopStackView() -> UIStackView {
         let leftTopRowStackViews = leftStackViewData.map { row in
             let stackView = UIStackView()
             stackView.axis = .horizontal
@@ -144,15 +158,17 @@ extension MainViewController {
                 stackView.addArrangedSubview(button)
             }
             return stackView
-            
         }
         
         let leftTopStackView = UIStackView(arrangedSubviews: leftTopRowStackViews)
         leftTopStackView.axis = .vertical
         leftTopStackView.spacing = 20
-        
         leftTopStackView.distribution = .fillEqually
         
+        return leftTopStackView
+    }
+    
+    func createLeftBottomStackView() -> UIStackView {
         let leftBottomRowStackView = zeroSVData.map { row in
             let stackView = UIStackView()
             stackView.axis = .horizontal
@@ -165,7 +181,7 @@ extension MainViewController {
                 stackView.addArrangedSubview(button)
                 
                 if content == .digit("0") {
-                    button.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 2 / 3).isActive = true
+                    button.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.92 / 3).isActive = true
                     
                 }
             }
@@ -177,11 +193,12 @@ extension MainViewController {
         leftBottomStackView.spacing = 20
         leftBottomStackView.distribution = .fill
         
-        leftStackView.addArrangedSubview(leftTopStackView)
-        leftStackView.addArrangedSubview(leftBottomStackView)
-        
+        return leftBottomStackView
+    }
+    
+    func createRightStackView() -> UIStackView {
         // MARK: - Main Stack -> Right Stack View
-        let rightTopRowStackViews = rightStackViewData.map { row in
+        let rightRowStackViews = rightStackViewData.map { row in
             let stackView = UIStackView()
             stackView.axis = .vertical
             stackView.distribution = .fill
@@ -197,31 +214,30 @@ extension MainViewController {
                     button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.263).isActive = true
                     
                 } else if content == .sfSymbol("asterisk") || content == .sfSymbol("minus") {
-                    button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.156).isActive = true
-                    // stackView.widthAnchor.constraint(equalTo: sta.widthAnchor, multiplier: 0.3).isActive = true
+                    button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.153).isActive = true
+    
                 }
             }
             return stackView
         }
         
-        let rightTopStackView = UIStackView(arrangedSubviews: rightTopRowStackViews)
-        rightTopStackView.axis = .vertical
-        rightTopStackView.spacing = 20
-        rightTopStackView.distribution = .fill
+        let rightStackView = UIStackView(arrangedSubviews: rightRowStackViews)
+        rightStackView.axis = .vertical
+        rightStackView.spacing = 20
+        rightStackView.distribution = .fill
         
-        // MARK: - Add subStackViews to Main Stack View
-        mainStackView.addArrangedSubview(leftStackView)
-        mainStackView.addArrangedSubview(rightTopStackView)
-        
+        return rightStackView
     }
+    
+// MARK: - Constraints and Labels
     
     func setMainStackViewConstraints(stack: UIStackView) {
         stack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 33),
-            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -33),
-            stack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.82 / 8)
+            stack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 36),
+            stack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -36),
+            stack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.81 / 8)
         ])
     }
     
@@ -231,17 +247,17 @@ extension MainViewController {
             stackView.axis = .vertical
             stackView.alignment = .fill
             stackView.distribution = .fillEqually
-            stackView.backgroundColor = .systemMint
-            stackView.spacing = 0
+            // stackView.backgroundColor = .systemMint
+            stackView.spacing = -80
             return stackView
         }()
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 28),
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 33),
             stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -34),
-            stackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/4)
+            stackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1 / 4)
         ])
         
         let operationsLabel: UILabel = {
@@ -251,11 +267,10 @@ extension MainViewController {
             label.textColor = .gray
             label.textAlignment = .right
             label.numberOfLines = 0
-            
-            label.backgroundColor = .systemPink
+            label.sizeToFit()
             return label
         }()
-        
+        view.addSubview(operationsLabel)
         let resultLabel: UILabel = {
             let label = UILabel()
             label.text = "=12,454"
@@ -263,16 +278,8 @@ extension MainViewController {
             label.font = .systemFont(ofSize: 48, weight: .medium)
             label.textColor = .black
             label.textAlignment = .right
-            label.backgroundColor = .blue
             return label
         }()
-        
-        operationsLabel.translatesAutoresizingMaskIntoConstraints = false
-        resultLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            
-        ])
         
         stackView.addArrangedSubview(operationsLabel)
         stackView.addArrangedSubview(resultLabel)
