@@ -51,6 +51,10 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         }
         
         self.titleLabel?.textAlignment = .center
+        self.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.titleLabel?.numberOfLines = 0
+        self.titleLabel?.minimumScaleFactor = 0.1
+        self.clipsToBounds = true
         
         self.backgroundColor = viewModel.bgColor
         self.titleLabel?.font = UIFont(name: viewModel.fontName, size: viewModel.fontSize)
