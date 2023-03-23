@@ -246,7 +246,7 @@ extension MainViewController {
     @objc
     func buttonTapped(_ sender: CalculatorButton) {
         if let key = sender.currentTitle {
-            print(key)
+            print("The user tapped \(key) button")
         } else if let image = sender.currentImage {
             
             let description = String(describing: image)
@@ -254,7 +254,7 @@ extension MainViewController {
                 let regex = try NSRegularExpression(pattern: "symbol\\(system: ([^\\)]+)\\)")
                 if let match = regex.firstMatch(in: description, range: NSRange(description.startIndex..., in: description)) {
                     let symbolName = (description as NSString).substring(with: match.range(at: 1))
-                    print(symbolName)
+                    print("The user tapped \(symbolName) button")
                 }
             } catch let error {
                 print("Error creating regular expression: \(error.localizedDescription)")

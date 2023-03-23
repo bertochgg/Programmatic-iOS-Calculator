@@ -43,7 +43,7 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         case .sfSymbol(let symbolName):
             let buttonIcon = UIImage(systemName: symbolName, withConfiguration: UIImage.SymbolConfiguration(scale: .large))
             self.setTitle(nil, for: .normal)
-            self.setImage(buttonIcon!.withTintColor(viewModel.colorText, renderingMode: .alwaysOriginal), for: .normal)
+            self.setImage(buttonIcon?.withTintColor(viewModel.colorText, renderingMode: .alwaysOriginal), for: .normal)
             
         case .specialSymbol(let text):
             self.setTitle(text, for: .normal)
