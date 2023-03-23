@@ -48,6 +48,7 @@
 		5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F405CC929BF95A300FB8687 /* CalculatorButton.swift */; };
 		5F93477529CBD4DF002D04BC /* CalculatorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */; };
 		5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477629CBD4FA002D04BC /* CalculatorService.swift */; };
+		5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */; };
 		D348476B9C65150D10A1658B /* Pods_App_Calculator_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A99E9570C3959C34541237 /* Pods_App_Calculator_iOS.framework */; };
 		D4C94A0200D56DBF180045C7 /* Pods_App_Calculator_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44ECBB306DB0E87790B171D8 /* Pods_App_Calculator_iOSUITests.framework */; };
 /* End PBXBuildFile section */
@@ -116,6 +117,7 @@
 		5F405CC929BF95A300FB8687 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 		5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorServiceProtocol.swift; sourceTree = "<group>"; };
 		5F93477629CBD4FA002D04BC /* CalculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorService.swift; sourceTree = "<group>"; };
+		5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		6DC52246876E516106CAD065 /* Pods-App-Calculator-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOS.release.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOS/Pods-App-Calculator-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		77C2F048D6901DC5382FCCED /* Pods_App_Calculator_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Calculator_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		830E010DD71219AEF997685E /* Pods-App-Calculator-iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOSUITests/Pods-App-Calculator-iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				5F405C9F29BF859A00FB8687 /* ReusableLabel.swift */,
 				5F405CC929BF95A300FB8687 /* CalculatorButton.swift */,
 				5F167CBA29C230680003799F /* ReusableCommonButton.swift */,
+				5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */,
 			);
 			path = CoreUI;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				04B8E8F12801F3B800EF70CD /* MainViewController.swift in Sources */,
 				5F167CBB29C230680003799F /* ReusableCommonButton.swift in Sources */,
 				5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */,
+				5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */,
 				5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */,
 				5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */,
 				04B8E8ED2801F3B800EF70CD /* AppDelegate.swift in Sources */,

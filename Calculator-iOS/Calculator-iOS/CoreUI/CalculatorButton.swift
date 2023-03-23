@@ -70,7 +70,7 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         
         self.layer.shadowColor = viewModel.shadowColor.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowRadius = 10
-        self.layer.shadowOpacity = 0.7
+        self.layer.shadowRadius = 5
+        self.layer.shadowOpacity = 1
     }
 }

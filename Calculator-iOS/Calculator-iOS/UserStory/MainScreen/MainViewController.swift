@@ -19,77 +19,40 @@ class MainViewController: UIViewController {
     
     lazy var rightStackView = createRightStackView()
     
-    let deleteButton = ReusableCommonButton(fontName: "Poppins",
-                                            fontSize: 32,
-                                            colorText: .gray,
-                                            cornerRadius: 16,
-                                            borderWidght: 1.2,
-                                            borderColor: .white,
-                                            bgColor: UIConstants.transparent,
-                                            shadowColor: .white)
-    
-    let operatorButton = ReusableCommonButton(fontName: "Poppins",
-                                              fontSize: 32,
-                                              colorText: .systemBlue,
-                                              cornerRadius: 12,
-                                              borderWidght: 1.2,
-                                              borderColor: .white,
-                                              bgColor: UIConstants.transparent,
-                                              shadowColor: .systemBlue)
-    
-    let normalCommonButton = ReusableCommonButton(fontName: "Poppins",
-                                                  fontSize: 32,
-                                                  colorText: .systemIndigo,
-                                                  cornerRadius: 16,
-                                                  borderWidght: 1.2,
-                                                  borderColor: .white,
-                                                  bgColor: UIConstants.transparent,
-                                                  shadowColor: .white)
-    
-    let equalButton = ReusableCommonButton(fontName: "Poppins",
-                                           fontSize: 32,
-                                           colorText: .white,
-                                           cornerRadius: 12,
-                                           borderWidght: 1.2,
-                                           borderColor: .white,
-                                           bgColor: UIConstants.transparent,
-                                           shadowColor: .blue)
-    
     lazy var leftStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.specialSymbol("Ac"), normalCommonButton),
-         (.sfSymbol("delete.left"), deleteButton),
-         (.specialSymbol("/"), operatorButton)],
+        [(.specialSymbol("Ac"), ButtonStyles.acButton),
+         (.sfSymbol("delete.left"), ButtonStyles.deleteButton),
+         (.specialSymbol("/"), ButtonStyles.operatorButton)],
         
-        [(.digit("7"), normalCommonButton),
-         (.digit("8"), normalCommonButton),
-         (.digit("9"), normalCommonButton)],
+        [(.digit("7"), ButtonStyles.digitButton),
+         (.digit("8"), ButtonStyles.digitButton),
+         (.digit("9"), ButtonStyles.digitButton)],
         
-        [(.digit("4"), normalCommonButton),
-         (.digit("5"), normalCommonButton),
-         (.digit("6"), normalCommonButton)],
+        [(.digit("4"), ButtonStyles.digitButton),
+         (.digit("5"), ButtonStyles.digitButton),
+         (.digit("6"), ButtonStyles.digitButton)],
         
-        [(.digit("1"), normalCommonButton),
-         (.digit("2"), normalCommonButton),
-         (.digit("3"), normalCommonButton)]
+        [(.digit("1"), ButtonStyles.digitButton),
+         (.digit("2"), ButtonStyles.digitButton),
+         (.digit("3"), ButtonStyles.digitButton)]
     ]
     
     lazy var rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.sfSymbol("asterisk"), operatorButton),
-         (.sfSymbol("minus"), operatorButton),
-         (.sfSymbol("plus"), operatorButton),
-         (.specialSymbol("="), equalButton)]
+        [(.sfSymbol("asterisk"), ButtonStyles.operatorButton),
+         (.sfSymbol("minus"), ButtonStyles.operatorButton),
+         (.sfSymbol("plus"), ButtonStyles.operatorButton),
+         (.specialSymbol("="), ButtonStyles.equalButton)]
     ]
     
-    lazy var zeroSVData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.digit("0"), normalCommonButton),
-         (.digit("·"), normalCommonButton)]
+    lazy var zeroStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+        [(.digit("0"), ButtonStyles.digitButton),
+         (.digit("·"), ButtonStyles.digitButton)]
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
         setupBackground()
-        // exampleImage()
         setupOutputLabels()
         addMainStackViewWithRows()
         
@@ -100,17 +63,9 @@ class MainViewController: UIViewController {
 extension MainViewController {
     
     func setupBackground() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [UIColor.white.cgColor, UIColor.systemIndigo.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0)
         
-        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        effectView.frame = view.bounds
-        effectView.contentView.layer.addSublayer(gradientLayer)
-        effectView.alpha = 1
-        view.addSubview(effectView)
+        self.view.backgroundColor = UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1)
+        
     }
     
     func addMainStackViewWithRows() {
@@ -126,7 +81,6 @@ extension MainViewController {
         mainStackView.addArrangedSubview(rightStackView)
         
     }
-    
     
     // MARK: - Set up StackViews and Buttons
     func createMainStackView() -> UIStackView {
@@ -175,7 +129,7 @@ extension MainViewController {
     }
     
     func createLeftBottomStackView() -> UIStackView {
-        let leftBottomRowStackView = zeroSVData.map { row in
+        let leftBottomRowStackView = zeroStackViewData.map { row in
             let stackView = UIStackView()
             stackView.axis = .horizontal
             stackView.distribution = .fill
@@ -252,7 +206,6 @@ extension MainViewController {
             stackView.axis = .vertical
             stackView.alignment = .fill
             stackView.distribution = .fillEqually
-            // stackView.backgroundColor = .systemMint
             stackView.spacing = -80
             return stackView
         }()
@@ -290,7 +243,8 @@ extension MainViewController {
         stackView.addArrangedSubview(resultLabel)
     }
     
-    @objc func buttonTapped(_ sender: CalculatorButton) {
+    @objc
+    func buttonTapped(_ sender: CalculatorButton) {
         if let key = sender.currentTitle {
             print(key)
         } else if let image = sender.currentImage {
