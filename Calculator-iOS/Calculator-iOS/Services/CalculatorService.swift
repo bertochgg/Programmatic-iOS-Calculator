@@ -9,6 +9,7 @@
 import Foundation
 
 class CalculatorService: CalculatorServiceProtocol {
+    
     private var history: String = ""
     private var result: Double = 0
     
@@ -50,4 +51,5 @@ class CalculatorService: CalculatorServiceProtocol {
     var inputHistory: String {
         return history
     }
+    
 }

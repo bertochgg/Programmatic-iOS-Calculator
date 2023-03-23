@@ -174,7 +174,7 @@ extension MainViewController {
                     
                 } else if content == .sfSymbol("asterisk") || content == .sfSymbol("minus") {
                     button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.153).isActive = true
-    
+                    
                 }
             }
             return stackView
@@ -188,7 +188,7 @@ extension MainViewController {
         return rightStackView
     }
     
-// MARK: - Constraints and Labels
+    // MARK: - Constraints and Labels
     
     func setMainStackViewConstraints(stack: UIStackView) {
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -248,7 +248,17 @@ extension MainViewController {
         if let key = sender.currentTitle {
             print(key)
         } else if let image = sender.currentImage {
-            print(image)
+            
+            let description = String(describing: image)
+            do {
+                let regex = try NSRegularExpression(pattern: "symbol\\(system: ([^\\)]+)\\)")
+                if let match = regex.firstMatch(in: description, range: NSRange(description.startIndex..., in: description)) {
+                    let symbolName = (description as NSString).substring(with: match.range(at: 1))
+                    print(symbolName)
+                }
+            } catch let error {
+                print("Error creating regular expression: \(error.localizedDescription)")
+            }
         }
         
     }
