@@ -120,12 +120,15 @@ extension MainViewController {
         
         mainStackView.addArrangedSubview(leftStackView)
         leftStackView.addArrangedSubview(leftTopStackView)
+        leftStackView.widthAnchor.constraint(equalTo: mainStackView.widthAnchor, multiplier: 5.87 / 8).isActive = true
         leftStackView.addArrangedSubview(leftBottomStackView)
         
         mainStackView.addArrangedSubview(rightStackView)
         
     }
     
+    
+    // MARK: - Set up StackViews and Buttons
     func createMainStackView() -> UIStackView {
         // MARK: - Main Stack View
         let mainStackView = UIStackView()
@@ -142,10 +145,12 @@ extension MainViewController {
         leftStackView.axis = .vertical
         leftStackView.spacing = 30
         leftStackView.distribution = .fillProportionally
+        
         return leftStackView
     }
     
     func createLeftTopStackView() -> UIStackView {
+        
         let leftTopRowStackViews = leftStackViewData.map { row in
             let stackView = UIStackView()
             stackView.axis = .horizontal
@@ -156,6 +161,7 @@ extension MainViewController {
                 let button = CalculatorButton()
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
+                button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
             }
             return stackView
         }
@@ -283,6 +289,15 @@ extension MainViewController {
         
         stackView.addArrangedSubview(operationsLabel)
         stackView.addArrangedSubview(resultLabel)
+    }
+    
+    @objc func buttonTapped(_ sender: CalculatorButton) {
+        if let key = sender.currentTitle {
+            print(key)
+        } else if let image = sender.currentImage {
+            print(image)
+        }
+        
     }
     
 }
