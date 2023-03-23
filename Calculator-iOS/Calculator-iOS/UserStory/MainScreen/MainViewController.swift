@@ -185,10 +185,9 @@ extension MainViewController {
                 let button = CalculatorButton()
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
-                
+                button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
                 if content == .digit("0") {
                     button.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.92 / 3).isActive = true
-                    
                 }
             }
             return stackView
@@ -214,7 +213,7 @@ extension MainViewController {
                 let button = CalculatorButton()
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
-                
+                button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
                 if content == .sfSymbol("plus") {
                     
                     button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.263).isActive = true
