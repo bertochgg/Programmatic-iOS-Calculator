@@ -1,14 +1,14 @@
 //
-//  ButtonsActions.swift
+//  ButtonsActionsExtension.swift
 //  Calculator-iOS
 //
-//  Created by Humberto Garcia on 23/03/23.
+//  Created by Humberto Garcia on 24/03/23.
 //  Copyright © 2023 Grid Dynamics. All rights reserved.
 //
 
 import UIKit
 
-class ButtonsActions {
+extension MainViewController {
     
     @objc
     func buttonTapped(_ sender: CalculatorButton) {
@@ -18,10 +18,11 @@ class ButtonsActions {
             
         } else if let image = sender.currentImage {
             
-            print("The user tapped\(image.getSfSymbolName()) button")
+            print("The user tapped\(image.sfSymbolName ?? "Not a SF Symbol") button")
             
         }
         
     }
     
 }
+

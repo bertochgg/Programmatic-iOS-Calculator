@@ -10,13 +10,11 @@ import UIKit
 
 extension UIImage {
     
-    func getSfSymbolName() -> String {
-        
-        guard let strSeq = "\(String(describing: self))".split(separator: ")").first else { return "Not a SF Symbol" }
+    var sfSymbolName: String? {
+        guard let strSeq = "\(String(describing: self))".split(separator: ")").first else { return nil }
         let str = String(strSeq)
-        guard let name = str.split(separator: ":").last else { return "Not a SF Symbol" }
+        guard let name = str.split(separator: ":").last else { return nil }
         return String(name)
-        
     }
     
 }
