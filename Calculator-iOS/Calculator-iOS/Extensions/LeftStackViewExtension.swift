@@ -31,7 +31,7 @@ extension MainViewController {
                 let button = CalculatorButton()
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
-                button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+                button.addTarget(self, action: #selector(ButtonsActions.buttonTapped(_:)), for: .touchUpInside)
             }
             return stackView
         }
@@ -72,17 +72,17 @@ extension MainViewController {
         return leftBottomStackView
     }
     
-    @objc
-    func buttonTapped(_ sender: CalculatorButton) {
-        if let key = sender.currentTitle {
-            
-            print("The user tapped \(key) button")
-            
-        } else if let image = sender.currentImage {
-            
-            print("The user tapped\(image.getSfSymbolName()) button")
-            
-        }
-        
-    }
+//    @objc
+//    func buttonTapped(_ sender: CalculatorButton) {
+//        if let key = sender.currentTitle {
+//
+//            print("The user tapped \(key) button")
+//
+//        } else if let image = sender.currentImage {
+//
+//            print("The user tapped\(image.getSfSymbolName()) button")
+//
+//        }
+//
+//    }
 }
