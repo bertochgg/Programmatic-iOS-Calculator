@@ -1,8 +1,8 @@
 //
-//  OutputLayoutExtension.swift
+//  OutputLabels.swift
 //  Calculator-iOS
 //
-//  Created by Humberto Garcia on 23/03/23.
+//  Created by Humberto Garcia on 24/03/23.
 //  Copyright © 2023 Grid Dynamics. All rights reserved.
 //
 

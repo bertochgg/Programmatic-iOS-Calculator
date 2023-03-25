@@ -47,13 +47,15 @@
 		5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F405CC929BF95A300FB8687 /* CalculatorButton.swift */; };
 		5F93477529CBD4DF002D04BC /* CalculatorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */; };
 		5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477629CBD4FA002D04BC /* CalculatorService.swift */; };
-		5FC863A429CE0E290095BD87 /* ButtonsActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A329CE0E290095BD87 /* ButtonsActionsExtension.swift */; };
+		5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A529CE1B400095BD87 /* ReusableStackView.swift */; };
+		5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */; };
+		5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */; };
+		5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863AB29CE6A6F0095BD87 /* Constraints.swift */; };
+		5FC863AF29CE6AC00095BD87 /* getSFSymbolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863AE29CE6AC00095BD87 /* getSFSymbolExtension.swift */; };
+		5FC863B129CE6B6B0095BD87 /* OutputLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */; };
+		5FC863B629CE70DD0095BD87 /* CalculatorUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */; };
 		5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */; };
-		5FFEF6EB29CD1C27003715AD /* getSFSymbolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6EA29CD1C27003715AD /* getSFSymbolExtension.swift */; };
 		5FFEF6ED29CD1F7D003715AD /* StackViewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6EC29CD1F7D003715AD /* StackViewsData.swift */; };
-		5FFEF6F329CD23B3003715AD /* OutputLayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6F229CD23B3003715AD /* OutputLayoutExtension.swift */; };
-		5FFEF6F529CD26A6003715AD /* LeftStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6F429CD26A6003715AD /* LeftStackViewExtension.swift */; };
-		5FFEF6F729CD26DD003715AD /* RightStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6F629CD26DD003715AD /* RightStackViewExtension.swift */; };
 		D348476B9C65150D10A1658B /* Pods_App_Calculator_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A99E9570C3959C34541237 /* Pods_App_Calculator_iOS.framework */; };
 		D4C94A0200D56DBF180045C7 /* Pods_App_Calculator_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44ECBB306DB0E87790B171D8 /* Pods_App_Calculator_iOSUITests.framework */; };
 /* End PBXBuildFile section */
@@ -121,13 +123,15 @@
 		5F405CC929BF95A300FB8687 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 		5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorServiceProtocol.swift; sourceTree = "<group>"; };
 		5F93477629CBD4FA002D04BC /* CalculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorService.swift; sourceTree = "<group>"; };
-		5FC863A329CE0E290095BD87 /* ButtonsActionsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsActionsExtension.swift; sourceTree = "<group>"; };
+		5FC863A529CE1B400095BD87 /* ReusableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackView.swift; sourceTree = "<group>"; };
+		5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackViewModel.swift; sourceTree = "<group>"; };
+		5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewsStyles.swift; sourceTree = "<group>"; };
+		5FC863AB29CE6A6F0095BD87 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		5FC863AE29CE6AC00095BD87 /* getSFSymbolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getSFSymbolExtension.swift; sourceTree = "<group>"; };
+		5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputLabels.swift; sourceTree = "<group>"; };
+		5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUI.swift; sourceTree = "<group>"; };
 		5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
-		5FFEF6EA29CD1C27003715AD /* getSFSymbolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getSFSymbolExtension.swift; sourceTree = "<group>"; };
 		5FFEF6EC29CD1F7D003715AD /* StackViewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewsData.swift; sourceTree = "<group>"; };
-		5FFEF6F229CD23B3003715AD /* OutputLayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputLayoutExtension.swift; sourceTree = "<group>"; };
-		5FFEF6F429CD26A6003715AD /* LeftStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftStackViewExtension.swift; sourceTree = "<group>"; };
-		5FFEF6F629CD26DD003715AD /* RightStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightStackViewExtension.swift; sourceTree = "<group>"; };
 		6DC52246876E516106CAD065 /* Pods-App-Calculator-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOS.release.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOS/Pods-App-Calculator-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		77C2F048D6901DC5382FCCED /* Pods_App_Calculator_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Calculator_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		830E010DD71219AEF997685E /* Pods-App-Calculator-iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOSUITests/Pods-App-Calculator-iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -243,7 +247,7 @@
 		04B8E8EB2801F3B800EF70CD /* Calculator-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				5FFEF6E929CD1C06003715AD /* Extensions */,
+				5FC863AD29CE6AAA0095BD87 /* Extensions */,
 				5F3A921629C4E09D00A11472 /* Constants */,
 				5F405CA329BF85FD00FB8687 /* Fonts */,
 				04B8E91F2801F54700EF70CD /* BundleFiles */,
@@ -366,6 +370,10 @@
 				5F167CBA29C230680003799F /* ReusableCommonButton.swift */,
 				5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */,
 				5FFEF6EC29CD1F7D003715AD /* StackViewsData.swift */,
+				5FC863A529CE1B400095BD87 /* ReusableStackView.swift */,
+				5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */,
+				5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */,
+				5FC863AB29CE6A6F0095BD87 /* Constraints.swift */,
 			);
 			path = CoreUI;
 			sourceTree = "<group>";
@@ -421,14 +429,12 @@
 			path = Poppins;
 			sourceTree = "<group>";
 		};
-		5FFEF6E929CD1C06003715AD /* Extensions */ = {
+		5FC863AD29CE6AAA0095BD87 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5FFEF6EA29CD1C27003715AD /* getSFSymbolExtension.swift */,
-				5FFEF6F229CD23B3003715AD /* OutputLayoutExtension.swift */,
-				5FFEF6F429CD26A6003715AD /* LeftStackViewExtension.swift */,
-				5FFEF6F629CD26DD003715AD /* RightStackViewExtension.swift */,
-				5FC863A329CE0E290095BD87 /* ButtonsActionsExtension.swift */,
+				5FC863AE29CE6AC00095BD87 /* getSFSymbolExtension.swift */,
+				5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */,
+				5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -758,20 +764,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FFEF6F529CD26A6003715AD /* LeftStackViewExtension.swift in Sources */,
-				5FC863A429CE0E290095BD87 /* ButtonsActionsExtension.swift in Sources */,
-				5FFEF6F329CD23B3003715AD /* OutputLayoutExtension.swift in Sources */,
 				04B8E8F12801F3B800EF70CD /* MainViewController.swift in Sources */,
+				5FC863B129CE6B6B0095BD87 /* OutputLabels.swift in Sources */,
 				5F167CBB29C230680003799F /* ReusableCommonButton.swift in Sources */,
-				5FFEF6F729CD26DD003715AD /* RightStackViewExtension.swift in Sources */,
+				5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */,
+				5FC863AF29CE6AC00095BD87 /* getSFSymbolExtension.swift in Sources */,
 				5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */,
+				5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */,
 				5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */,
+				5FC863B629CE70DD0095BD87 /* CalculatorUI.swift in Sources */,
 				5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */,
+				5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */,
+				5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */,
 				5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */,
 				04B8E8ED2801F3B800EF70CD /* AppDelegate.swift in Sources */,
 				04B8E8EF2801F3B800EF70CD /* SceneDelegate.swift in Sources */,
 				5FFEF6ED29CD1F7D003715AD /* StackViewsData.swift in Sources */,
-				5FFEF6EB29CD1C27003715AD /* getSFSymbolExtension.swift in Sources */,
 				5F93477529CBD4DF002D04BC /* CalculatorServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

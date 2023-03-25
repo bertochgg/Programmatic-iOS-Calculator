@@ -10,7 +10,7 @@ import UIKit
 
 class StackViewsData {
     
-    static let leftStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+    let leftTopStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
         [(.specialSymbol("Ac"), ButtonStyles.acButton),
          (.sfSymbol("delete.left"), ButtonStyles.deleteButton),
          (.specialSymbol("/"), ButtonStyles.operatorButton)],
@@ -28,14 +28,14 @@ class StackViewsData {
          (.digit("3"), ButtonStyles.digitButton)]
     ]
     
-    static let rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+    let rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
         [(.sfSymbol("asterisk"), ButtonStyles.operatorButton),
          (.sfSymbol("minus"), ButtonStyles.operatorButton),
          (.sfSymbol("plus"), ButtonStyles.operatorButton),
          (.specialSymbol("="), ButtonStyles.equalButton)]
     ]
     
-    static let zeroStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+    let LeftBottomStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
         [(.digit("0"), ButtonStyles.digitButton),
          (.digit("·"), ButtonStyles.digitButton)]
     ]
