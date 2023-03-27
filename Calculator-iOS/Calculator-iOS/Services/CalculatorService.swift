@@ -10,7 +10,7 @@ import Foundation
 
 class CalculatorService: CalculatorServiceProtocol {
     
-    private var history: String = ""
+    private var history: String = "Type"
     private var result: Double = 0
     
     func clearLastInput() {

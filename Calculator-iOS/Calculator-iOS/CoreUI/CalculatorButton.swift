@@ -20,6 +20,7 @@ enum ButtonContent: Equatable {
 
 final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
     var content: ButtonContent?
+    let calculatorService = CalculatorService()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -86,6 +87,7 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         switch content {
         case .digit(let text):
             print("The user tapped \(text) button")
+            calculatorService.inputHistory
             
         case .sfSymbol(let symbolName):
             print("The user tapped \(symbolName) button")

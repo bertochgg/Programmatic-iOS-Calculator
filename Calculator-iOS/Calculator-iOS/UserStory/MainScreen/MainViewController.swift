@@ -41,22 +41,19 @@ class MainViewController: UIViewController {
         // Left Top Stack View
         let leftTopStackViewR = ReusableStackView()
         leftTopStackViewR.setupStackViewWithLeftTopData(viewModel: stackViewsStyles.leftTopStackView,
-                                                        stackViewData: stackViewData,
-                                                        orientation: .vertical)
+                                                        stackViewData: stackViewData)
         leftStackViewR.addArrangedSubview(leftTopStackViewR)
         
         // Left Bottom Stack View
         let leftBottomStackViewR = ReusableStackView()
         leftBottomStackViewR.setupStackViewWithLeftBottomData(viewModel: stackViewsStyles.leftBottomStackView,
-                                                              stackViewData: stackViewData,
-                                                              orientation: .vertical)
+                                                              stackViewData: stackViewData)
         leftStackViewR.addArrangedSubview(leftBottomStackViewR)
         
         // Right Stack View
         let rightStackViewR = ReusableStackView()
         rightStackViewR.setupStackViewWithRightData(viewModel: stackViewsStyles.rightStackView,
-                                                    stackViewData: stackViewData,
-                                                    orientation: .horizontal)
+                                                    stackViewData: stackViewData)
         
         stackView.addArrangedSubview(rightStackViewR)
         

@@ -10,9 +10,9 @@ import UIKit
 
 protocol ReusableStackViewProtocol {
     func setupStackView(viewModel: ReusableStackViewModel)
-    func setupStackViewWithLeftTopData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, orientation: NSLayoutConstraint.Axis)
-    func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, orientation: NSLayoutConstraint.Axis)
-    func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, orientation: NSLayoutConstraint.Axis)
+    func setupStackViewWithLeftTopData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData)
+    func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData)
+    func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData)
 }
 
 final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
@@ -33,7 +33,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         self.distribution = viewModel.distribution
     }
     
-    func setupStackViewWithLeftTopData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, orientation: NSLayoutConstraint.Axis) {
+    func setupStackViewWithLeftTopData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData) {
         
         let leftTopRowStackViews = stackViewData.leftTopStackViewData.map { row in
             let stackView = ReusableStackView()
@@ -48,7 +48,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         }
         
         let leftTopStackView = ReusableStackView(arrangedSubviews: leftTopRowStackViews)
-        leftTopStackView.axis = orientation
+        leftTopStackView.axis = .vertical
         leftTopStackView.spacing = viewModel.spacing
         leftTopStackView.distribution = viewModel.distribution
         
@@ -56,7 +56,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         
     }
     
-    func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, orientation: NSLayoutConstraint.Axis) {
+    func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData) {
         
         let leftTopRowStackViews = stackViewData.leftBottomStackViewData.map { row in
             let stackView = ReusableStackView()
@@ -74,7 +74,6 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         }
         
         let leftTopStackView = ReusableStackView(arrangedSubviews: leftTopRowStackViews)
-        leftTopStackView.axis = orientation
         leftTopStackView.spacing = viewModel.spacing
         leftTopStackView.distribution = viewModel.distribution
         
@@ -82,7 +81,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         
     }
     
-    func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, orientation: NSLayoutConstraint.Axis) {
+    func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData) {
         
         let leftTopRowStackViews = stackViewData.rightStackViewData.map { row in
             let stackView = ReusableStackView()
@@ -105,7 +104,6 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         }
         
         let leftTopStackView = ReusableStackView(arrangedSubviews: leftTopRowStackViews)
-        leftTopStackView.axis = orientation
         leftTopStackView.spacing = viewModel.spacing
         leftTopStackView.distribution = viewModel.distribution
         
