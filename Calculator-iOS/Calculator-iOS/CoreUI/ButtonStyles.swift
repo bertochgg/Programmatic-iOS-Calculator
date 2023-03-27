@@ -10,16 +10,7 @@ import Foundation
 
 class ButtonStyles {
     
-    static let acButton = ReusableCommonButton(fontName: "Poppins",
-                                               fontSize: 32,
-                                               colorText: .gray,
-                                               cornerRadius: 16,
-                                               borderWidght: 1.2,
-                                               borderColor: .white,
-                                               bgColor: UIConstants.transparent,
-                                               shadowColor: .white)
-    
-    static let deleteButton = ReusableCommonButton(fontName: "Poppins",
+    static let cleanButton = ReusableCommonButton(fontName: "Poppins",
                                                    fontSize: 32,
                                                    colorText: .gray,
                                                    cornerRadius: 16,

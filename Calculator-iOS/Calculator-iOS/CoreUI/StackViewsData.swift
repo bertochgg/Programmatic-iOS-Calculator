@@ -11,8 +11,8 @@ import UIKit
 class StackViewsData {
     
     let leftTopStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.specialSymbol("Ac"), ButtonStyles.acButton),
-         (.sfSymbol("delete.left"), ButtonStyles.deleteButton),
+        [(.specialSymbol("Ac"), ButtonStyles.cleanButton),
+         (.sfSymbol("delete.left"), ButtonStyles.cleanButton),
          (.specialSymbol("/"), ButtonStyles.operatorButton)],
         
         [(.digit("7"), ButtonStyles.digitButton),

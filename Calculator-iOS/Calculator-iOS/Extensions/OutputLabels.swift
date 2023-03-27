@@ -10,7 +10,7 @@ import UIKit
 
 extension MainViewController {
     
-    func setupOutputLabels() {
+    private func setupOutputLabels() {
         let stackView: UIStackView = {
             let stackView = UIStackView()
             stackView.axis = .vertical

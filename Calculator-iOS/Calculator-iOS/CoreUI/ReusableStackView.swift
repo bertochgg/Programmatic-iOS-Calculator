@@ -17,6 +17,8 @@ protocol ReusableStackViewProtocol {
 
 final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
     
+    let stackViewsStyles = StackViewsStyles()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -35,7 +37,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         
         let leftTopRowStackViews = stackViewData.leftTopStackViewData.map { row in
             let stackView = ReusableStackView()
-            stackView.setupStackView(viewModel: StackViewsStyles.leftTopStackView)
+            stackView.setupStackView(viewModel: stackViewsStyles.leftTopStackView)
             
             for (content, viewModel) in row {
                 let button = CalculatorButton()
@@ -58,7 +60,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         
         let leftTopRowStackViews = stackViewData.leftBottomStackViewData.map { row in
             let stackView = ReusableStackView()
-            stackView.setupStackView(viewModel: StackViewsStyles.leftBottomStackView)
+            stackView.setupStackView(viewModel: stackViewsStyles.leftBottomStackView)
             
             for (content, viewModel) in row {
                 let button = CalculatorButton()
@@ -84,7 +86,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         
         let leftTopRowStackViews = stackViewData.rightStackViewData.map { row in
             let stackView = ReusableStackView()
-            stackView.setupStackView(viewModel: StackViewsStyles.rightStackView)
+            stackView.setupStackView(viewModel: stackViewsStyles.rightStackView)
             
             for (content, viewModel) in row {
                 let button = CalculatorButton()

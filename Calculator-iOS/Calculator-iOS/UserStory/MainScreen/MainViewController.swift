@@ -10,13 +10,14 @@ import UIKit
 class MainViewController: UIViewController {
     
     let stackViewData = StackViewsData()
+    let stackViewsStyles = StackViewsStyles()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBackground()
         setupOutputLabels()
-        CalculatorUI()
+        calculatorUI()
         
     }
     
