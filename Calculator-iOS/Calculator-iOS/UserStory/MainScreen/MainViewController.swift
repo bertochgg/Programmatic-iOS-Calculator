@@ -9,120 +9,97 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let calculatorButton = ReusableCommonButton(fontName: "Poppins",
-                                      fontSize: 32,
-                                      colorText: .systemIndigo,
-                                      cornerRadius: 16,
-                                      borderWidght: 1.2,
-                                      borderColor: .white,
-                                      bgColor: UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.33),
-                                      shadowColor: .white)
+    let stackViewData = StackViewsData()
+    let stackViewsStyles = StackViewsStyles()
+    
+    let calculatorService = CalculatorService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupBackground()
-        add()
+        setupOutputLabels()
+        calculatorUI()
+    }
+    
+    private func setupBackground() {
+        self.view.backgroundColor = UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1)
+    }
+    
+    private func calculatorUI() {
+        // Main Stack View
+        let stackView = ReusableStackView()
+        stackView.setupStackView(viewModel: stackViewsStyles.mainStackView)
+        view.addSubview(stackView)
+        Constraints.setMainStackViewConstraints(stack: stackView, view: view)
         
+        // Left Stack View
+        let leftStackViewR = ReusableStackView()
+        leftStackViewR.setupStackView(viewModel: stackViewsStyles.leftStackView)
+        stackView.addArrangedSubview(leftStackViewR)
+        leftStackViewR.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 5.87 / 8).isActive = true
+        
+        // Left Top Stack View
+        let leftTopStackViewR = ReusableStackView()
+        leftTopStackViewR.setupStackViewWithLeftTopData(viewModel: stackViewsStyles.leftTopStackView,
+                                                        stackViewData: stackViewData)
+        leftStackViewR.addArrangedSubview(leftTopStackViewR)
+        
+        // Left Bottom Stack View
+        let leftBottomStackViewR = ReusableStackView()
+        leftBottomStackViewR.setupStackViewWithLeftBottomData(viewModel: stackViewsStyles.leftBottomStackView,
+                                                              stackViewData: stackViewData)
+        leftStackViewR.addArrangedSubview(leftBottomStackViewR)
+        
+        // Right Stack View
+        let rightStackViewR = ReusableStackView()
+        rightStackViewR.setupStackViewWithRightData(viewModel: stackViewsStyles.rightStackView,
+                                                    stackViewData: stackViewData)
+        
+        stackView.addArrangedSubview(rightStackViewR)
+        
+    }
+    
+    private func setupOutputLabels() {
+        let stackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.axis = .vertical
+            stackView.alignment = .fill
+            stackView.distribution = .fillEqually
+            stackView.spacing = -80
+            return stackView
+        }()
+        view.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 28),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 33),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -34),
+            stackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1 / 4)
+        ])
+        
+        let operationsLabel: UILabel = {
+            let label = UILabel()
+            label.text = calculatorService.inputHistory
+            label.font = UIFont(name: "Poppins", size: 24)
+            label.textColor = .gray
+            label.textAlignment = .right
+            label.numberOfLines = 0
+            label.sizeToFit()
+            return label
+        }()
+        
+        let resultLabel: UILabel = {
+            let label = UILabel()
+            label.text = String(calculatorService.lastResult)
+            label.font = UIFont(name: "Poppins", size: 48)
+            label.font = .systemFont(ofSize: 48, weight: .medium)
+            label.textColor = .black
+            label.textAlignment = .right
+            return label
+        }()
+        
+        stackView.addArrangedSubview(operationsLabel)
+        stackView.addArrangedSubview(resultLabel)
     }
     
 }
-
-extension MainViewController {
-    
-    func setupBackground() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [UIColor.white.cgColor, UIColor.blue.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 4.0, y: 0)
-        
-        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-        effectView.frame = view.bounds
-        effectView.contentView.layer.addSublayer(gradientLayer)
-        effectView.alpha = 1
-        view.addSubview(effectView)
-    }
-    
-    func add() {
-        let commonButton = CalculatorButton(frame: CGRect(x: 0, y: 0, width: 62, height: 62))
-        commonButton.center = view.center
-        view.addSubview(commonButton)
-        
-        commonButton.setupButton(with: calculatorButton, content: .symbol("delete.left"))
-        
-        //        commonButton.translatesAutoresizingMaskIntoConstraints = false
-        //        NSLayoutConstraint.activate([
-        //            commonButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        //            commonButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        //        ])
-    }
-}
-
-//func setupCCalculatorButtons() {
-//    let stackView = UIStackView()
-//    stackView.axis = .vertical
-//    stackView.distribution = .fillEqually
-//    stackView.spacing = 10
-//    view.addSubview(stackView)
-//
-//    let calculatorButtons = [
-//        [
-//            ["title": "Ac", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "deleteBtn", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "/", "color": UIColor.blue, "bgColor": UIColor.systemBlue],
-//            ["title": "*", "color": UIColor.blue, "bgColor": UIColor.systemBlue]
-//        ],
-//        [
-//            ["title": "7", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "8", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "9", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "-", "color": UIColor.blue, "bgColor": UIColor.systemBlue]
-//        ],
-//        [
-//            ["title": "4", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "5", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "6", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "+", "color": UIColor.blue, "bgColor": UIColor.systemBlue]
-//        ],
-//        [
-//            ["title": "1", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "2", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "3", "color": UIColor.blue, "bgColor": UIColor.white]
-//        ],
-//        [
-//            ["title": "0", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": ".", "color": UIColor.blue, "bgColor": UIColor.white],
-//            ["title": "=", "color": UIColor.white, "bgColor": UIColor.blue]
-//        ]
-//    ]
-//
-//    for row in calculatorButtons {
-//        let rowStackView = UIStackView()
-//        rowStackView.axis = .horizontal
-//        rowStackView.distribution = .fillEqually
-//        rowStackView.spacing = 10
-//
-//        for buttonData in row {
-//            let button = CommonButton()
-//
-//            if buttonData["title"] == "deleteBtn" {
-//                let imageButton = ImageButton()
-//                guard let UIImageSetup = UIImage(systemName: "delete.left", withConfiguration: UIImage.SymbolConfiguration(scale: .large)) else { return }
-//                imageButton.setupButtonWithImage(image: UIImageSetup)
-//                rowStackView.addArrangedSubview(imageButton)
-//            } else {
-//                button.setupButton(with: ReusableCommonButton(key: buttonData["title"] as! String, fontName: "Poppins", fontSize: 32, colorText: buttonData["color"] as! UIColor, cornerRadius: 16, borderWidght: 1.2, borderColor: .white, bgColor: buttonData["bgColor"] as! UIColor))
-//                rowStackView.addArrangedSubview(button)
-//            }
-//        }
-//
-//        stackView.addArrangedSubview(rowStackView)
-//    }
-//
-//    stackView.translatesAutoresizingMaskIntoConstraints = false
-//    NSLayoutConstraint.activate([
-//        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-//        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor,

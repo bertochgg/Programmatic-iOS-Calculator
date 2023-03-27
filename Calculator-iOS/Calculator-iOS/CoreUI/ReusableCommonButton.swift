@@ -6,7 +6,6 @@
 //  Copyright © 2023 Grid Dynamics. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct ReusableCommonButton {
