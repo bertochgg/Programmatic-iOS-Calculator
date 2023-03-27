@@ -45,15 +45,12 @@
 		5F405CC729BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB529BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf */; };
 		5F405CC829BF864B00FB8687 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */; };
 		5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F405CC929BF95A300FB8687 /* CalculatorButton.swift */; };
-		5F5C065D29D2170B007F19F6 /* BackGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5C065C29D2170B007F19F6 /* BackGround.swift */; };
 		5F93477529CBD4DF002D04BC /* CalculatorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */; };
 		5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477629CBD4FA002D04BC /* CalculatorService.swift */; };
 		5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A529CE1B400095BD87 /* ReusableStackView.swift */; };
 		5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */; };
 		5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */; };
 		5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863AB29CE6A6F0095BD87 /* Constraints.swift */; };
-		5FC863B129CE6B6B0095BD87 /* OutputLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */; };
-		5FC863B629CE70DD0095BD87 /* CalculatorUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */; };
 		5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */; };
 		5FFEF6ED29CD1F7D003715AD /* StackViewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6EC29CD1F7D003715AD /* StackViewsData.swift */; };
 		D348476B9C65150D10A1658B /* Pods_App_Calculator_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A99E9570C3959C34541237 /* Pods_App_Calculator_iOS.framework */; };
@@ -121,15 +118,12 @@
 		5F405CB529BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		5F405CC929BF95A300FB8687 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
-		5F5C065C29D2170B007F19F6 /* BackGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGround.swift; sourceTree = "<group>"; };
 		5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorServiceProtocol.swift; sourceTree = "<group>"; };
 		5F93477629CBD4FA002D04BC /* CalculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorService.swift; sourceTree = "<group>"; };
 		5FC863A529CE1B400095BD87 /* ReusableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackView.swift; sourceTree = "<group>"; };
 		5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackViewModel.swift; sourceTree = "<group>"; };
 		5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewsStyles.swift; sourceTree = "<group>"; };
 		5FC863AB29CE6A6F0095BD87 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
-		5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputLabels.swift; sourceTree = "<group>"; };
-		5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUI.swift; sourceTree = "<group>"; };
 		5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		5FFEF6EC29CD1F7D003715AD /* StackViewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewsData.swift; sourceTree = "<group>"; };
 		6DC52246876E516106CAD065 /* Pods-App-Calculator-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOS.release.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOS/Pods-App-Calculator-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -432,9 +426,6 @@
 		5FC863AD29CE6AAA0095BD87 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */,
-				5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */,
-				5F5C065C29D2170B007F19F6 /* BackGround.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -765,17 +756,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B8E8F12801F3B800EF70CD /* MainViewController.swift in Sources */,
-				5FC863B129CE6B6B0095BD87 /* OutputLabels.swift in Sources */,
 				5F167CBB29C230680003799F /* ReusableCommonButton.swift in Sources */,
 				5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */,
 				5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */,
 				5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */,
 				5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */,
-				5FC863B629CE70DD0095BD87 /* CalculatorUI.swift in Sources */,
 				5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */,
 				5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */,
 				5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */,
-				5F5C065D29D2170B007F19F6 /* BackGround.swift in Sources */,
 				5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */,
 				04B8E8ED2801F3B800EF70CD /* AppDelegate.swift in Sources */,
 				04B8E8EF2801F3B800EF70CD /* SceneDelegate.swift in Sources */,
