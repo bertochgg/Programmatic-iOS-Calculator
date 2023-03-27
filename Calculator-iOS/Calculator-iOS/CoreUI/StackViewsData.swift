@@ -10,34 +10,36 @@ import UIKit
 
 class StackViewsData {
     
-    let leftTopStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.specialSymbol("Ac"), ButtonStyles.cleanButton),
-         (.sfSymbol("delete.left"), ButtonStyles.cleanButton),
-         (.specialSymbol("/"), ButtonStyles.operatorButton)],
+    let buttonStyle = ButtonStyles()
+    
+    lazy var leftTopStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+        [(.specialSymbol("Ac"), buttonStyle.cleanButton),
+         (.sfSymbol("delete.left"), buttonStyle.cleanButton),
+         (.specialSymbol("/"), buttonStyle.operatorButton)],
         
-        [(.digit("7"), ButtonStyles.digitButton),
-         (.digit("8"), ButtonStyles.digitButton),
-         (.digit("9"), ButtonStyles.digitButton)],
+        [(.digit("7"), buttonStyle.digitButton),
+         (.digit("8"), buttonStyle.digitButton),
+         (.digit("9"), buttonStyle.digitButton)],
         
-        [(.digit("4"), ButtonStyles.digitButton),
-         (.digit("5"), ButtonStyles.digitButton),
-         (.digit("6"), ButtonStyles.digitButton)],
+        [(.digit("4"), buttonStyle.digitButton),
+         (.digit("5"), buttonStyle.digitButton),
+         (.digit("6"), buttonStyle.digitButton)],
         
-        [(.digit("1"), ButtonStyles.digitButton),
-         (.digit("2"), ButtonStyles.digitButton),
-         (.digit("3"), ButtonStyles.digitButton)]
+        [(.digit("1"), buttonStyle.digitButton),
+         (.digit("2"), buttonStyle.digitButton),
+         (.digit("3"), buttonStyle.digitButton)]
     ]
     
-    let rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.sfSymbol("asterisk"), ButtonStyles.operatorButton),
-         (.sfSymbol("minus"), ButtonStyles.operatorButton),
-         (.sfSymbol("plus"), ButtonStyles.operatorButton),
-         (.specialSymbol("="), ButtonStyles.equalButton)]
+    lazy var rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+        [(.sfSymbol("asterisk"), buttonStyle.operatorButton),
+         (.sfSymbol("minus"), buttonStyle.operatorButton),
+         (.sfSymbol("plus"), buttonStyle.operatorButton),
+         (.specialSymbol("="), buttonStyle.equalButton)]
     ]
     
-    let leftBottomStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.digit("0"), ButtonStyles.digitButton),
-         (.digit("·"), ButtonStyles.digitButton)]
+    lazy var leftBottomStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+        [(.digit("0"), buttonStyle.digitButton),
+         (.digit("·"), buttonStyle.digitButton)]
     ]
     
 }

@@ -12,6 +12,8 @@ class MainViewController: UIViewController {
     let stackViewData = StackViewsData()
     let stackViewsStyles = StackViewsStyles()
     
+    let calculatorService = CalculatorService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackground()
@@ -80,7 +82,7 @@ class MainViewController: UIViewController {
         
         let operationsLabel: UILabel = {
             let label = UILabel()
-            label.text = "6000/2+3227*2"
+            label.text = calculatorService.inputHistory
             label.font = UIFont(name: "Poppins", size: 24)
             label.textColor = .gray
             label.textAlignment = .right
@@ -88,10 +90,10 @@ class MainViewController: UIViewController {
             label.sizeToFit()
             return label
         }()
-        view.addSubview(operationsLabel)
+        
         let resultLabel: UILabel = {
             let label = UILabel()
-            label.text = "=12,454"
+            label.text = String(calculatorService.lastResult)
             label.font = UIFont(name: "Poppins", size: 48)
             label.font = .systemFont(ofSize: 48, weight: .medium)
             label.textColor = .black
