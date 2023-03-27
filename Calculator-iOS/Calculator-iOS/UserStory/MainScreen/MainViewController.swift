@@ -15,20 +15,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupBackground()
-        setupOutputLabels()
-        calculatorUI()
-        
-    }
-    
-}
-
-extension MainViewController {
-    
-    func setupBackground() {
-        
-        self.view.backgroundColor = UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1)
-        
+        fetchBackground()
+        fetchOutputUI()
+        fetchCalculatorUI()
     }
     
 }

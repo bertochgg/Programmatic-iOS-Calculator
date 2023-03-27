@@ -45,6 +45,7 @@
 		5F405CC729BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB529BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf */; };
 		5F405CC829BF864B00FB8687 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */; };
 		5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F405CC929BF95A300FB8687 /* CalculatorButton.swift */; };
+		5F5C065D29D2170B007F19F6 /* BackGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5C065C29D2170B007F19F6 /* BackGround.swift */; };
 		5F93477529CBD4DF002D04BC /* CalculatorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */; };
 		5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477629CBD4FA002D04BC /* CalculatorService.swift */; };
 		5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A529CE1B400095BD87 /* ReusableStackView.swift */; };
@@ -120,6 +121,7 @@
 		5F405CB529BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		5F405CC929BF95A300FB8687 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
+		5F5C065C29D2170B007F19F6 /* BackGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGround.swift; sourceTree = "<group>"; };
 		5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorServiceProtocol.swift; sourceTree = "<group>"; };
 		5F93477629CBD4FA002D04BC /* CalculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorService.swift; sourceTree = "<group>"; };
 		5FC863A529CE1B400095BD87 /* ReusableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackView.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			children = (
 				5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */,
 				5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */,
+				5F5C065C29D2170B007F19F6 /* BackGround.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */,
 				5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */,
 				5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */,
+				5F5C065D29D2170B007F19F6 /* BackGround.swift in Sources */,
 				5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */,
 				04B8E8ED2801F3B800EF70CD /* AppDelegate.swift in Sources */,
 				04B8E8EF2801F3B800EF70CD /* SceneDelegate.swift in Sources */,

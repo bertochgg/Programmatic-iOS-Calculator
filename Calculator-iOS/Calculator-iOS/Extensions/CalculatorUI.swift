@@ -9,6 +9,9 @@
 import UIKit
 
 extension MainViewController {
+    func fetchCalculatorUI() {
+        calculatorUI()
+    }
     
     private func calculatorUI() {
         // Main Stack View

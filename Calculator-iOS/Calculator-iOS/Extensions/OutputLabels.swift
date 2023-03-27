@@ -10,6 +10,10 @@ import UIKit
 
 extension MainViewController {
     
+    func fetchOutputUI() {
+        setupOutputLabels()
+    }
+    
     private func setupOutputLabels() {
         let stackView: UIStackView = {
             let stackView = UIStackView()
