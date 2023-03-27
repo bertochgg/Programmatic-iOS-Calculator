@@ -51,7 +51,6 @@
 		5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */; };
 		5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */; };
 		5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863AB29CE6A6F0095BD87 /* Constraints.swift */; };
-		5FC863AF29CE6AC00095BD87 /* getSFSymbolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863AE29CE6AC00095BD87 /* getSFSymbolExtension.swift */; };
 		5FC863B129CE6B6B0095BD87 /* OutputLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */; };
 		5FC863B629CE70DD0095BD87 /* CalculatorUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */; };
 		5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */; };
@@ -127,7 +126,6 @@
 		5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackViewModel.swift; sourceTree = "<group>"; };
 		5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewsStyles.swift; sourceTree = "<group>"; };
 		5FC863AB29CE6A6F0095BD87 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
-		5FC863AE29CE6AC00095BD87 /* getSFSymbolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getSFSymbolExtension.swift; sourceTree = "<group>"; };
 		5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputLabels.swift; sourceTree = "<group>"; };
 		5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUI.swift; sourceTree = "<group>"; };
 		5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
@@ -432,7 +430,6 @@
 		5FC863AD29CE6AAA0095BD87 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5FC863AE29CE6AC00095BD87 /* getSFSymbolExtension.swift */,
 				5FC863B029CE6B6B0095BD87 /* OutputLabels.swift */,
 				5FC863B529CE70DD0095BD87 /* CalculatorUI.swift */,
 			);
@@ -768,7 +765,6 @@
 				5FC863B129CE6B6B0095BD87 /* OutputLabels.swift in Sources */,
 				5F167CBB29C230680003799F /* ReusableCommonButton.swift in Sources */,
 				5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */,
-				5FC863AF29CE6AC00095BD87 /* getSFSymbolExtension.swift in Sources */,
 				5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */,
 				5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */,
 				5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */,

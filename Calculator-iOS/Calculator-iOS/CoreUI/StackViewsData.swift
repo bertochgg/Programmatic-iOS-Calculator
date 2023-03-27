@@ -35,7 +35,7 @@ class StackViewsData {
          (.specialSymbol("="), ButtonStyles.equalButton)]
     ]
     
-    let LeftBottomStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
+    let leftBottomStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
         [(.digit("0"), ButtonStyles.digitButton),
          (.digit("·"), ButtonStyles.digitButton)]
     ]

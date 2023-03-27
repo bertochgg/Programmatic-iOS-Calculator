@@ -10,7 +10,8 @@ import Foundation
 
 protocol CalculatorServiceProtocol {
     
-    func clearLastInput()
+    func clearLastInput()// Backslash
+    
     func add(number: Double)
     func subtract(number: Double)
     func divide(number: Double)

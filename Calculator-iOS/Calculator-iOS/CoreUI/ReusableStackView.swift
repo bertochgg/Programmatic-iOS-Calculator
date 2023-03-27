@@ -41,7 +41,6 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
                 let button = CalculatorButton()
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
-                button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
             }
             return stackView
         }
@@ -57,7 +56,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
     
     func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, orientation: NSLayoutConstraint.Axis) {
         
-        let leftTopRowStackViews = stackViewData.LeftBottomStackViewData.map { row in
+        let leftTopRowStackViews = stackViewData.leftBottomStackViewData.map { row in
             let stackView = ReusableStackView()
             stackView.setupStackView(viewModel: StackViewsStyles.leftBottomStackView)
             
@@ -65,7 +64,6 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
                 let button = CalculatorButton()
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
-                button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
                 if content == .digit("0") {
                     button.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.92 / 3).isActive = true
                 }
@@ -92,7 +90,7 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
                 let button = CalculatorButton()
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
-                button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
                 if content == .sfSymbol("plus") {
                     button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.263).isActive = true
                     
@@ -113,13 +111,4 @@ final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         
     }
     
-    @objc
-    func buttonTapped(_ sender: CalculatorButton) {
-        if let key = sender.currentTitle {
-            print("The user tapped \(key) button")
-        } else if let image = sender.currentImage {
-            print("The user tapped\(image.sfSymbolName ?? "Not a SF Symbol") button")
-        }
-        
-    }
 }

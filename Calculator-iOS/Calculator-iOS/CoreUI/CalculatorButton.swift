@@ -19,9 +19,11 @@ enum ButtonContent: Equatable {
 }
 
 final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
+    var content: ButtonContent?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -30,10 +32,11 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
     }
     
     func setupButton(with viewModel: ReusableCommonButton, content: ButtonContent) {
+        self.content = content
         
         switch content {
         case .digit(let text):
@@ -72,5 +75,23 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.layer.shadowRadius = 5
         self.layer.shadowOpacity = 1
+    }
+    
+    @objc
+    func buttonTapped() {
+        guard let content = content else {
+            return
+        }
+        
+        switch content {
+        case .digit(let text):
+            print("The user tapped \(text) button")
+            
+        case .sfSymbol(let symbolName):
+            print("The user tapped \(symbolName) button")
+            
+        case .specialSymbol(let text):
+            print("The user tapped \(text) button")
+        }
     }
 }
