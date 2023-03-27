@@ -10,7 +10,7 @@ import UIKit
 
 extension MainViewController {
     
-    func CalculatorUI() {
+    func calculatorUI() {
         // Main Stack View
         let stackView = ReusableStackView()
         stackView.setupStackView(viewModel: StackViewsStyles.mainStackView)
