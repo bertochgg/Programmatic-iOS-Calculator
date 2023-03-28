@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol OutputChangerDelegate: AnyObject {
+    func didChangeOutput()
+}
+
 protocol ReusableCommonButtonProtocol {
     func setupButton(with viewModel: ReusableCommonButton, content: ButtonContent)
 }
@@ -18,9 +22,11 @@ enum ButtonContent: Equatable {
     case specialSymbol(String)
 }
 
-final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
+class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
     var content: ButtonContent?
     let calculatorService = CalculatorService()
+    
+    weak var delegate: OutputChangerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,17 +89,18 @@ final class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         guard let content = content else {
             return
         }
-        
+        delegate?.didChangeOutput()
         switch content {
         case .digit(let text):
             print("The user tapped \(text) button")
-            calculatorService.inputHistory
+            delegate?.didChangeOutput()
             
         case .sfSymbol(let symbolName):
             print("The user tapped \(symbolName) button")
-            
+            delegate?.didChangeOutput()
         case .specialSymbol(let text):
             print("The user tapped \(text) button")
+            delegate?.didChangeOutput()
         }
     }
 }

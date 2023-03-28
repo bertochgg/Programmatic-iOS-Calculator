@@ -7,18 +7,26 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, OutputChangerDelegate {
     
     let stackViewData = StackViewsData()
     let stackViewsStyles = StackViewsStyles()
-    
     let calculatorService = CalculatorService()
+    
+    // Output
+    let stackView = UIStackView()
+    let operationsLabel = UILabel()
+    let resultLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackground()
         setupOutputLabels()
         calculatorUI()
+        
+        let calculatorButtonDestination = CalculatorButton()
+        calculatorButtonDestination.delegate = self
+        
     }
     
     private func setupBackground() {
@@ -60,14 +68,12 @@ class MainViewController: UIViewController {
     }
     
     private func setupOutputLabels() {
-        let stackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.axis = .vertical
-            stackView.alignment = .fill
-            stackView.distribution = .fillEqually
-            stackView.spacing = -80
-            return stackView
-        }()
+        
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = -80
+        
         view.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -77,29 +83,25 @@ class MainViewController: UIViewController {
             stackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1 / 4)
         ])
         
-        let operationsLabel: UILabel = {
-            let label = UILabel()
-            label.text = calculatorService.inputHistory
-            label.font = UIFont(name: "Poppins", size: 24)
-            label.textColor = .gray
-            label.textAlignment = .right
-            label.numberOfLines = 0
-            label.sizeToFit()
-            return label
-        }()
+        operationsLabel.text = calculatorService.inputHistory
+        operationsLabel.font = UIFont(name: "Poppins", size: 24)
+        operationsLabel.textColor = .gray
+        operationsLabel.textAlignment = .right
+        operationsLabel.numberOfLines = 0
+        operationsLabel.sizeToFit()
         
-        let resultLabel: UILabel = {
-            let label = UILabel()
-            label.text = String(calculatorService.lastResult)
-            label.font = UIFont(name: "Poppins", size: 48)
-            label.font = .systemFont(ofSize: 48, weight: .medium)
-            label.textColor = .black
-            label.textAlignment = .right
-            return label
-        }()
+        resultLabel.text = String(calculatorService.lastResult)
+        resultLabel.font = UIFont(name: "Poppins", size: 48)
+        resultLabel.font = .systemFont(ofSize: 48, weight: .medium)
+        resultLabel.textColor = .black
+        resultLabel.textAlignment = .right
         
         stackView.addArrangedSubview(operationsLabel)
         stackView.addArrangedSubview(resultLabel)
+    }
+    
+    func didChangeOutput() {
+        print("hi it is the delegate")
     }
     
 }

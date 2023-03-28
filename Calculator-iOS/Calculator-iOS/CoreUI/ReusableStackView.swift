@@ -15,7 +15,7 @@ protocol ReusableStackViewProtocol {
     func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData)
 }
 
-final class ReusableStackView: UIStackView, ReusableStackViewProtocol {
+class ReusableStackView: UIStackView, ReusableStackViewProtocol {
     
     let stackViewsStyles = StackViewsStyles()
     
