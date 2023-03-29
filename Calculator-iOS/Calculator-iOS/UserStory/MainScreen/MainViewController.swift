@@ -18,6 +18,8 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     let operationsLabel = UILabel()
     let resultLabel = UILabel()
     
+    var tappedButtonValues: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackground()
@@ -49,19 +51,22 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         // Left Top Stack View
         let leftTopStackViewR = ReusableStackView()
         leftTopStackViewR.setupStackViewWithLeftTopData(viewModel: stackViewsStyles.leftTopStackView,
-                                                        stackViewData: stackViewData)
+                                                        stackViewData: stackViewData,
+                                                        viewController: self)
         leftStackViewR.addArrangedSubview(leftTopStackViewR)
         
         // Left Bottom Stack View
         let leftBottomStackViewR = ReusableStackView()
         leftBottomStackViewR.setupStackViewWithLeftBottomData(viewModel: stackViewsStyles.leftBottomStackView,
-                                                              stackViewData: stackViewData)
+                                                              stackViewData: stackViewData,
+                                                              viewController: self)
         leftStackViewR.addArrangedSubview(leftBottomStackViewR)
         
         // Right Stack View
         let rightStackViewR = ReusableStackView()
         rightStackViewR.setupStackViewWithRightData(viewModel: stackViewsStyles.rightStackView,
-                                                    stackViewData: stackViewData)
+                                                    stackViewData: stackViewData,
+                                                    viewController: self)
         
         stackView.addArrangedSubview(rightStackViewR)
         
@@ -83,14 +88,14 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             stackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1 / 4)
         ])
         
-        operationsLabel.text = calculatorService.inputHistory
+        operationsLabel.text = "0"
         operationsLabel.font = UIFont(name: "Poppins", size: 24)
         operationsLabel.textColor = .gray
         operationsLabel.textAlignment = .right
         operationsLabel.numberOfLines = 0
         operationsLabel.sizeToFit()
         
-        resultLabel.text = String(calculatorService.lastResult)
+        resultLabel.text = "0"
         resultLabel.font = UIFont(name: "Poppins", size: 48)
         resultLabel.font = .systemFont(ofSize: 48, weight: .medium)
         resultLabel.textColor = .black
@@ -100,8 +105,50 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         stackView.addArrangedSubview(resultLabel)
     }
     
-    func didChangeOutput() {
-        print("hi it is the delegate")
+    func didChangeOutput(digit: String) {
+        
+        switch digit {
+            
+        case "Ac":
+            operationsLabel.text = "0"
+            resultLabel.text = "0"
+            tappedButtonValues = []
+            
+        case "delete.left":
+            calculatorService.clearLastInput()
+            if !tappedButtonValues.isEmpty {
+                tappedButtonValues.removeLast()
+            }
+            
+            DispatchQueue.main.async {
+                self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+                if self.tappedButtonValues.isEmpty {
+                    self.operationsLabel.text = "0"
+                }
+            }
+            
+        case "+", "-", "*", "/":
+            // let result = calculatorService.evaluate(expression: tappedButtonValues.joined())
+            // operationsLabel.text = result
+            // tappedButtonValues = []
+            tappedButtonValues.append(digit)
+            let operationsString = tappedButtonValues.joined()
+            calculatorService.setOperationsHistory(operationsString)
+            DispatchQueue.main.async {
+                self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+            }
+            
+        case "=":
+            print("hola")
+            
+        default:
+            tappedButtonValues.append(digit)
+            let operationsString = tappedButtonValues.joined()
+            calculatorService.setOperationsHistory(operationsString)
+            DispatchQueue.main.async {
+                self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+            }
+        }
     }
     
 }

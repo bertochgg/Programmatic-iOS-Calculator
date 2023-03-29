@@ -10,47 +10,56 @@ import Foundation
 
 class CalculatorService: CalculatorServiceProtocol {
     
-    private var history: String = "Hola"
-    private var result: Double = 0
+    private var operationsHistory: String = ""
+    private var currentResult: Double = 0.0
     
     func clearLastInput() {
-        if !history.isEmpty {
-            history.removeLast()
+        if !operationsHistory.isEmpty {
+            print(operationsHistory)
+            let lastChar = operationsHistory.removeLast()
+//            if lastChar.isNumber || lastChar == "." {
+//                updateResult()
+//            }
         }
     }
     
-    func add(number: Double) {
-        result += number
-        history += "+\(number)"
+    func add(_ num: Double) {
+        operationsHistory += "\(num)+"
+        currentResult += num
     }
     
-    func subtract(number: Double) {
-        result -= number
-        history += "-\(number)"
+    func subtract(_ num: Double) {
+        operationsHistory += "\(num)-"
+        currentResult -= num
     }
     
-    func divide(number: Double) {
-        if number != 0 {
-            result /= number
-            history += "/\(number)"
-        } else {
-            history = ""
-            result = 0
-        }
+    func divide(_ num: Double) {
+        operationsHistory += "\(num)/"
+        currentResult /= num
     }
     
-    func multiply(number: Double) {
-        result *= number
-        history += "*\(number)"
+    func multiply(_ num: Double) {
+        operationsHistory += "\(num)*"
+        currentResult *= num
     }
     
-    var lastResult: Double {
-        return result
+    func getLastResult() -> Double? {
+        return currentResult
     }
     
-    var inputHistory: String {
-        return history
+    func setOperationsHistory(_ newHistory: String) {
+        operationsHistory = newHistory
     }
     
+    func getOperationsHistory() -> String {
+        return operationsHistory
+    }
+    
+//    private func updateResult() {
+//        let expression = NSExpression(format: operationsHistory)
+//        if let result = expression.expressionValue(with: nil, context: nil) as? Double {
+//            currentResult = result
+//        }
+//    }
     
 }

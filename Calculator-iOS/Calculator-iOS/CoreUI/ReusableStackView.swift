@@ -10,9 +10,9 @@ import UIKit
 
 protocol ReusableStackViewProtocol {
     func setupStackView(viewModel: ReusableStackViewModel)
-    func setupStackViewWithLeftTopData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData)
-    func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData)
-    func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData)
+    func setupStackViewWithLeftTopData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, viewController: UIViewController)
+    func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, viewController: UIViewController)
+    func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, viewController: UIViewController)
 }
 
 class ReusableStackView: UIStackView, ReusableStackViewProtocol {
@@ -33,7 +33,7 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         self.distribution = viewModel.distribution
     }
     
-    func setupStackViewWithLeftTopData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData) {
+    func setupStackViewWithLeftTopData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, viewController: UIViewController) {
         
         let leftTopRowStackViews = stackViewData.leftTopStackViewData.map { row in
             let stackView = ReusableStackView()
@@ -41,6 +41,7 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             
             for (content, viewModel) in row {
                 let button = CalculatorButton()
+                button.delegate = viewController as? OutputChangerDelegate
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
             }
@@ -56,7 +57,7 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         
     }
     
-    func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData) {
+    func setupStackViewWithLeftBottomData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, viewController: UIViewController) {
         
         let leftTopRowStackViews = stackViewData.leftBottomStackViewData.map { row in
             let stackView = ReusableStackView()
@@ -64,10 +65,14 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             
             for (content, viewModel) in row {
                 let button = CalculatorButton()
+                button.delegate = viewController as? OutputChangerDelegate
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
                 if content == .digit("0") {
                     button.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.92 / 3).isActive = true
+                } else if content == .specialSymbol(".") {
+                    button.contentVerticalAlignment = .top
+                    button.contentHorizontalAlignment = .center
                 }
             }
             return stackView
@@ -81,7 +86,7 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
         
     }
     
-    func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData) {
+    func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, viewController: UIViewController) {
         
         let leftTopRowStackViews = stackViewData.rightStackViewData.map { row in
             let stackView = ReusableStackView()
@@ -89,13 +94,14 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             
             for (content, viewModel) in row {
                 let button = CalculatorButton()
+                button.delegate = viewController as? OutputChangerDelegate
                 button.setupButton(with: viewModel, content: content)
                 stackView.addArrangedSubview(button)
         
-                if content == .sfSymbol("plus") {
+                if content == .specialSymbol("+") {
                     button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.263).isActive = true
                     
-                } else if content == .sfSymbol("asterisk") || content == .sfSymbol("minus") {
+                } else if content == .specialSymbol("*") || content == .specialSymbol("-") {
                     button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.155).isActive = true
                     
                 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol OutputChangerDelegate: AnyObject {
-    func didChangeOutput()
+    func didChangeOutput(digit: String)
 }
 
 protocol ReusableCommonButtonProtocol {
@@ -89,18 +89,21 @@ class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         guard let content = content else {
             return
         }
-        delegate?.didChangeOutput()
+        
         switch content {
         case .digit(let text):
             print("The user tapped \(text) button")
-            delegate?.didChangeOutput()
+            delegate?.didChangeOutput(digit: text)
             
         case .sfSymbol(let symbolName):
             print("The user tapped \(symbolName) button")
-            delegate?.didChangeOutput()
+            delegate?.didChangeOutput(digit: symbolName)
+            
         case .specialSymbol(let text):
             print("The user tapped \(text) button")
-            delegate?.didChangeOutput()
+            delegate?.didChangeOutput(digit: text)
         }
+        
     }
+    
 }

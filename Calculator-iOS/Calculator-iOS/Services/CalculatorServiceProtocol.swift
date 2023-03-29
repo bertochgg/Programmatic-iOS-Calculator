@@ -10,13 +10,12 @@ import Foundation
 
 protocol CalculatorServiceProtocol {
     
-    func clearLastInput()// Backslash
+    func clearLastInput()
+    func add(_ num: Double)
+    func subtract(_ num: Double)
+    func divide(_ num: Double)
+    func multiply(_ num: Double)
+    func getLastResult() -> Double?
+    func getOperationsHistory() -> String
     
-    func add(number: Double)
-    func subtract(number: Double)
-    func divide(number: Double)
-    func multiply(number: Double)
-    
-    var lastResult: Double { get }
-    var inputHistory: String { get }
 }
