@@ -133,6 +133,18 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             // tappedButtonValues = []
             
             guard let lastDigit = tappedButtonValues.last else {
+                if tappedButtonValues.isEmpty && digit == "/" {
+                    return
+                }
+                
+                if tappedButtonValues.isEmpty && digit == "*" {
+                    return
+                }
+                
+                if tappedButtonValues.isEmpty && digit == "+" {
+                    return
+                }
+                
                 // If tappedButtonValues is empty, append the digit and update the UI
                 tappedButtonValues.append(digit)
                 let operationsString = tappedButtonValues.joined()
@@ -170,6 +182,10 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         default:
             guard let lastDigit = tappedButtonValues.last else {
                 // If tappedButtonValues is empty, append the digit and update the UI
+                if tappedButtonValues.isEmpty && digit == "." {
+                    return
+                }
+                
                 tappedButtonValues.append(digit)
                 let operationsString = tappedButtonValues.joined()
                 calculatorService.setOperationsHistory(operationsString)
@@ -180,26 +196,17 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             }
             print(tappedButtonValues)
             
-            // Check if the last digit and the current digit are both dots
+            // Avoids to enter many . consecutively
             if lastDigit == "." && digit == "." {
                 return
             }
             
+            //
             if digit == "." && !lastDigit.contains(where: { "0123456789".contains($0) }) {
                 return
             }
             
-            if digit == "0" && lastDigit.hasPrefix("0") && !lastDigit.hasSuffix(".") {
-                return
-            }
-            
-            guard let initialDigit = tappedButtonValues.first else {
-                return
-            }
-            
-            if initialDigit == "0" {
-                self.operationsLabel.text = digit
-            }
+            // Avois to enter many leading zeros
             
             if digit == "." {
                 if !isValidDecimal(tappedButtonValues.joined() + digit) {
@@ -207,10 +214,6 @@ class MainViewController: UIViewController, OutputChangerDelegate {
                 }
             }
             
-//            if tappedButtonValues.isEmpty && digit == "." {
-//                return
-//            }
-
             // If the input is valid, append the digit and update the UI
             tappedButtonValues.append(digit)
             let operationsString = tappedButtonValues.joined()
@@ -225,14 +228,14 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     func isValidDecimal(_ input: String) -> Bool {
         var decimalCount = 0
         for char in input where char == "."{
-        
-                decimalCount += 1
-                if decimalCount > 1 {
-                    return false
-                }
-
+            
+            decimalCount += 1
+            if decimalCount > 1 {
+                return false
+            }
+            
         }
         return true
     }
-
+    
 }
