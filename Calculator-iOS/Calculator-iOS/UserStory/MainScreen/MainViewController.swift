@@ -131,6 +131,32 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             // let result = calculatorService.evaluate(expression: tappedButtonValues.joined())
             // operationsLabel.text = result
             // tappedButtonValues = []
+            
+            guard let lastDigit = tappedButtonValues.last else {
+                // If tappedButtonValues is empty, append the digit and update the UI
+                tappedButtonValues.append(digit)
+                let operationsString = tappedButtonValues.joined()
+                calculatorService.setOperationsHistory(operationsString)
+                DispatchQueue.main.async {
+                    self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+                }
+                return
+            }
+            print(tappedButtonValues)
+            // Check if the last digit and the current digit are both operators or dots
+            if ["+", "*", "/"].contains(lastDigit) && ["+", "*", "/", "."].contains(digit) {
+                return
+            }
+            
+            if lastDigit == "." && ["+", "-", "*", "/"].contains(digit) {
+                return
+            }
+            
+            if lastDigit == "-" && digit == "-" || lastDigit == "-" && ["+", "-", "*", "/"].contains(digit) {
+                return
+            }
+            
+            // If the input is valid, append the digit and update the UI
             tappedButtonValues.append(digit)
             let operationsString = tappedButtonValues.joined()
             calculatorService.setOperationsHistory(operationsString)
@@ -142,13 +168,71 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             print("hola")
             
         default:
+            guard let lastDigit = tappedButtonValues.last else {
+                // If tappedButtonValues is empty, append the digit and update the UI
+                tappedButtonValues.append(digit)
+                let operationsString = tappedButtonValues.joined()
+                calculatorService.setOperationsHistory(operationsString)
+                DispatchQueue.main.async {
+                    self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+                }
+                return
+            }
+            print(tappedButtonValues)
+            
+            // Check if the last digit and the current digit are both dots
+            if lastDigit == "." && digit == "." {
+                return
+            }
+            
+            if digit == "." && !lastDigit.contains(where: { "0123456789".contains($0) }) {
+                return
+            }
+            
+            if digit == "0" && lastDigit.hasPrefix("0") && !lastDigit.hasSuffix(".") {
+                return
+            }
+            
+            guard let initialDigit = tappedButtonValues.first else {
+                return
+            }
+            
+            if initialDigit == "0" {
+                self.operationsLabel.text = digit
+            }
+            
+            if digit == "." {
+                if !isValidDecimal(tappedButtonValues.joined() + digit) {
+                    return
+                }
+            }
+            
+//            if tappedButtonValues.isEmpty && digit == "." {
+//                return
+//            }
+
+            // If the input is valid, append the digit and update the UI
             tappedButtonValues.append(digit)
             let operationsString = tappedButtonValues.joined()
             calculatorService.setOperationsHistory(operationsString)
             DispatchQueue.main.async {
                 self.operationsLabel.text = self.calculatorService.getOperationsHistory()
             }
+            
         }
     }
     
+    func isValidDecimal(_ input: String) -> Bool {
+        var decimalCount = 0
+        for char in input where char == "."{
+        
+                decimalCount += 1
+                if decimalCount > 1 {
+                    return false
+                }
+
+        }
+        return true
+    }
+
 }
