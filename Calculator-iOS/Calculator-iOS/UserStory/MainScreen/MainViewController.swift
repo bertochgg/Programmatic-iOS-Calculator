@@ -19,6 +19,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     let resultLabel = UILabel()
     
     var tappedButtonValues: [String] = []
+    var isDecimal = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +106,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         stackView.addArrangedSubview(resultLabel)
     }
     
+    // swiftlint:disable cyclomatic_complexity
     func didChangeOutput(digit: String) {
         
         switch digit {
@@ -113,11 +115,17 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             operationsLabel.text = "0"
             resultLabel.text = "0"
             tappedButtonValues = []
+            isDecimal = 0
             
         case "delete.left":
+            print(isDecimal)
             calculatorService.clearLastInput()
             if !tappedButtonValues.isEmpty {
                 tappedButtonValues.removeLast()
+            }
+            
+            if tappedButtonValues.last == "." {
+                isDecimal = 0
             }
             
             DispatchQueue.main.async {
@@ -131,7 +139,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             // let result = calculatorService.evaluate(expression: tappedButtonValues.joined())
             // operationsLabel.text = result
             // tappedButtonValues = []
-            
+            isDecimal = 0
             guard let lastDigit = tappedButtonValues.last else {
                 if tappedButtonValues.isEmpty && digit == "/" {
                     return
@@ -155,15 +163,17 @@ class MainViewController: UIViewController, OutputChangerDelegate {
                 return
             }
             print(tappedButtonValues)
-            // Check if the last digit and the current digit are both operators or dots
+            // Avoids to enter operator symbols next to another
             if ["+", "*", "/"].contains(lastDigit) && ["+", "*", "/", "."].contains(digit) {
                 return
             }
             
+            // Avoids to enter decimal point after an operator symbol
             if lastDigit == "." && ["+", "-", "*", "/"].contains(digit) {
                 return
             }
             
+            // Avoids to enter many minus symbol, also avoids to enter operators after a minus symbol
             if lastDigit == "-" && digit == "-" || lastDigit == "-" && ["+", "-", "*", "/"].contains(digit) {
                 return
             }
@@ -177,11 +187,18 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             }
             
         case "=":
-            print("hola")
+            let operationsString = calculatorService.getOperationsHistory()
+            calculatorService.updateResult()
+            if let result = calculatorService.getLastResult() {
+                resultLabel.text = "\(result)"
+            } else {
+                resultLabel.text = "Error"
+            }
             
         default:
             guard let lastDigit = tappedButtonValues.last else {
                 // If tappedButtonValues is empty, append the digit and update the UI
+                // Avoids to enter decimal point when array is empty .1341
                 if tappedButtonValues.isEmpty && digit == "." {
                     return
                 }
@@ -196,20 +213,31 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             }
             print(tappedButtonValues)
             
-            // Avoids to enter many . consecutively
+            // Avoids to enter many . consecutively ......
             if lastDigit == "." && digit == "." {
                 return
             }
             
-            //
+            // Avoids to enter a decimal point after an operator /. *.
             if digit == "." && !lastDigit.contains(where: { "0123456789".contains($0) }) {
                 return
             }
             
-            // Avois to enter many leading zeros
+            // Avoids to enter numbers after the user taps the zero button 023242
             
+            // Avoids to enter many leading zeros 000.123/0.4524
+            if digit == "0" && tappedButtonValues.count == 1 && tappedButtonValues[0] == "0" {
+                return // Disallow multiple leading zeros
+            }
+            
+            // Avoids to enter many trailing zeros 0.123/000.2313
+   
+            // Avoids to enter wrong decimal numbers 9.323.23.2
             if digit == "." {
-                if !isValidDecimal(tappedButtonValues.joined() + digit) {
+                isDecimal += 1
+                if isDecimal > 1 {
+                    isDecimal = 1
+                    print(isDecimal)
                     return
                 }
             }
@@ -223,19 +251,6 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             }
             
         }
-    }
-    
-    func isValidDecimal(_ input: String) -> Bool {
-        var decimalCount = 0
-        for char in input where char == "."{
-            
-            decimalCount += 1
-            if decimalCount > 1 {
-                return false
-            }
-            
-        }
-        return true
     }
     
 }
