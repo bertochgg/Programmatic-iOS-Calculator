@@ -17,9 +17,6 @@ class CalculatorService: CalculatorServiceProtocol {
         if !operationsHistory.isEmpty {
             print(operationsHistory)
             let lastChar = operationsHistory.removeLast()
-            if lastChar.isNumber || lastChar == "." {
-                updateResult()
-            }
         }
     }
     
@@ -56,6 +53,9 @@ class CalculatorService: CalculatorServiceProtocol {
     }
     
     func updateResult() {
+        guard !operationsHistory.isEmpty else {
+            return
+        }
         let expression = NSExpression(format: operationsHistory)
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             currentResult = result

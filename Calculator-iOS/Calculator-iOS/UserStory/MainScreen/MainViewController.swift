@@ -106,151 +106,162 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         stackView.addArrangedSubview(resultLabel)
     }
     
-    // swiftlint:disable cyclomatic_complexity
     func didChangeOutput(digit: String) {
-        
         switch digit {
-            
         case "Ac":
-            operationsLabel.text = "0"
-            resultLabel.text = "0"
-            tappedButtonValues = []
-            isDecimal = 0
-            
+            clearAll()
         case "delete.left":
-            print(isDecimal)
-            calculatorService.clearLastInput()
-            if !tappedButtonValues.isEmpty {
-                tappedButtonValues.removeLast()
-            }
-            
-            if tappedButtonValues.last == "." {
-                isDecimal = 0
-            }
-            
-            DispatchQueue.main.async {
-                self.operationsLabel.text = self.calculatorService.getOperationsHistory()
-                if self.tappedButtonValues.isEmpty {
-                    self.operationsLabel.text = "0"
-                }
-            }
-            
+            deleteLastDigit()
         case "+", "-", "*", "/":
-            // let result = calculatorService.evaluate(expression: tappedButtonValues.joined())
-            // operationsLabel.text = result
-            // tappedButtonValues = []
-            isDecimal = 0
-            guard let lastDigit = tappedButtonValues.last else {
-                if tappedButtonValues.isEmpty && digit == "/" {
-                    return
-                }
-                
-                if tappedButtonValues.isEmpty && digit == "*" {
-                    return
-                }
-                
-                if tappedButtonValues.isEmpty && digit == "+" {
-                    return
-                }
-                
-                // If tappedButtonValues is empty, append the digit and update the UI
-                tappedButtonValues.append(digit)
-                let operationsString = tappedButtonValues.joined()
-                calculatorService.setOperationsHistory(operationsString)
-                DispatchQueue.main.async {
-                    self.operationsLabel.text = self.calculatorService.getOperationsHistory()
-                }
-                return
-            }
-            print(tappedButtonValues)
-            // Avoids to enter operator symbols next to another
-            if ["+", "*", "/"].contains(lastDigit) && ["+", "*", "/", "."].contains(digit) {
-                return
-            }
-            
-            // Avoids to enter decimal point after an operator symbol
-            if lastDigit == "." && ["+", "-", "*", "/"].contains(digit) {
-                return
-            }
-            
-            // Avoids to enter many minus symbol, also avoids to enter operators after a minus symbol
-            if lastDigit == "-" && digit == "-" || lastDigit == "-" && ["+", "-", "*", "/"].contains(digit) {
-                return
-            }
-            
-            // If the input is valid, append the digit and update the UI
-            tappedButtonValues.append(digit)
-            let operationsString = tappedButtonValues.joined()
-            calculatorService.setOperationsHistory(operationsString)
-            DispatchQueue.main.async {
-                self.operationsLabel.text = self.calculatorService.getOperationsHistory()
-            }
-            
+            handleOperator(digit)
         case "=":
-            let operationsString = calculatorService.getOperationsHistory()
-            calculatorService.updateResult()
-            if let result = calculatorService.getLastResult() {
-                resultLabel.text = "\(result)"
-            } else {
-                resultLabel.text = "Error"
-            }
-            
+            calculateResult()
         default:
-            guard let lastDigit = tappedButtonValues.last else {
-                // If tappedButtonValues is empty, append the digit and update the UI
-                // Avoids to enter decimal point when array is empty .1341
-                if tappedButtonValues.isEmpty && digit == "." {
-                    return
-                }
-                
-                tappedButtonValues.append(digit)
-                let operationsString = tappedButtonValues.joined()
-                calculatorService.setOperationsHistory(operationsString)
-                DispatchQueue.main.async {
-                    self.operationsLabel.text = self.calculatorService.getOperationsHistory()
-                }
-                return
-            }
-            print(tappedButtonValues)
-            
-            // Avoids to enter many . consecutively ......
-            if lastDigit == "." && digit == "." {
-                return
-            }
-            
-            // Avoids to enter a decimal point after an operator /. *.
-            if digit == "." && !lastDigit.contains(where: { "0123456789".contains($0) }) {
-                return
-            }
-            
-            // Avoids to enter numbers after the user taps the zero button 023242
-            
-            // Avoids to enter many leading zeros 000.123/0.4524
-            if digit == "0" && tappedButtonValues.count == 1 && tappedButtonValues[0] == "0" {
-                return // Disallow multiple leading zeros
-            }
-            
-            // Avoids to enter many trailing zeros 0.123/000.2313
-   
-            // Avoids to enter wrong decimal numbers 9.323.23.2
-            if digit == "." {
-                isDecimal += 1
-                if isDecimal > 1 {
-                    isDecimal = 1
-                    print(isDecimal)
-                    return
-                }
-            }
-            
-            // If the input is valid, append the digit and update the UI
-            tappedButtonValues.append(digit)
-            let operationsString = tappedButtonValues.joined()
-            calculatorService.setOperationsHistory(operationsString)
-            DispatchQueue.main.async {
-                self.operationsLabel.text = self.calculatorService.getOperationsHistory()
-            }
-            
+            handleDigit(digit)
         }
     }
     
+    func clearAll() {
+        operationsLabel.text = "0"
+        resultLabel.text = "0"
+        tappedButtonValues = []
+        isDecimal = 0
+    }
+    
+    func deleteLastDigit() {
+        calculatorService.clearLastInput()
+        if !tappedButtonValues.isEmpty {
+            tappedButtonValues.removeLast()
+        }
+        if tappedButtonValues.last == "." {
+            isDecimal = 0
+        }
+        DispatchQueue.main.async {
+            self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+            if self.tappedButtonValues.isEmpty {
+                self.operationsLabel.text = "0"
+            }
+        }
+    }
+    
+    func handleOperator(_ digit: String) {
+        isDecimal = 0
+        guard let lastDigit = tappedButtonValues.last else {
+            if tappedButtonValues.isEmpty && digit == "/" {
+                return
+            }
+            
+            if tappedButtonValues.isEmpty && digit == "*" {
+                return
+            }
+            
+            if tappedButtonValues.isEmpty && digit == "+" {
+                return
+            }
+            
+            // If tappedButtonValues is empty, append the digit and update the UI
+            tappedButtonValues.append(digit)
+            let operationsString = tappedButtonValues.joined()
+            calculatorService.setOperationsHistory(operationsString)
+            DispatchQueue.main.async {
+                self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+            }
+            return
+        }
+        print(tappedButtonValues)
+        // Avoids to enter operator symbols next to another
+        if ["+", "*", "/"].contains(lastDigit) && ["+", "*", "/", "."].contains(digit) {
+            return
+        }
+        
+        // Avoids to enter decimal point after an operator symbol
+        if lastDigit == "." && ["+", "-", "*", "/"].contains(digit) {
+            return
+        }
+        
+        // Avoids to enter many minus symbol, also avoids to enter operators after a minus symbol
+        if lastDigit == "-" && digit == "-" || lastDigit == "-" && ["+", "-", "*", "/"].contains(digit) {
+            return
+        }
+        
+        // If the input is valid, append the digit and update the UI
+        tappedButtonValues.append(digit)
+        let operationsString = tappedButtonValues.joined()
+        calculatorService.setOperationsHistory(operationsString)
+        DispatchQueue.main.async {
+            self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+        }
+    }
+    
+    func calculateResult() {
+        if tappedButtonValues.isEmpty {
+            resultLabel.text = "0"
+            return
+        }
+        calculatorService.updateResult()
+        if let result = calculatorService.getLastResult() {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.maximumFractionDigits = 2
+            if let formattedResult = formatter.string(from: NSNumber(value: result)) {
+                resultLabel.text = formattedResult
+            }
+        } else {
+            resultLabel.text = "Error"
+        }
+    }
+    
+    func handleDigit(_ digit: String) {
+        guard let lastDigit = tappedButtonValues.last else {
+            // If tappedButtonValues is empty, append the digit and update the UI
+            // Avoids to enter decimal point when array is empty .1341
+            if tappedButtonValues.isEmpty && digit == "." {
+                return
+            }
+            
+            tappedButtonValues.append(digit)
+            let operationsString = tappedButtonValues.joined()
+            calculatorService.setOperationsHistory(operationsString)
+            DispatchQueue.main.async {
+                self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+            }
+            return
+        }
+        print(tappedButtonValues)
+        
+        // Avoids to enter many . consecutively ......
+        if lastDigit == "." && digit == "." {
+            return
+        }
+        
+        // Avoids to enter a decimal point after an operator /. *.
+        if digit == "." && !lastDigit.contains(where: { "0123456789".contains($0) }) {
+            return
+        }
+        
+        // Avoids to enter numbers after the user taps the zero button 023242
+        
+        // Avoids to enter many leading zeros 000.123/0.4524
+        if digit == "0" && tappedButtonValues.count == 1 && tappedButtonValues[0] == "0" {
+            return // Disallow multiple leading zeros
+        }
+        
+        // Avoids to enter wrong decimal numbers 9.323.23.2
+        if digit == "." {
+            isDecimal += 1
+            if isDecimal > 1 {
+                isDecimal = 1
+                print(isDecimal)
+                return
+            }
+        }
+        // If the input is valid, append the digit and update the UI
+        tappedButtonValues.append(digit)
+        let operationsString = tappedButtonValues.joined()
+        calculatorService.setOperationsHistory(operationsString)
+        DispatchQueue.main.async {
+            self.operationsLabel.text = self.calculatorService.getOperationsHistory()
+        }
+    }
+  
 }
