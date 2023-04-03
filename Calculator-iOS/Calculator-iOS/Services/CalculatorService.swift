@@ -16,28 +16,8 @@ class CalculatorService: CalculatorServiceProtocol {
     func clearLastInput() {
         if !operationsHistory.isEmpty {
             print(operationsHistory)
-            let lastChar = operationsHistory.removeLast()
+            operationsHistory.removeLast()
         }
-    }
-    
-    func add(_ num: Double) {
-        operationsHistory += "\(num)+"
-        currentResult += num
-    }
-    
-    func subtract(_ num: Double) {
-        operationsHistory += "\(num)-"
-        currentResult -= num
-    }
-    
-    func divide(_ num: Double) {
-        operationsHistory += "\(num)/"
-        currentResult /= num
-    }
-    
-    func multiply(_ num: Double) {
-        operationsHistory += "\(num)*"
-        currentResult *= num
     }
     
     func getLastResult() -> Double? {
@@ -56,7 +36,15 @@ class CalculatorService: CalculatorServiceProtocol {
         guard !operationsHistory.isEmpty else {
             return
         }
-        let expression = NSExpression(format: operationsHistory)
+        
+        // Check if the expression ends with an operator and remove it
+        var expressionString = operationsHistory
+        let operators = ["+", "-", "*", "/"]
+        if let lastChar = operationsHistory.last, operators.contains(String(lastChar)) {
+            expressionString = String(operationsHistory.dropLast())
+        }
+        
+        let expression = NSExpression(format: expressionString)
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             currentResult = result
         }

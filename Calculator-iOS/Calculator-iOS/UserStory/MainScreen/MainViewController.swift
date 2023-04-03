@@ -33,7 +33,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     }
     
     private func setupBackground() {
-        self.view.backgroundColor = UIColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1)
+        self.view.backgroundColor = UIConstants.backgroundColor
     }
     
     private func calculatorUI() {
@@ -115,7 +115,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         case "+", "-", "*", "/":
             handleOperator(digit)
         case "=":
-            calculateResult()
+            updateResult()
         default:
             handleDigit(digit)
         }
@@ -193,7 +193,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         }
     }
     
-    func calculateResult() {
+    func updateResult() {
         if tappedButtonValues.isEmpty {
             resultLabel.text = "0"
             return

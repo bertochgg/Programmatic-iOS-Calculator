@@ -9,7 +9,7 @@
 import UIKit
 
 struct ReusableCommonButton {
-    // let key: String
+    
     let fontName: String
     let fontSize: CGFloat
     let colorText: UIColor
@@ -19,15 +19,4 @@ struct ReusableCommonButton {
     let bgColor: UIColor
     let shadowColor: UIColor
     
-    init(fontName: String, fontSize: CGFloat, colorText: UIColor, cornerRadius: CGFloat, borderWidght: CGFloat, borderColor: UIColor, bgColor: UIColor, shadowColor: UIColor) {
-        // self.key = key
-        self.fontName = fontName
-        self.fontSize = fontSize
-        self.colorText = colorText
-        self.cornerRadius = cornerRadius
-        self.borderWidght = borderWidght
-        self.borderColor = borderColor
-        self.bgColor = bgColor
-        self.shadowColor = shadowColor
-    }
 }

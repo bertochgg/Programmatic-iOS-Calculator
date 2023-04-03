@@ -11,10 +11,6 @@ import Foundation
 protocol CalculatorServiceProtocol {
     
     func clearLastInput()
-    func add(_ num: Double)
-    func subtract(_ num: Double)
-    func divide(_ num: Double)
-    func multiply(_ num: Double)
     func getLastResult() -> Double?
     func getOperationsHistory() -> String
     

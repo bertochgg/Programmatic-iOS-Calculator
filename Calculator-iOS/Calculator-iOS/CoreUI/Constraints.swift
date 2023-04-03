@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Constraints: UIView {
+final class Constraints: UIView {
     
     // MARK: - Constraints and Labels
     static func setMainStackViewConstraints(stack: UIStackView, view: UIView) {
