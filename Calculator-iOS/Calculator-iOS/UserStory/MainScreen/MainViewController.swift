@@ -138,15 +138,32 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             tappedButtonValues.removeLast()
         }
         
-        if tappedButtonValues.last == "." && digit == "delete.left"{
+//        if tappedButtonValues.last == "." {
+//            isOperand = true// o operador
+//        }
+        if digit == "delete.left" && isOperand && tappedButtonValues.last != "." {
             isDecimal = false
-            
         }
         
+        if tappedButtonValues.last == "." {
+            isOperand = false
+        }
+        
+        if tappedButtonValues.last == "." && digit == "delete.left" && !isOperand {
+            isDecimal = true
+            isOperand = true
+        } else if tappedButtonValues.last == "." && digit == "delete.left" && isOperand {
+            isDecimal = false
+            isOperand = false
+        }
+        
+        if let lastChar = tappedButtonValues.last, operators.contains(lastChar) {
+            isOperand = false
+        }
+        
+        
+        
         // Avoids to enter many decimal points if and operator is deleted 12.23/<--- delete, then 12.23.5
-        //        if ["+", "-", "/", "*"].contains(tappedButtonValues.last) {
-        //            isDecimal = 0
-        //        }
         
         DispatchQueue.main.async {
             self.operationsLabel.text = self.calculatorService.getOperationsHistory()
@@ -245,7 +262,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             formatter.numberStyle = .decimal
             formatter.maximumFractionDigits = 2
             if let formattedResult = formatter.string(from: NSNumber(value: result)) {
-                resultLabel.text = formattedResult
+                resultLabel.text = "=\(formattedResult)"
             }
         } else {
             resultLabel.text = "Error"
