@@ -124,10 +124,11 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     }
     
     func clearAll() {
-        operationsLabel.text = "0"
-        resultLabel.text = "0"
-        tappedButtonValues = []
+        calculatorService.setOperationsHistory("0")
         calculatorService.setLastResult(0)
+        operationsLabel.text = calculatorService.getOperationsHistory()
+        resultLabel.text = String(calculatorService.getLastResult())
+        tappedButtonValues = []
         isDecimal = false
     }
     
@@ -138,9 +139,6 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             tappedButtonValues.removeLast()
         }
         
-//        if tappedButtonValues.last == "." {
-//            isOperand = true// o operador
-//        }
         if digit == "delete.left" && isOperand && tappedButtonValues.last != "." {
             isDecimal = false
         }
@@ -157,13 +155,9 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             isOperand = false
         }
         
-        if let lastChar = tappedButtonValues.last, operators.contains(lastChar) {
-            isOperand = false
+        if let lastChar = tappedButtonValues.last, operators.contains(lastChar) && digit == "delete.left" {
+            isDecimal = true
         }
-        
-        
-        
-        // Avoids to enter many decimal points if and operator is deleted 12.23/<--- delete, then 12.23.5
         
         DispatchQueue.main.async {
             self.operationsLabel.text = self.calculatorService.getOperationsHistory()
@@ -176,15 +170,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     func handleOperator(_ digit: String) {
         isDecimal = false
         guard let lastDigit = tappedButtonValues.last else {
-            if tappedButtonValues.isEmpty && digit == "/" {
-                return
-            }
-            
-            if tappedButtonValues.isEmpty && digit == "*" {
-                return
-            }
-            
-            if tappedButtonValues.isEmpty && digit == "+" {
+            if tappedButtonValues.isEmpty && ["+", "*", "/"].contains(digit) {
                 return
             }
             
@@ -257,16 +243,14 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             return
         }
         calculatorService.updateResult()
-        if let result = calculatorService.getLastResult() {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.maximumFractionDigits = 2
-            if let formattedResult = formatter.string(from: NSNumber(value: result)) {
-                resultLabel.text = "=\(formattedResult)"
-            }
-        } else {
-            resultLabel.text = "Error"
+        let result = calculatorService.getLastResult()
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        if let formattedResult = formatter.string(from: NSNumber(value: result)) {
+            resultLabel.text = "=\(formattedResult)"
         }
+        
     }
     
     func handleDigit(_ digit: String) {
@@ -296,8 +280,6 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         if digit == "." && !lastDigit.contains(where: { "0123456789".contains($0) }) {
             return
         }
-        
-        // Avoids to enter numbers after the user taps the zero button 023242
         
         // Avoids to enter many leading zeros 000.123/0.4524
         if digit == "0" && tappedButtonValues.count == 1 && tappedButtonValues[0] == "0" {

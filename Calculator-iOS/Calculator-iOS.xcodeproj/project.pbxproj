@@ -45,6 +45,7 @@
 		5F405CC729BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB529BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf */; };
 		5F405CC829BF864B00FB8687 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */; };
 		5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F405CC929BF95A300FB8687 /* CalculatorButton.swift */; };
+		5F6CC45429DCD21C00D072B4 /* NSExpressionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6CC45329DCD21C00D072B4 /* NSExpressionExtension.swift */; };
 		5F93477529CBD4DF002D04BC /* CalculatorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */; };
 		5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477629CBD4FA002D04BC /* CalculatorService.swift */; };
 		5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A529CE1B400095BD87 /* ReusableStackView.swift */; };
@@ -118,6 +119,7 @@
 		5F405CB529BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		5F405CC929BF95A300FB8687 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
+		5F6CC45329DCD21C00D072B4 /* NSExpressionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSExpressionExtension.swift; sourceTree = "<group>"; };
 		5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorServiceProtocol.swift; sourceTree = "<group>"; };
 		5F93477629CBD4FA002D04BC /* CalculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorService.swift; sourceTree = "<group>"; };
 		5FC863A529CE1B400095BD87 /* ReusableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackView.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 		5FC863AD29CE6AAA0095BD87 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5F6CC45329DCD21C00D072B4 /* NSExpressionExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				5F167CBB29C230680003799F /* ReusableCommonButton.swift in Sources */,
 				5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */,
 				5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */,
+				5F6CC45429DCD21C00D072B4 /* NSExpressionExtension.swift in Sources */,
 				5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */,
 				5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */,
 				5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */,

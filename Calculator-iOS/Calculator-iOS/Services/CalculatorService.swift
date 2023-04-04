@@ -11,7 +11,7 @@ import Foundation
 class CalculatorService: CalculatorServiceProtocol {
     
     private var operationsHistory: String = ""
-    private var currentResult: Double = 0.0
+    private var currentResult: Double = 0
     
     func clearLastInput() {
         if !operationsHistory.isEmpty {
@@ -24,7 +24,7 @@ class CalculatorService: CalculatorServiceProtocol {
         currentResult = newValue
     }
     
-    func getLastResult() -> Double? {
+    func getLastResult() -> Double {
         return currentResult
     }
     
@@ -51,20 +51,17 @@ class CalculatorService: CalculatorServiceProtocol {
         let decimalPoint = "."
         let penultimate = operationsHistory[operationsHistory.index(operationsHistory.endIndex, offsetBy: -2)]
         if operators.contains(String(lastChar)) {
-            // expressionString = String(operationsHistory.dropLast())
             return
         } else if decimalPoint.contains(String(lastChar)) {
             print(operationsHistory)
-            // expressionString = String(operationsHistory.dropLast())
             return
         }
         if operators.contains(String(lastChar)) && operators.contains(String(penultimate)) {
             print(operationsHistory)
-            // expressionString = String(operationsHistory.dropLast(2))
             return
         }
         
-        let expression = NSExpression(format: expressionString)
+        let expression = NSExpression(format: expressionString).floatifiedForDivisionIfNeeded
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             currentResult = result
         } else {
