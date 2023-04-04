@@ -19,7 +19,8 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     let resultLabel = UILabel()
     
     var tappedButtonValues: [String] = []
-    var isDecimal = 0
+    var isDecimal = false
+    var isOperand = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +112,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         case "Ac":
             clearAll()
         case "delete.left":
-            deleteLastDigit()
+            deleteLastDigit(digit)
         case "+", "-", "*", "/":
             handleOperator(digit)
         case "=":
@@ -125,17 +126,30 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         operationsLabel.text = "0"
         resultLabel.text = "0"
         tappedButtonValues = []
-        isDecimal = 0
+        isDecimal = false
     }
     
-    func deleteLastDigit() {
+    func deleteLastDigit(_ digit: String) {
         calculatorService.clearLastInput()
+        
+        guard let lastDigit = tappedButtonValues.last else {
+            return
+        }
+        
         if !tappedButtonValues.isEmpty {
             tappedButtonValues.removeLast()
         }
-        if tappedButtonValues.last == "." {
-            isDecimal = 0
+        
+        if tappedButtonValues.last == "." && digit == "delete.left"{
+            isDecimal = false
+
         }
+        
+        // Avoids to enter many decimal points if and operator is deleted 12.23/<--- delete, then 12.23.5
+//        if ["+", "-", "/", "*"].contains(tappedButtonValues.last) {
+//            isDecimal = 0
+//        }
+        
         DispatchQueue.main.async {
             self.operationsLabel.text = self.calculatorService.getOperationsHistory()
             if self.tappedButtonValues.isEmpty {
@@ -145,7 +159,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     }
     
     func handleOperator(_ digit: String) {
-        isDecimal = 0
+        isDecimal = false
         guard let lastDigit = tappedButtonValues.last else {
             if tappedButtonValues.isEmpty && digit == "/" {
                 return
@@ -183,7 +197,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         if lastDigit == "-" && digit == "-" || lastDigit == "-" && ["+", "-", "*", "/"].contains(digit) {
             return
         }
-        
+     
         // If the input is valid, append the digit and update the UI
         tappedButtonValues.append(digit)
         let operationsString = tappedButtonValues.joined()
@@ -195,6 +209,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     
     func updateResult() {
         if tappedButtonValues.isEmpty {
+            operationsLabel.text = "0"
             resultLabel.text = "0"
             return
         }
@@ -247,14 +262,15 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         }
         
         // Avoids to enter wrong decimal numbers 9.323.23.2
-        if digit == "." {
-            isDecimal += 1
-            if isDecimal > 1 {
-                isDecimal = 1
-                print(isDecimal)
-                return
-            }
+        if digit == "." && isDecimal {
+            return
         }
+        
+        if digit == "." && lastDigit.contains(where: { "0123456789".contains($0) }) {
+            isOperand = false
+            isDecimal = true
+        }
+        
         // If the input is valid, append the digit and update the UI
         tappedButtonValues.append(digit)
         let operationsString = tappedButtonValues.joined()
