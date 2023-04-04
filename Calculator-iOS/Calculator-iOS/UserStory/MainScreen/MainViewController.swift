@@ -19,6 +19,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     let resultLabel = UILabel()
     
     var tappedButtonValues: [String] = []
+    let operators = ["+", "-", "*", "/"]
     var isDecimal = false
     var isOperand = false
     
@@ -126,15 +127,12 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         operationsLabel.text = "0"
         resultLabel.text = "0"
         tappedButtonValues = []
+        calculatorService.setLastResult(0)
         isDecimal = false
     }
     
     func deleteLastDigit(_ digit: String) {
         calculatorService.clearLastInput()
-        
-        guard let lastDigit = tappedButtonValues.last else {
-            return
-        }
         
         if !tappedButtonValues.isEmpty {
             tappedButtonValues.removeLast()
@@ -142,13 +140,13 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         
         if tappedButtonValues.last == "." && digit == "delete.left"{
             isDecimal = false
-
+            
         }
         
         // Avoids to enter many decimal points if and operator is deleted 12.23/<--- delete, then 12.23.5
-//        if ["+", "-", "/", "*"].contains(tappedButtonValues.last) {
-//            isDecimal = 0
-//        }
+        //        if ["+", "-", "/", "*"].contains(tappedButtonValues.last) {
+        //            isDecimal = 0
+        //        }
         
         DispatchQueue.main.async {
             self.operationsLabel.text = self.calculatorService.getOperationsHistory()
@@ -197,7 +195,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         if lastDigit == "-" && digit == "-" || lastDigit == "-" && ["+", "-", "*", "/"].contains(digit) {
             return
         }
-     
+        
         // If the input is valid, append the digit and update the UI
         tappedButtonValues.append(digit)
         let operationsString = tappedButtonValues.joined()
@@ -207,7 +205,35 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         }
     }
     
+    func showResultAlertMessage () {
+        let alertController = UIAlertController(title: "Error",
+                                                message: "Invalid Operation, please enter missing number",
+                                                preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            alertController.dismiss(animated: true)
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     func updateResult() {
+        guard let lastDigit = tappedButtonValues.last else {
+            return
+        }
+        
+        let penultimate = tappedButtonValues[tappedButtonValues.index(tappedButtonValues.endIndex, offsetBy: -2)]
+        
+        if operators.contains(String(lastDigit)) && operators.contains(String(penultimate)) {
+            showResultAlertMessage()
+        }
+        
+        if operators.contains(String(lastDigit)) {
+            showResultAlertMessage()
+        } else if ".".contains(String(lastDigit)) {
+            showResultAlertMessage()
+        }
+        
         if tappedButtonValues.isEmpty {
             operationsLabel.text = "0"
             resultLabel.text = "0"
@@ -279,5 +305,5 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             self.operationsLabel.text = self.calculatorService.getOperationsHistory()
         }
     }
-  
+    
 }

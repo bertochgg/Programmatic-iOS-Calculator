@@ -20,6 +20,10 @@ class CalculatorService: CalculatorServiceProtocol {
         }
     }
     
+    func setLastResult(_ newValue: Double) {
+        currentResult = newValue
+    }
+    
     func getLastResult() -> Double? {
         return currentResult
     }
@@ -37,16 +41,34 @@ class CalculatorService: CalculatorServiceProtocol {
             return
         }
         
+        guard let lastChar = operationsHistory.last else {
+            return
+        }
+        
         // Check if the expression ends with an operator and remove it
-        var expressionString = operationsHistory
+        let expressionString = operationsHistory
         let operators = ["+", "-", "*", "/"]
-        if let lastChar = operationsHistory.last, operators.contains(String(lastChar)) {
-            expressionString = String(operationsHistory.dropLast())
+        let decimalPoint = "."
+        let penultimate = operationsHistory[operationsHistory.index(operationsHistory.endIndex, offsetBy: -2)]
+        if operators.contains(String(lastChar)) {
+            // expressionString = String(operationsHistory.dropLast())
+            return
+        } else if decimalPoint.contains(String(lastChar)) {
+            print(operationsHistory)
+            // expressionString = String(operationsHistory.dropLast())
+            return
+        }
+        if operators.contains(String(lastChar)) && operators.contains(String(penultimate)) {
+            print(operationsHistory)
+            // expressionString = String(operationsHistory.dropLast(2))
+            return
         }
         
         let expression = NSExpression(format: expressionString)
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             currentResult = result
+        } else {
+            print("Expression could not be evaluated")
         }
     }
     
