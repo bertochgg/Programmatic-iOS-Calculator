@@ -53,15 +53,13 @@ class CalculatorService: CalculatorServiceProtocol {
         if operators.contains(String(lastChar)) {
             return
         } else if decimalPoint.contains(String(lastChar)) {
-            print(operationsHistory)
             return
         }
         if operators.contains(String(lastChar)) && operators.contains(String(penultimate)) {
-            print(operationsHistory)
             return
         }
         
-        let expression = NSExpression(format: expressionString).floatifiedForDivisionIfNeeded
+        let expression = NSExpression(format: expressionString).toFloatingPointDivision()
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             currentResult = result
         } else {
