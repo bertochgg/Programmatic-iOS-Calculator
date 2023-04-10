@@ -9,13 +9,19 @@
 import UIKit
 
 struct UIConstants {
-    static let transparent: UIColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.33)
     static let backgroundColor = UIColor(named: "BackgroundColor")
     
     static let cleanButtonTextColor = UIColor(named: "CleanButtonTextColor")
     static let operatorButtonTextColor = UIColor(named: "OperatorButtonTextColor")
     static let digitButtonTextColor = UIColor(named: "DigitButtonTextColor")
     static let equalButtonTextColor = UIColor(named: "EqualButtonTextColor")
-    static let zeroButtonTextColor = UIColor(named: "ZeroButtonTextColor")
-    static let decimalPointTextColor = UIColor(named: "DecimalPointTextColor")
+    
+    static let numberPadBackgroundColor = UIColor(named: "NumberPadBackgroundColor")
+    static let cleanBackgroundColor = UIColor(named: "CleanBackgroundColor")
+    static let operatorsBackgroundColor = UIColor(named: "OperatorsBackgroundColor")
+    static let equalBackgroundColor = UIColor(named: "EqualBackgroundColor")
+    
+    static let numberPadBorderColor = UIColor(named: "NumberPadBorderColor")
+    
+    static let resultTextColor = UIColor(named: "ResultTextColor")
 }

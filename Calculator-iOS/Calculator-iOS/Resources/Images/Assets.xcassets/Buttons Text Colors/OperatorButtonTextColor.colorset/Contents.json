@@ -5,9 +5,9 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "250",
-          "green" : "247",
-          "red" : "245"
+          "blue" : "255",
+          "green" : "157",
+          "red" : "16"
         }
       },
       "idiom" : "universal"
@@ -23,9 +23,9 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "250",
-          "green" : "247",
-          "red" : "245"
+          "blue" : "1.000",
+          "green" : "0.616",
+          "red" : "0.063"
         }
       },
       "idiom" : "universal"
@@ -41,9 +41,9 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "26",
-          "green" : "24",
-          "red" : "23"
+          "blue" : "255",
+          "green" : "157",
+          "red" : "51"
         }
       },
       "idiom" : "universal"

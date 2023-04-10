@@ -21,7 +21,7 @@ extension NSExpression {
                         return arg
                     }
                 } else {
-                    return NSExpression(block: { object, arguments, context in
+                    return NSExpression(block: { _, arguments, _ in
                         // NB: The type of `+[NSExpression expressionForBlock:arguments]` is incorrect.
                         // It claims the arguments is an array of NSExpressions, but it's not, it's
                         // actually an array of the evaluated values. We can work around this by going

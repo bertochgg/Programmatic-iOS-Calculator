@@ -101,7 +101,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         resultLabel.text = "0"
         resultLabel.font = UIFont(name: "Poppins", size: 48)
         resultLabel.font = .systemFont(ofSize: 48, weight: .medium)
-        resultLabel.textColor = .black
+        resultLabel.textColor = UIConstants.resultTextColor ?? .white
         resultLabel.textAlignment = .right
         
         stackView.addArrangedSubview(operationsLabel)

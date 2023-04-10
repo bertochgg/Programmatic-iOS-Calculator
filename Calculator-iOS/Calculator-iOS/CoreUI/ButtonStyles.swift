@@ -12,37 +12,33 @@ class ButtonStyles {
     
     let cleanButton = ReusableCommonButton(fontName: "Poppins",
                                            fontSize: 32,
-                                           colorText: .gray,
+                                           colorText: UIConstants.cleanButtonTextColor ?? .white,
                                            cornerRadius: 16,
                                            borderWidght: 1.2,
-                                           borderColor: .white,
-                                           bgColor: UIConstants.transparent,
-                                           shadowColor: .white)
+                                           borderColor: UIConstants.cleanBackgroundColor ?? .white,
+                                           bgColor: UIConstants.cleanBackgroundColor ?? .white)
     
     let operatorButton = ReusableCommonButton(fontName: "Poppins",
                                               fontSize: 32,
-                                              colorText: .init(red: 0.06, green: 0.62, blue: 1.0, alpha: 1),
+                                              colorText: UIConstants.operatorButtonTextColor ?? .white,
                                               cornerRadius: 12,
                                               borderWidght: 1.2,
-                                              borderColor: .white,
-                                              bgColor: UIConstants.transparent,
-                                              shadowColor: .init(red: 0.10, green: 0.69, blue: 1.0, alpha: 1))
+                                              borderColor: UIConstants.operatorsBackgroundColor ?? .white,
+                                              bgColor: UIConstants.operatorsBackgroundColor ?? .white)
     
     let digitButton = ReusableCommonButton(fontName: "Poppins",
                                            fontSize: 32,
-                                           colorText: .init(red: 0.22, green: 0.73, blue: 1.0, alpha: 1),
+                                           colorText: UIConstants.digitButtonTextColor ?? .white,
                                            cornerRadius: 16,
                                            borderWidght: 1.2,
-                                           borderColor: .white,
-                                           bgColor: UIConstants.transparent,
-                                           shadowColor: .white)
+                                           borderColor: UIConstants.numberPadBorderColor ?? .white,
+                                           bgColor: UIConstants.numberPadBackgroundColor ?? .white)
     
     let equalButton = ReusableCommonButton(fontName: "Poppins",
                                            fontSize: 32,
-                                           colorText: .white,
+                                           colorText: UIConstants.equalButtonTextColor ?? .white,
                                            cornerRadius: 12,
                                            borderWidght: 1.2,
-                                           borderColor: .white,
-                                           bgColor: .init(red: 0.10, green: 0.69, blue: 1.0, alpha: 0.5),
-                                           shadowColor: .init(red: 0.05, green: 0.29, blue: 1.0, alpha: 1))
+                                           borderColor: UIConstants.equalBackgroundColor ?? .white,
+                                           bgColor: UIConstants.equalBackgroundColor ?? .white)
 }
