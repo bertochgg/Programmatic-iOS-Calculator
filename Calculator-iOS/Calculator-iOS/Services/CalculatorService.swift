@@ -10,46 +10,61 @@ import Foundation
 
 class CalculatorService: CalculatorServiceProtocol {
     
-    private var history: String = "Type"
-    private var result: Double = 0
+    private var operationsHistory: String = ""
+    private var currentResult: Double = 0
     
     func clearLastInput() {
-        if !history.isEmpty {
-            history.removeLast()
+        if !operationsHistory.isEmpty {
+            print(operationsHistory)
+            operationsHistory.removeLast()
         }
     }
     
-    func add(number: Double) {
-        result += number
-        history += "+\(number)"
+    func setLastResult(_ newValue: Double) {
+        currentResult = newValue
     }
     
-    func subtract(number: Double) {
-        result -= number
-        history += "-\(number)"
+    func getLastResult() -> Double {
+        return currentResult
     }
     
-    func divide(number: Double) {
-        if number != 0 {
-            result /= number
-            history += "/\(number)"
+    func setOperationsHistory(_ newHistory: String) {
+        operationsHistory = newHistory
+    }
+    
+    func getOperationsHistory() -> String {
+        return operationsHistory
+    }
+    
+    func updateResult() {
+        guard !operationsHistory.isEmpty else {
+            return
+        }
+        
+        guard let lastChar = operationsHistory.last else {
+            return
+        }
+        
+        // Check if the expression ends with an operator and remove it
+        let expressionString = operationsHistory
+        let operators = ["+", "-", "*", "/"]
+        let decimalPoint = "."
+        let penultimate = operationsHistory[operationsHistory.index(operationsHistory.endIndex, offsetBy: -2)]
+        if operators.contains(String(lastChar)) {
+            return
+        } else if decimalPoint.contains(String(lastChar)) {
+            return
+        }
+        if operators.contains(String(lastChar)) && operators.contains(String(penultimate)) {
+            return
+        }
+        
+        let expression = NSExpression(format: expressionString).toFloatingPointDivision()
+        if let result = expression.expressionValue(with: nil, context: nil) as? Double {
+            currentResult = result
         } else {
-            history = ""
-            result = 0
+            print("Expression could not be evaluated")
         }
-    }
-    
-    func multiply(number: Double) {
-        result *= number
-        history += "*\(number)"
-    }
-    
-    var lastResult: Double {
-        return result
-    }
-    
-    var inputHistory: String {
-        return history
     }
     
 }

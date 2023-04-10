@@ -31,15 +31,15 @@ class StackViewsData {
     ]
     
     lazy var rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.sfSymbol("asterisk"), buttonStyle.operatorButton),
-         (.sfSymbol("minus"), buttonStyle.operatorButton),
-         (.sfSymbol("plus"), buttonStyle.operatorButton),
+        [(.specialSymbol("*"), buttonStyle.operatorButton),
+         (.specialSymbol("-"), buttonStyle.operatorButton),
+         (.specialSymbol("+"), buttonStyle.operatorButton),
          (.specialSymbol("="), buttonStyle.equalButton)]
     ]
     
     lazy var leftBottomStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
         [(.digit("0"), buttonStyle.digitButton),
-         (.digit("·"), buttonStyle.digitButton)]
+         (.specialSymbol("."), buttonStyle.digitButton)]
     ]
     
 }
