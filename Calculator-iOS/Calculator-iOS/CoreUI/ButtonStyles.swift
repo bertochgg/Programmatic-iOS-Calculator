@@ -30,8 +30,8 @@ class ButtonStyles {
                                            fontSize: 32,
                                            colorText: UIConstants.digitButtonTextColor ?? .white,
                                            cornerRadius: 16,
-                                           borderWidght: 1.2,
-                                           borderColor: UIConstants.numberPadBorderColor ?? .white,
+                                           borderWidght: 1.4,
+                                           borderColor: .white,
                                            bgColor: UIConstants.numberPadBackgroundColor ?? .white)
     
     let equalButton = ReusableCommonButton(fontName: "Poppins",
