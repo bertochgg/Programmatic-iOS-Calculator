@@ -24,7 +24,6 @@ enum ButtonContent: Equatable {
 
 class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
     var content: ButtonContent?
-    let calculatorService = CalculatorService()
     
     weak var delegate: OutputChangerDelegate?
     

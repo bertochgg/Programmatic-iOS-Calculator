@@ -11,7 +11,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     
     let stackViewData = StackViewsData()
     let stackViewsStyles = StackViewsStyles()
-    let calculatorService = CalculatorService()
+    let calculatorService: CalculatorServiceProtocol = CalculatorService()
     
     // Output
     let stackView = UIStackView()
@@ -134,7 +134,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     
     func deleteLastDigit(_ digit: String) {
         calculatorService.clearLastInput()
-        
+                
         if !tappedButtonValues.isEmpty {
             tappedButtonValues.removeLast()
         }
@@ -156,9 +156,12 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         }
         
         if let lastChar = tappedButtonValues.last, operators.contains(lastChar) && digit == "delete.left" {
+            isOperand = false
             isDecimal = true
+            print("hola")
+            print(lastChar)
         }
-        
+
         DispatchQueue.main.async {
             self.operationsLabel.text = self.calculatorService.getOperationsHistory()
             if self.tappedButtonValues.isEmpty {

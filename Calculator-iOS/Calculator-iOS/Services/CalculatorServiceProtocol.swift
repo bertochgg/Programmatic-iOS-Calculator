@@ -14,4 +14,8 @@ protocol CalculatorServiceProtocol {
     func getLastResult() -> Double
     func getOperationsHistory() -> String
     
+    func setOperationsHistory(_ newHistory: String)
+    func setLastResult(_ newValue: Double)
+    func updateResult()
+    
 }
