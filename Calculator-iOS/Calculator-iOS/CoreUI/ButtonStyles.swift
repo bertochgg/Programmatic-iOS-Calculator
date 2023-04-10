@@ -14,7 +14,7 @@ class ButtonStyles {
                                            fontSize: 32,
                                            colorText: UIConstants.cleanButtonTextColor ?? .white,
                                            cornerRadius: 16,
-                                           borderWidght: 1.2,
+                                           borderWidght: 0,
                                            borderColor: UIConstants.cleanBackgroundColor ?? .white,
                                            bgColor: UIConstants.cleanBackgroundColor ?? .white)
     
@@ -22,7 +22,7 @@ class ButtonStyles {
                                               fontSize: 32,
                                               colorText: UIConstants.operatorButtonTextColor ?? .white,
                                               cornerRadius: 12,
-                                              borderWidght: 1.2,
+                                              borderWidght: 0,
                                               borderColor: UIConstants.operatorsBackgroundColor ?? .white,
                                               bgColor: UIConstants.operatorsBackgroundColor ?? .white)
     
@@ -38,7 +38,7 @@ class ButtonStyles {
                                            fontSize: 32,
                                            colorText: UIConstants.equalButtonTextColor ?? .white,
                                            cornerRadius: 12,
-                                           borderWidght: 1.2,
+                                           borderWidght: 0,
                                            borderColor: UIConstants.equalBackgroundColor ?? .white,
                                            bgColor: UIConstants.equalBackgroundColor ?? .white)
 }

@@ -30,6 +30,7 @@ class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        updateBorderColor(for: traitCollection)
     }
     
     required init?(coder: NSCoder) {
@@ -38,7 +39,19 @@ class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        updateBorderColor(for: traitCollection)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        updateBorderColor(for: traitCollection)
+    }
+    
+    func updateBorderColor(for traitCollection: UITraitCollection) {
+            if traitCollection.userInterfaceStyle == .dark {
+                self.layer.borderColor = UIColor(red: 45 / 255, green: 49 / 255, blue: 54 / 255, alpha: 1).cgColor
+            } else {
+                self.layer.borderColor = UIColor.white.cgColor
+            }
     }
     
     func setupButton(with viewModel: ReusableCommonButton, content: ButtonContent) {
