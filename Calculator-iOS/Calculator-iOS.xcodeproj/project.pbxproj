@@ -159,7 +159,6 @@
 		5F405CC929BF95A300FB8687 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 		5F6CC45329DCD21C00D072B4 /* NSExpressionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSExpressionExtension.swift; sourceTree = "<group>"; };
 		5F6D073D29E4D98200AE08D4 /* Calculator-iOS-Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator-iOS-Release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F6D073E29E4D98200AE08D4 /* Calculator-iOS-Dev copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Calculator-iOS-Dev copy-Info.plist"; path = "/Users/bertochgg/Developer/RealCalculator/ios-calculator/Calculator-iOS/Calculator-iOS-Dev copy-Info.plist"; sourceTree = "<absolute>"; };
 		5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorServiceProtocol.swift; sourceTree = "<group>"; };
 		5F93477629CBD4FA002D04BC /* CalculatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorService.swift; sourceTree = "<group>"; };
 		5FC863A529CE1B400095BD87 /* ReusableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackView.swift; sourceTree = "<group>"; };
@@ -275,7 +274,6 @@
 				04B8E8EA2801F3B800EF70CD /* Products */,
 				A1A2A752A078058BA3AF95FA /* Pods */,
 				2515173EBCF14E4529C55904 /* Frameworks */,
-				5F6D073E29E4D98200AE08D4 /* Calculator-iOS-Dev copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1253,7 +1251,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q5TA2MK66R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Calculator-iOS-Release-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = MainViewController;
@@ -1281,7 +1279,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q5TA2MK66R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Calculator-iOS-Release-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = MainViewController;
