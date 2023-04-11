@@ -10,7 +10,7 @@ import XCTest
 
 class CalculatorServiceTests: XCTestCase {
 
-    var calculatorService: CalculatorService!
+    var calculatorService: CalculatorServiceProtocol!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -96,13 +96,13 @@ class CalculatorServiceTests: XCTestCase {
     // MARK: - UpdateResult Cases
     func testUpdateResult() {
         // Given
-        calculatorService.setOperationsHistory("2.2+2.2")
+        calculatorService.setOperationsHistory("2.2+2.2/2.3*17.3")
 
         // When
         calculatorService.updateResult()
 
         // Then
-        XCTAssertEqual(calculatorService.getLastResult(), 4)
+        XCTAssertEqual(calculatorService.getLastResult(), 18.747826086956525)
     }
 
 }
