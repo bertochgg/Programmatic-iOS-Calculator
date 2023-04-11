@@ -1181,7 +1181,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator-iOS.app/Calculator-iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator-iOS-Dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Calculator-iOS-Dev";
 			};
 			name = Debug;
 		};
@@ -1201,7 +1201,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator-iOS.app/Calculator-iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator-iOS-Dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Calculator-iOS-Dev";
 			};
 			name = Release;
 		};
