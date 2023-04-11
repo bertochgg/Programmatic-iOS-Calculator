@@ -24,7 +24,7 @@ enum ButtonContent: Equatable {
 
 class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
     var content: ButtonContent?
-    
+
     weak var delegate: OutputChangerDelegate?
     
     override init(frame: CGRect) {
