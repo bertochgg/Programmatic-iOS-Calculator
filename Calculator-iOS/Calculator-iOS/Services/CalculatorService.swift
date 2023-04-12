@@ -46,24 +46,16 @@ class CalculatorService: CalculatorServiceProtocol {
             return
         }
         
-        guard let lastChar = operationsHistory.last else {
-            return
-        }
-        
         // Check if the expression ends with an operator and remove it
         let expressionString = operationsHistory
         let operators = ["+", "-", "*", "/"]
         let decimalPoint = "."
-        let penultimate = operationsHistory[operationsHistory.index(operationsHistory.endIndex, offsetBy: -2)]
-        if operators.contains(String(lastChar)) {
+        if let lastChar = operationsHistory.last, operators.contains(String(lastChar)) {
             return
-        } else if decimalPoint.contains(String(lastChar)) {
-            return
-        }
-        if operators.contains(String(lastChar)) && operators.contains(String(penultimate)) {
+        } else if let lastChar = operationsHistory.last, decimalPoint.contains(String(lastChar)) {
             return
         }
-        
+
         let expression = NSExpression(format: expressionString).toFloatingPointDivision()
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             currentResult = result
