@@ -442,4 +442,15 @@ class CalculatorServiceTests: XCTestCase {
         XCTAssertEqual(calculatorService.getLastResult(), 0)
     }
     
+    func testInvalidInputStartingWithDecimalPoint() {
+        // Given
+        calculatorService.setOperationsHistory(".3")
+        
+        // When
+        calculatorService.updateResult()
+        
+        // Then
+        XCTAssertEqual(calculatorService.getLastResult(), 0)
+    }
+    
 }
