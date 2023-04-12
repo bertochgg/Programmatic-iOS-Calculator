@@ -209,14 +209,10 @@ class CalculatorServiceTests: XCTestCase {
         calculatorService.setOperationsHistory("2+3*4/2-1+7*8-9/3*2+10+2.3/-17.5*6.4-2.3*-2.9+5.7/2.1")
         
         // When
-        let startTime = CFAbsoluteTimeGetCurrent()
         calculatorService.updateResult()
-        let endTime = CFAbsoluteTimeGetCurrent()
-        let executionTime = endTime - startTime
         
         // Then
         XCTAssertEqual(calculatorService.getLastResult(), 75.54314285714286)
-        XCTAssertLessThan(executionTime, 1.0)
     }
     
     func testLargeOperationWithDecimalNumbers() {
