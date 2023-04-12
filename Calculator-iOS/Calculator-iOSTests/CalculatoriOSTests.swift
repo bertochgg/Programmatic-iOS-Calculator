@@ -430,4 +430,16 @@ class CalculatorServiceTests: XCTestCase {
         XCTAssertTrue(calculatorService.getLastResult().isZero)
     }
     
+    // MARK: - Tests for invalid inputs
+    func testInvalidInputStartingWithOperators() {
+        // Given
+        calculatorService.setOperationsHistory("/3")
+        
+        // When
+        calculatorService.updateResult()
+        
+        // Then
+        XCTAssertEqual(calculatorService.getLastResult(), 0)
+    }
+    
 }

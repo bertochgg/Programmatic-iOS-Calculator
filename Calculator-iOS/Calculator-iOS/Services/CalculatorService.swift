@@ -34,7 +34,12 @@ class CalculatorService: CalculatorServiceProtocol {
     }
     
     func setOperationsHistory(_ newHistory: String) {
-        operationsHistory = newHistory
+        if ["+", "*", "/"].contains(newHistory.first) {
+            operationsHistory = "0"
+        } else {
+            operationsHistory = newHistory
+        }
+        
     }
     
     func getOperationsHistory() -> String {
