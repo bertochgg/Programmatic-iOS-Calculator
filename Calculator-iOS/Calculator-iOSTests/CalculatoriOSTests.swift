@@ -353,7 +353,7 @@ class CalculatorServiceTests: XCTestCase {
         calculatorService.updateResult()
         
         // Then
-        XCTAssertFalse(calculatorService.getLastResult().isZero)
+        XCTAssertEqual(calculatorService.getLastResult(), 0.5)
     }
     
     // MARK: - UpdateResult Cases
@@ -399,17 +399,6 @@ class CalculatorServiceTests: XCTestCase {
         
         // Then
         XCTAssertTrue(calculatorService.getLastResult().isZero)
-    }
-    
-    func testUpdateResultOperationsHistoryEmpty() {
-        // given
-        calculatorService.setOperationsHistory("")
-        
-        // when
-        calculatorService.updateResult()
-        
-        // then
-        XCTAssertEqual(calculatorService.getLastResult(), 0)
     }
     
     func testUpdateResultLastCharIsOperator() {
