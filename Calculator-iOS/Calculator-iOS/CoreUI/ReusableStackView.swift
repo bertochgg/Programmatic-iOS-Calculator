@@ -15,6 +15,26 @@ protocol ReusableStackViewProtocol {
     func setupStackViewWithRightData(viewModel: ReusableStackViewModel, stackViewData: StackViewsData, viewController: UIViewController)
 }
 
+//enum AccesibilityIdentifiers {
+//    enum LeftTopIdentifiers: String, CaseIterable {
+//        case Ac = "AcButton", delete = "deleteButton", divide = "divideButton"
+//        case seven = "sevenButton", eight = "eightButton", nine = "nineButton"
+//        case four = "fourButton", five = "fiveButton", six = "sixButton"
+//        case one = "oneButton",  two = "twoButton", three = "threeButton"
+//    }
+//
+//    enum LeftBottomIdentifiers: String, CaseIterable {
+//        case zero = "zeroButton", decimalPoint = "decimalPoint"
+//    }
+//
+//    enum RightIdentifiers: String, CaseIterable {
+//        case multiply = "multiplyButton"
+//        case minus = "minusButton"
+//        case plus = "plusButton"
+//        case equal = "equalButton"
+//    }
+//}
+
 class ReusableStackView: UIStackView, ReusableStackViewProtocol {
     
     let stackViewsStyles = StackViewsStyles()

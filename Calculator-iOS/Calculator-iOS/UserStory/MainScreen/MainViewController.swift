@@ -124,8 +124,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     }
     
     func clearAll() {
-        calculatorService.setOperationsHistory("0")
-        calculatorService.setLastResult(0)
+        calculatorService.clearAll()
         operationsLabel.text = calculatorService.getOperationsHistory()
         resultLabel.text = String(calculatorService.getLastResult())
         tappedButtonValues = []

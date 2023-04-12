@@ -13,6 +13,11 @@ class CalculatorService: CalculatorServiceProtocol {
     private var operationsHistory: String = ""
     private var currentResult: Double = 0
     
+    func clearAll() {
+        operationsHistory = "0"
+        currentResult = 0
+    }
+    
     func clearLastInput() {
         if !operationsHistory.isEmpty {
             print(operationsHistory)

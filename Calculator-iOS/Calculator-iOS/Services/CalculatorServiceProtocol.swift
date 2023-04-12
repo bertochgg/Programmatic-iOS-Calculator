@@ -10,6 +10,7 @@ import Foundation
 
 protocol CalculatorServiceProtocol {
     
+    func clearAll()
     func clearLastInput()
     func getLastResult() -> Double
     func getOperationsHistory() -> String
