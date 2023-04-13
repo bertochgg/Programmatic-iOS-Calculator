@@ -25,10 +25,6 @@ class CalculatorService: CalculatorServiceProtocol {
         }
     }
     
-    func setLastResult(_ newValue: Double) {
-        currentResult = newValue
-    }
-    
     func getLastResult() -> Double {
         return currentResult
     }

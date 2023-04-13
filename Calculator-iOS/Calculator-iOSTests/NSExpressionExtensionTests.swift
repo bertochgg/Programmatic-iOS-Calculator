@@ -5,9 +5,8 @@
 //  Created by Humberto Garcia on 12/04/23.
 //  Copyright © 2023 Grid Dynamics. All rights reserved.
 //
-
-import XCTest
 @testable import Calculator_iOS_Dev
+import XCTest
 
 class NSExpressionExtensionTests: XCTestCase {
     

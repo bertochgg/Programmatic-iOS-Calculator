@@ -24,6 +24,8 @@
 		04B8E90E2801F3C300EF70CD /* CalculatoriOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E90D2801F3C300EF70CD /* CalculatoriOSUITests.swift */; };
 		04B8E9102801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E90F2801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift */; };
 		20716530858533A383C96833 /* Pods_App_Calculator_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C2F048D6901DC5382FCCED /* Pods_App_Calculator_iOSTests.framework */; };
+		5F13340329E85AFA005F6098 /* OperationsTestsCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F13340229E85AF9005F6098 /* OperationsTestsCases.swift */; };
+		5F13340529E85DC4005F6098 /* ClearLastInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F13340429E85DC4005F6098 /* ClearLastInputTests.swift */; };
 		5F167CBB29C230680003799F /* ReusableCommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F167CBA29C230680003799F /* ReusableCommonButton.swift */; };
 		5F1E48CB29E72A0300750160 /* NSExpressionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E48CA29E72A0300750160 /* NSExpressionExtensionTests.swift */; };
 		5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A921729C4E0BA00A11472 /* UIConstants.swift */; };
@@ -137,6 +139,8 @@
 		04B8E90F2801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatoriOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		341ABA3C7AC3E3F4BAF7250F /* Pods-App-Calculator-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOSTests/Pods-App-Calculator-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44ECBB306DB0E87790B171D8 /* Pods_App_Calculator_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Calculator_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F13340229E85AF9005F6098 /* OperationsTestsCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsTestsCases.swift; sourceTree = "<group>"; };
+		5F13340429E85DC4005F6098 /* ClearLastInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearLastInputTests.swift; sourceTree = "<group>"; };
 		5F167CBA29C230680003799F /* ReusableCommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCommonButton.swift; sourceTree = "<group>"; };
 		5F1E48CA29E72A0300750160 /* NSExpressionExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSExpressionExtensionTests.swift; sourceTree = "<group>"; };
 		5F3A921729C4E0BA00A11472 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
@@ -311,6 +315,8 @@
 			children = (
 				04B8E9032801F3C300EF70CD /* CalculatoriOSTests.swift */,
 				5F1E48CA29E72A0300750160 /* NSExpressionExtensionTests.swift */,
+				5F13340229E85AF9005F6098 /* OperationsTestsCases.swift */,
+				5F13340429E85DC4005F6098 /* ClearLastInputTests.swift */,
 			);
 			path = "Calculator-iOSTests";
 			sourceTree = "<group>";
@@ -920,7 +926,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F13340329E85AFA005F6098 /* OperationsTestsCases.swift in Sources */,
 				5F1E48CB29E72A0300750160 /* NSExpressionExtensionTests.swift in Sources */,
+				5F13340529E85DC4005F6098 /* ClearLastInputTests.swift in Sources */,
 				04B8E9042801F3C300EF70CD /* CalculatoriOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
