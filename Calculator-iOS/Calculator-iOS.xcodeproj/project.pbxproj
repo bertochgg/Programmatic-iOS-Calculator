@@ -91,6 +91,8 @@
 		5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */; };
 		5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */; };
 		5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863AB29CE6A6F0095BD87 /* Constraints.swift */; };
+		5FEF7E6D29E7796200D6BFCC /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEF7E6C29E7796200D6BFCC /* AccessibilityIdentifiers.swift */; };
+		5FEF7E6E29E7796200D6BFCC /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEF7E6C29E7796200D6BFCC /* AccessibilityIdentifiers.swift */; };
 		5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */; };
 		5FFEF6ED29CD1F7D003715AD /* StackViewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6EC29CD1F7D003715AD /* StackViewsData.swift */; };
 		D348476B9C65150D10A1658B /* Pods_App_Calculator_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A99E9570C3959C34541237 /* Pods_App_Calculator_iOS.framework */; };
@@ -167,6 +169,7 @@
 		5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableStackViewModel.swift; sourceTree = "<group>"; };
 		5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewsStyles.swift; sourceTree = "<group>"; };
 		5FC863AB29CE6A6F0095BD87 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		5FEF7E6C29E7796200D6BFCC /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		5FFEF6EC29CD1F7D003715AD /* StackViewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewsData.swift; sourceTree = "<group>"; };
 		6DC52246876E516106CAD065 /* Pods-App-Calculator-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOS.release.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOS/Pods-App-Calculator-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -421,6 +424,7 @@
 				5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */,
 				5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */,
 				5FC863AB29CE6A6F0095BD87 /* Constraints.swift */,
+				5FEF7E6C29E7796200D6BFCC /* AccessibilityIdentifiers.swift */,
 			);
 			path = CoreUI;
 			sourceTree = "<group>";
@@ -905,6 +909,7 @@
 				5F6CC45429DCD21C00D072B4 /* NSExpressionExtension.swift in Sources */,
 				5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */,
 				5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */,
+				5FEF7E6D29E7796200D6BFCC /* AccessibilityIdentifiers.swift in Sources */,
 				5F3A921829C4E0BA00A11472 /* UIConstants.swift in Sources */,
 				5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */,
 				5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */,
@@ -951,6 +956,7 @@
 				5F6D071629E4D98200AE08D4 /* NSExpressionExtension.swift in Sources */,
 				5F6D071729E4D98200AE08D4 /* ReusableStackViewModel.swift in Sources */,
 				5F6D071829E4D98200AE08D4 /* ButtonStyles.swift in Sources */,
+				5FEF7E6E29E7796200D6BFCC /* AccessibilityIdentifiers.swift in Sources */,
 				5F6D071929E4D98200AE08D4 /* UIConstants.swift in Sources */,
 				5F6D071A29E4D98200AE08D4 /* StackViewsStyles.swift in Sources */,
 				5F6D071B29E4D98200AE08D4 /* Constraints.swift in Sources */,
@@ -1125,7 +1131,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = MainViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1135,9 +1141,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bertochgg.chgg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1153,7 +1162,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = MainViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1163,9 +1172,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bertochgg.chgg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1257,7 +1269,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = MainViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1285,7 +1297,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = MainViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (

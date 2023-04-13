@@ -102,14 +102,16 @@ class CalculatorButton: UIButton, ReusableCommonButtonProtocol {
         case .digit(let text):
             print("The user tapped \(text) button")
             delegate?.didChangeOutput(digit: text)
+            print(self.accessibilityIdentifier!)
             
         case .sfSymbol(let symbolName):
             print("The user tapped \(symbolName) button")
             delegate?.didChangeOutput(digit: symbolName)
-            
+            print(self.accessibilityIdentifier!)
         case .specialSymbol(let text):
             print("The user tapped \(text) button")
             delegate?.didChangeOutput(digit: text)
+            print(self.accessibilityIdentifier!)
         }
         
     }

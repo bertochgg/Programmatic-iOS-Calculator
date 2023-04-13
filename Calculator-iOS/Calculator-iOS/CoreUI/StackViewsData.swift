@@ -9,7 +9,7 @@
 import UIKit
 
 class StackViewsData {
-    
+
     let buttonStyle = ButtonStyles()
     
     lazy var leftTopStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
@@ -42,4 +42,21 @@ class StackViewsData {
          (.specialSymbol("."), buttonStyle.digitButton)]
     ]
     
+    lazy var leftTopIdentifiers: [[AccessibilityIdentifiers.LeftTopIdentifiers]] = [
+        [.ac, .delete, .divide],
+        [.seven, .eight, .nine],
+        [.four, .five, .six],
+        [.one, .two, .three]
+    ]
+    
+    lazy var leftBottomIdentifiers: [[AccessibilityIdentifiers.LeftBottomIdentifiers]] = [
+        [.zero, .decimalPoint]
+    ]
+    
+    lazy var rightIdentifiers: [[AccessibilityIdentifiers.RightIdentifiers]] = [
+        [.multiply,
+         .minus,
+         .plus,
+         .equal]
+    ]
 }
