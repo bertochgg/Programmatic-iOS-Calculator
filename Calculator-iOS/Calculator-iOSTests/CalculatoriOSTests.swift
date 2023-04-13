@@ -315,19 +315,6 @@ class CalculatorServiceTests: XCTestCase {
         XCTAssertEqual(calculatorService.getLastResult(), 46.505714285714284)
     }
     
-    func testSetOperationsHistory_InvalidRegexPattern() {
-        // Given pattern
-        let invalidPattern = "(?<=\\+|\\-|\\*|\\/|^)(" // Invalid regular expression pattern
-        
-        // When
-        calculatorService.setOperationsHistory("5+5") // Call the method with a valid parameter
-        calculatorService.setOperationsHistory("1.2+.4-.5*.6/.7") // Call the method with a parameter that requires pattern substitution
-        
-        // Then
-        XCTAssertThrowsError(try NSRegularExpression(pattern: invalidPattern), "Invalid regex pattern should throw an error") { error in
-            // Verify that the error message is logged to the console
-            XCTAssertEqual(error.localizedDescription, "The value “(?<=\\+|\\-|\\*|\\/|^)(” is invalid.")
-        }
-    }
+
 
 }

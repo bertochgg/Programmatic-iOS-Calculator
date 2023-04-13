@@ -37,13 +37,10 @@ class CalculatorService: CalculatorServiceProtocol {
             // operationsHistory.insert("0", at: operationsHistory.startIndex)
         } else if newHistory.contains("+.") || newHistory.contains("-.") || newHistory.contains("*.") || newHistory.contains("/.") {
             let pattern = "(?<=\\+|\\-|\\*|\\/|^)\\."
-            do {
-                let regex = try NSRegularExpression(pattern: pattern)
+            if let regex = try? NSRegularExpression(pattern: pattern) {
                 let range = NSRange(newHistory.startIndex..., in: newHistory)
                 let modifiedHistory = regex.stringByReplacingMatches(in: newHistory, options: [], range: range, withTemplate: "0.")
                 operationsHistory = modifiedHistory
-            } catch let error {
-                print("\(error.localizedDescription)")
             }
             
         } else {
@@ -70,7 +67,7 @@ class CalculatorService: CalculatorServiceProtocol {
         } else if let lastChar = operationsHistory.last, decimalPoint.contains(String(lastChar)) {
             return
         }
-
+        
         let expression = NSExpression(format: expressionString).toFloatingPointDivision()
         if let result = expression.expressionValue(with: nil, context: nil) as? Double {
             currentResult = result
