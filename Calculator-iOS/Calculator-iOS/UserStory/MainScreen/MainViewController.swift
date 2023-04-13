@@ -223,11 +223,10 @@ class MainViewController: UIViewController, OutputChangerDelegate {
     }
     
     func updateResult() {
-        guard let lastDigit = tappedButtonValues.last else {
+        guard let lastDigit = tappedButtonValues.last,
+        let penultimate = tappedButtonValues.suffix(2).first else {
             return
         }
-        
-        let penultimate = tappedButtonValues[tappedButtonValues.index(tappedButtonValues.endIndex, offsetBy: -2)]
         
         if operators.contains(String(lastDigit)) && operators.contains(String(penultimate)) {
             showResultAlertMessage()
