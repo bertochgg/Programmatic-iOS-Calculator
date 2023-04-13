@@ -30,8 +30,22 @@ class CalculatorService: CalculatorServiceProtocol {
     }
     
     func setOperationsHistory(_ newHistory: String) {
-        if ["+", "*", "/", "."].contains(newHistory.first) {
+        if ["+", "*", "/"].contains(newHistory.first) {
             operationsHistory = "0"
+        } else if ["."].contains(newHistory.first) {
+            operationsHistory += "0\(newHistory)"
+            // operationsHistory.insert("0", at: operationsHistory.startIndex)
+        } else if newHistory.contains("+.") || newHistory.contains("-.") || newHistory.contains("*.") || newHistory.contains("/.") {
+            let pattern = "(?<=\\+|\\-|\\*|\\/|^)\\."
+            do {
+                let regex = try NSRegularExpression(pattern: pattern)
+                let range = NSRange(newHistory.startIndex..., in: newHistory)
+                let modifiedHistory = regex.stringByReplacingMatches(in: newHistory, options: [], range: range, withTemplate: "0.")
+                operationsHistory = modifiedHistory
+            } catch let error {
+                print("\(error.localizedDescription)")
+            }
+            
         } else {
             operationsHistory = newHistory
         }
