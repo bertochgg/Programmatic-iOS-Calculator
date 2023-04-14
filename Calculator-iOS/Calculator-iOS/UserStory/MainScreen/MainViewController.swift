@@ -228,7 +228,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
             return
         }
         
-        if operators.contains(String(penultimate)) && operators.contains(String(penultimate)) {
+        if operators.contains(String(lastDigit)) && operators.contains(String(penultimate)) {
             showResultAlertMessage()
         }
         
