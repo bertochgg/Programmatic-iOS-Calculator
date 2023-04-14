@@ -34,6 +34,7 @@ final class CalculatoriOSUITests: XCTestCase {
 //    }
     
     func testCalculatorButtons() {
-        
+        app.otherElements.containing(.button, identifier: "Ac").element.tap()
+        XCTAssert(app.exists)
     }
 }
