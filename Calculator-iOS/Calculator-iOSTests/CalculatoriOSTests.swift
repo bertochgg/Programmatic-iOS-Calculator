@@ -315,6 +315,4 @@ class CalculatorServiceTests: XCTestCase {
         XCTAssertEqual(calculatorService.getLastResult(), 46.505714285714284)
     }
     
-
-
 }

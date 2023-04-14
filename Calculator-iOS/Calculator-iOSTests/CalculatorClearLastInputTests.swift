@@ -8,7 +8,7 @@
 @testable import Calculator_iOS_Dev
 import XCTest
 
-class ClearLastInputTests: XCTestCase {
+class CalculatorClearLastInputTests: XCTestCase {
     
     var calculatorService: CalculatorServiceProtocol!
     
