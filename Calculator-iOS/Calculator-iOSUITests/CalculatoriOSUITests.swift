@@ -5,7 +5,6 @@
 //  Created by Serhii Liamtsev on 4/9/22.
 //  Copyright © 2022 Grid Dynamics. All rights reserved.
 //
-@testable import Calculator_iOS_Dev
 import XCTest
 
 final class CalculatoriOSUITests: XCTestCase {
@@ -19,23 +18,9 @@ final class CalculatoriOSUITests: XCTestCase {
         app.launch()
     }
     
-    //    func testExample() throws {
-    //        let app = XCUIApplication()
-    //        app.launch()
-    //        XCTAssert(true, "The true test")
-    //    }
-    //
-    //    func testLaunchPerformance() throws {
-    //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-    //            measure(metrics: [XCTApplicationLaunchMetric()]) {
-    //                XCUIApplication().launch()
-    //            }
-    //        }
-    //    }
-    
     func testCalculatorButtons() {
         app.buttons["main-screen.clearAll.button"].tap()
-        app.buttons["main-screen.delete.button"]
+        app.buttons["main-screen.delete.button"].tap()
         app.buttons["main-screen.divide.button"].tap()
         app.buttons["main-screen.multiply.button"].tap()
         app.buttons["main-screen.seven.button"].tap()
@@ -56,339 +41,257 @@ final class CalculatoriOSUITests: XCTestCase {
     }
     
     // MARK: - Normal Operations
+    // Helper function to perform calculations
+    func calculate(_ buttons: [String], _ expectedResult: String, _ expectedHistory: String) {
+        for button in buttons {
+            app.buttons[button].tap()
+        }
+        app.buttons["main-screen.equal.button"].tap()
+        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, expectedHistory)
+        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, expectedResult)
+    }
+
+    // MARK: - Normal Operations
     func testAddition() {
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=15")
+        calculate(["main-screen.seven.button", "main-screen.plus.button", "main-screen.eight.button"], "=15", "7+8")
     }
-    
+
     func testSubtraction() {
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=-1")
+        calculate(["main-screen.seven.button", "main-screen.minus.button", "main-screen.eight.button"], "=-1", "7-8")
     }
-    
+
     func testMultiplication() {
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=56")
+        calculate(["main-screen.seven.button", "main-screen.multiply.button", "main-screen.eight.button"], "=56", "7*8")
     }
-    
+
     func testDivision() {
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.divide.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=0.875")
+        calculate(["main-screen.seven.button", "main-screen.divide.button", "main-screen.eight.button"], "=0.875", "7/8")
     }
-    
+
     // MARK: - Decimal Input
     func testDecimalInput() {
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=7.8")
+        calculate(["main-screen.seven.button", "main-screen.decimalPoint.button", "main-screen.eight.button"], "=7.8", "7.8")
     }
-    
+
     func testAdditionWithDecimalNumbers() {
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=16.5")
+        calculate(["main-screen.seven.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.seven.button",
+                   "main-screen.plus.button",
+                   "main-screen.eight.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.eight.button"], "=16.5", "7.7+8.8")
     }
-    
+
     func testSubtractionWithDecimalNumbers() {
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=-1.1")
+        calculate(["main-screen.seven.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.seven.button",
+                   "main-screen.minus.button",
+                   "main-screen.eight.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.eight.button"], "=-1.1", "7.7-8.8")
     }
-    
+
     func testMultiplicationWithDecimalNumbers() {
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=67.76")
+        calculate(["main-screen.seven.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.seven.button",
+                   "main-screen.multiply.button",
+                   "main-screen.eight.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.eight.button"], "=67.76", "7.7*8.8")
     }
-    
+
     func testDivisionWithDecimalNumbers() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.divide.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=1.10227")
+        calculate(["main-screen.nine.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.seven.button",
+                   "main-screen.divide.button",
+                   "main-screen.eight.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.eight.button"], "=1.10227", "9.7/8.8")
     }
-    
     // MARK: - Negative numbers
     func testNegativeInput() {
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=-9")
+        calculate(["main-screen.minus.button",
+                   "main-screen.nine.button",
+                   "main-screen.equal.button"], "=-9", "-9")
     }
     
     func testNegativeOperation() {
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=-81")
+        calculate(["main-screen.minus.button",
+                   "main-screen.nine.button",
+                   "main-screen.multiply.button",
+                   "main-screen.nine.button",
+                   "main-screen.equal.button"], "=-81", "-9*9")
     }
     
     func testNegativeOperandsWithPositiveResult() {
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=81")
+        calculate(["main-screen.minus.button",
+                   "main-screen.nine.button",
+                   "main-screen.multiply.button",
+                   "main-screen.minus.button",
+                   "main-screen.nine.button",
+                   "main-screen.equal.button"], "=81", "-9*-9")
     }
     
     // MARK: - AC Button
     func testACToClearOperationsHistoryLabel() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.clearAll.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "0")
+        calculate(["main-screen.nine.button", "main-screen.clearAll.button"], "0.0", "0")
     }
     
     func testACToClearLabelsAfterGettingOperationResult() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.five.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        app.buttons["main-screen.clearAll.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "0")
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "0.0")
+        calculate(["main-screen.nine.button",
+                   "main-screen.multiply.button",
+                   "main-screen.five.button",
+                   "main-screen.equal.button",
+                   "main-screen.clearAll.button"], "0.0", "0")
     }
     
     // MARK: - Logical Errors
     func testDivisionByZero() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.divide.button"].tap()
-        app.buttons["main-screen.zero.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=+∞")
+        calculate(["main-screen.nine.button",
+                   "main-screen.divide.button",
+                   "main-screen.zero.button",
+                   "main-screen.equal.button"], "=+∞", "9/0")
     }
     
     func testNegativeDivisionByZero() {
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.divide.button"].tap()
-        app.buttons["main-screen.zero.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=-∞")
+        calculate(["main-screen.minus.button",
+                   "main-screen.nine.button",
+                   "main-screen.divide.button",
+                   "main-screen.zero.button",
+                   "main-screen.equal.button"], "=-∞", "-9/0")
     }
     
     func testIfUserCanEnterDoubleDecimalPoints() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "9.3")
+        calculate(["main-screen.nine.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.decimalPoint.button"], "0", "9.3")
     }
     
     func testInvalidInput() {
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "9")
+        calculate(["main-screen.plus.button",
+                   "main-screen.multiply.button",
+                   "main-screen.nine.button"], "0", "9")
     }
     
     // MARK: - Large Operations
     func testLargeOperations() {
-        app.buttons["main-screen.one.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.two.button"].tap()
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.four.button"].tap()
-        app.buttons["main-screen.divide.button"].tap()
-        app.buttons["main-screen.five.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.six.button"].tap()
-        app.buttons["main-screen.minus.button"].tap()
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.eight.button"].tap()
-        app.buttons["main-screen.divide.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.five.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.six.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=33.37778")
+        calculate(["main-screen.one.button", "main-screen.plus.button", "main-screen.two.button",
+                   "main-screen.minus.button", "main-screen.three.button", "main-screen.multiply.button",
+                   "main-screen.four.button", "main-screen.divide.button", "main-screen.five.button",
+                   "main-screen.plus.button", "main-screen.six.button", "main-screen.minus.button",
+                   "main-screen.seven.button", "main-screen.multiply.button", "main-screen.eight.button",
+                   "main-screen.divide.button", "main-screen.nine.button", "main-screen.plus.button",
+                   "main-screen.five.button", "main-screen.multiply.button", "main-screen.six.button",
+                   "main-screen.plus.button", "main-screen.three.button",
+                   "main-screen.equal.button"], "=33.37778", "1+2-3*4/5+6-7*8/9+5*6+3")
     }
     
     // MARK: - Delete Button
     func testDeleteLastInput() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "93")
+        calculate(["main-screen.nine.button",
+                   "main-screen.three.button",
+                   "main-screen.plus.button",
+                   "main-screen.delete.button"], "=93", "93")
     }
     
     func testDeleteButtonUntilTheEndAndProveZeroAppears() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "0")
+        calculate(["main-screen.nine.button",
+                   "main-screen.three.button",
+                   "main-screen.plus.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button"], "0", "0")
     }
     
     func testDeleteButtonUntilTheEndAndCheckArrayIsNotOverflowed() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.plus.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "0")
+        calculate(["main-screen.nine.button",
+                   "main-screen.three.button",
+                   "main-screen.plus.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button"], "0", "0")
     }
     
     func testDeleteButtonResetsDecimalFlagWhenDecimalPointIsDeleted() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "9.")
+        calculate(["main-screen.nine.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.decimalPoint.button"], "=0", "9.")
     }
     
     func testDeleteButtonDoesNotResetsDecimalFlagWhenOperatorIsDeleted() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.divide.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "9.3")
+        calculate(["main-screen.nine.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.divide.button",
+                   "main-screen.three.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.delete.button",
+                   "main-screen.decimalPoint.button"], "=9.3", "9.3")
     }
     
     func testDeleteButtonDoesNotResetsDecimalFlagWhenNumberNearDecimalIsDeleted() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.delete.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "9.3")
+        calculate(["main-screen.nine.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.delete.button",
+                   "main-screen.three.button",
+                   "main-screen.decimalPoint.button"], "=9.3", "9.3")
     }
     
     // MARK: - Decimal Flag
     func testDecimalFlagWhenInputTwoDecimalNumbers() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.divide.button"].tap()
-        app.buttons["main-screen.two.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.nine.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "9.3/2.9")
+        calculate(["main-screen.nine.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.divide.button",
+                   "main-screen.two.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.nine.button"], "=3.2069", "9.3/2.9")
     }
     
     // MARK: - Keep Entering input after result has been given
     func testEnterInputAfterEqualHasBeenTapped() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.five.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.seven.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.history.label"].label, "9.3*5.3*7")
+        calculate(["main-screen.nine.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.multiply.button",
+                   "main-screen.five.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.equal.button",
+                   "main-screen.multiply.button",
+                   "main-screen.seven.button"], "=345.03", "9.3*5.3*7")
     }
     
     func testEnterInputAfterEqualHasBeenTappedAndGetResult() {
-        app.buttons["main-screen.nine.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.five.button"].tap()
-        app.buttons["main-screen.decimalPoint.button"].tap()
-        app.buttons["main-screen.three.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        app.buttons["main-screen.multiply.button"].tap()
-        app.buttons["main-screen.seven.button"].tap()
-        app.buttons["main-screen.equal.button"].tap()
-        
-        XCTAssertEqual(app.staticTexts["main-screen.result.label"].label, "=345.03")
+        calculate(["main-screen.nine.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.multiply.button",
+                   "main-screen.five.button",
+                   "main-screen.decimalPoint.button",
+                   "main-screen.three.button",
+                   "main-screen.equal.button",
+                   "main-screen.multiply.button",
+                   "main-screen.seven.button",
+                   "main-screen.equal.button"], "=345.03", "9.3*5.3*7")
     }
     
     // MARK: - Alerts
