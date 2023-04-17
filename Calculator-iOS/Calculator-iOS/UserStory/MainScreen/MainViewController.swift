@@ -97,12 +97,15 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         operationsLabel.textAlignment = .right
         operationsLabel.numberOfLines = 0
         operationsLabel.sizeToFit()
+        operationsLabel.accessibilityIdentifier = "history"
         
         resultLabel.text = "0"
         resultLabel.font = UIFont(name: "Poppins", size: 48)
         resultLabel.font = .systemFont(ofSize: 48, weight: .medium)
         resultLabel.textColor = UIConstants.resultTextColor ?? .white
         resultLabel.textAlignment = .right
+        operationsLabel.numberOfLines = 2
+        resultLabel.accessibilityIdentifier = "result"
         
         stackView.addArrangedSubview(operationsLabel)
         stackView.addArrangedSubview(resultLabel)
@@ -129,6 +132,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         resultLabel.text = String(calculatorService.getLastResult())
         tappedButtonValues = []
         isDecimal = false
+        isOperand = true
     }
     
     func deleteLastDigit(_ digit: String) {
@@ -157,6 +161,9 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         if let lastChar = tappedButtonValues.last, operators.contains(lastChar) && digit == "delete.left" {
             isOperand = false
             isDecimal = true
+            if lastChar.contains(where: { "0123456789".contains($0) }) && isDecimal {
+                return
+            }
             print("hola")
             print(lastChar)
         }
@@ -247,7 +254,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         let result = calculatorService.getLastResult()
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 2
+        formatter.maximumFractionDigits = 5
         if let formattedResult = formatter.string(from: NSNumber(value: result)) {
             resultLabel.text = "=\(formattedResult)"
         }

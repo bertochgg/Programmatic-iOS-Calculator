@@ -116,6 +116,13 @@
 			remoteGlobalIDString = 04B8E8E82801F3B800EF70CD;
 			remoteInfo = "Calculator-iOS";
 		};
+		5F4FAF1F29EA0A7B00B5C74A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04B8E8E12801F3B800EF70CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F6D070E29E4D98200AE08D4;
+			remoteInfo = "Calculator-iOS-Release";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -565,6 +572,7 @@
 			);
 			dependencies = (
 				04B8E90B2801F3C300EF70CD /* PBXTargetDependency */,
+				5F4FAF2029EA0A7B00B5C74A /* PBXTargetDependency */,
 			);
 			name = "Calculator-iOSUITests";
 			productName = "Calculator-iOSUITests";
@@ -989,6 +997,11 @@
 			target = 04B8E8E82801F3B800EF70CD /* Calculator-iOS-Dev */;
 			targetProxy = 04B8E90A2801F3C300EF70CD /* PBXContainerItemProxy */;
 		};
+		5F4FAF2029EA0A7B00B5C74A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F6D070E29E4D98200AE08D4 /* Calculator-iOS-Release */;
+			targetProxy = 5F4FAF1F29EA0A7B00B5C74A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1243,7 +1256,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Calculator-iOS";
+				TEST_TARGET_NAME = "Calculator-iOS-Dev";
 			};
 			name = Debug;
 		};
@@ -1261,7 +1274,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Calculator-iOS";
+				TEST_TARGET_NAME = "Calculator-iOS-Dev";
 			};
 			name = Release;
 		};
