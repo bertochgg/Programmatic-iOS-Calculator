@@ -23,11 +23,49 @@ enum AccessibilityIdentifiers {
         case one = "1"
         case two = "2"
         case three = "3"
+        
+        var name: String {
+            switch self {
+            case .one:
+                return "one"
+            case .two:
+                return "two"
+            case .three:
+                return "three"
+            case .four:
+                return "four"
+            case .five:
+                return "five"
+            case .six:
+                return "six"
+            case .seven:
+                return "seven"
+            case .eight:
+                return "eight"
+            case .nine:
+                return "nine"
+            case .ac:
+                return "clearAll"
+            case .delete:
+                return "delete"
+            case .divide:
+                return "divide"
+            }
+        }
     }
     
     enum LeftBottomIdentifiers: String, CaseIterable {
         case zero = "0"
         case decimalPoint = "."
+        
+        var name: String {
+            switch self {
+            case .zero:
+                return "zero"
+            case .decimalPoint:
+                return "decimalPoint"
+            }
+        }
     }
     
     enum RightIdentifiers: String, CaseIterable {
@@ -35,6 +73,19 @@ enum AccessibilityIdentifiers {
         case minus = "-"
         case plus = "+"
         case equal = "="
+        
+        var name: String {
+            switch self {
+            case .multiply:
+                return "multiply"
+            case .minus:
+                return "minus"
+            case .plus:
+                return "plus"
+            case .equal:
+                return "equal"
+            }
+        }
     }
     
 }

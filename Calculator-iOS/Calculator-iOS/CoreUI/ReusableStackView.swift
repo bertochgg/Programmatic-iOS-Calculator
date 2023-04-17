@@ -47,13 +47,13 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
                 
                 for identifier in AccessibilityIdentifiers.LeftTopIdentifiers.allCases {
                     if case .digit(let digit) = content, identifier.rawValue == digit {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     } else if case .sfSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     } else if case .specialSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     }
                 }
@@ -91,13 +91,13 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
                 
                 for identifier in AccessibilityIdentifiers.LeftBottomIdentifiers.allCases {
                     if case .digit(let digit) = content, identifier.rawValue == digit {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     } else if case .sfSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     } else if case .specialSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     }
                 }
@@ -134,13 +134,13 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
                 
                 for identifier in AccessibilityIdentifiers.RightIdentifiers.allCases {
                     if case .digit(let digit) = content, identifier.rawValue == digit {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     } else if case .sfSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     } else if case .specialSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.rawValue
+                        button.accessibilityIdentifier = "main-screen.\(identifier.name).button"
                         break
                     }
                 }
