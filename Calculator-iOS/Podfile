@@ -32,12 +32,19 @@ end
 
 abstract_target 'App' do
   
-  target 'Calculator-iOS' do
-    
+  target 'Calculator-iOS-Dev' do
+     
     project 'Calculator-iOS'
     development_pods
-    
-  end
+     
+   end
+
+   target 'Calculator-iOS-Release' do
+
+    project 'Calculator-iOS'
+    development_pods
+
+   end
   
   target 'Calculator-iOSTests' do
     

@@ -27,29 +27,29 @@ enum AccessibilityIdentifiers {
         var name: String {
             switch self {
             case .one:
-                return "one"
+                return "main-screen.one.button"
             case .two:
-                return "two"
+                return "main-screen.two.button"
             case .three:
-                return "three"
+                return "main-screen.three.button"
             case .four:
-                return "four"
+                return "main-screen.four.button"
             case .five:
-                return "five"
+                return "main-screen.five.button"
             case .six:
-                return "six"
+                return "main-screen.six.button"
             case .seven:
-                return "seven"
+                return "main-screen.seven.button"
             case .eight:
-                return "eight"
+                return "main-screen.eight.button"
             case .nine:
-                return "nine"
+                return "main-screen.nine.button"
             case .ac:
-                return "clearAll"
+                return "main-screen.clearAll.button"
             case .delete:
-                return "delete"
+                return "main-screen.delete.button"
             case .divide:
-                return "divide"
+                return "main-screen.divide.button"
             }
         }
     }
@@ -61,9 +61,9 @@ enum AccessibilityIdentifiers {
         var name: String {
             switch self {
             case .zero:
-                return "zero"
+                return "main-screen.zero.button"
             case .decimalPoint:
-                return "decimalPoint"
+                return "main-screen.decimalPoint.button"
             }
         }
     }
@@ -77,15 +77,20 @@ enum AccessibilityIdentifiers {
         var name: String {
             switch self {
             case .multiply:
-                return "multiply"
+                return "main-screen.multiply.button"
             case .minus:
-                return "minus"
+                return "main-screen.minus.button"
             case .plus:
-                return "plus"
+                return "main-screen.plus.button"
             case .equal:
-                return "equal"
+                return "main-screen.equal.button"
             }
         }
+    }
+    
+    enum Labels: String {
+        case history = "main-screen.history.label"
+        case result = "main-screen.result.label"
     }
     
 }
