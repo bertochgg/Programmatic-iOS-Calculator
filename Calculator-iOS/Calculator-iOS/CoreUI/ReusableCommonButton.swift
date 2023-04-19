@@ -17,5 +17,5 @@ struct ReusableCommonButton {
     let borderWidght: CGFloat
     let borderColor: UIColor
     let bgColor: UIColor
-    
+
 }

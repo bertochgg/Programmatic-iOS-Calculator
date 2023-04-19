@@ -97,7 +97,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         operationsLabel.textAlignment = .right
         operationsLabel.numberOfLines = 0
         operationsLabel.sizeToFit()
-        operationsLabel.accessibilityIdentifier = AccessibilityIdentifiers.Labels.history.rawValue
+        operationsLabel.accessibilityIdentifier = AccessibilityIdentifiers.LabelIdentifiers.history.rawValue
         
         resultLabel.text = "0"
         resultLabel.font = UIFont(name: "Poppins", size: 48)
@@ -105,7 +105,7 @@ class MainViewController: UIViewController, OutputChangerDelegate {
         resultLabel.textColor = UIConstants.resultTextColor ?? .white
         resultLabel.textAlignment = .right
         operationsLabel.numberOfLines = 2
-        resultLabel.accessibilityIdentifier = AccessibilityIdentifiers.Labels.result.rawValue
+        resultLabel.accessibilityIdentifier = AccessibilityIdentifiers.LabelIdentifiers.result.rawValue
         
         stackView.addArrangedSubview(operationsLabel)
         stackView.addArrangedSubview(resultLabel)

@@ -8,26 +8,36 @@
 
 import UIKit
 
+typealias identifier = AccessibilityIdentifiers
+
+struct StackViewData {
+    
+    let content: ButtonContent
+    let style: ReusableCommonButton
+    let identifier: String
+    
+}
+
 class StackViewsData {
 
-    let buttonStyle = ButtonStyles()
+    lazy var buttonStyle = ButtonStyles()
     
-    lazy var leftTopStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.specialSymbol("Ac"), buttonStyle.cleanButton),
-         (.sfSymbol("delete.left"), buttonStyle.cleanButton),
-         (.specialSymbol("/"), buttonStyle.operatorButton)],
+    lazy var leftTopStackViewData: [[(ButtonContent, ReusableCommonButton, String)]] = [
+        [(.specialSymbol("Ac"), buttonStyle.cleanButton, identifier.LeftTopIdentifiers.clearAll.rawValue),
+         (.sfSymbol("delete.left"), buttonStyle.cleanButton, identifier.LeftTopIdentifiers.delete.rawValue),
+         (.specialSymbol("/"), buttonStyle.operatorButton, identifier.LeftTopIdentifiers.divide.rawValue)],
         
-        [(.digit("7"), buttonStyle.digitButton),
-         (.digit("8"), buttonStyle.digitButton),
-         (.digit("9"), buttonStyle.digitButton)],
+        [(.digit("7"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.seven.rawValue),
+         (.digit("8"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.eight.rawValue),
+         (.digit("9"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.nine.rawValue)],
         
-        [(.digit("4"), buttonStyle.digitButton),
-         (.digit("5"), buttonStyle.digitButton),
-         (.digit("6"), buttonStyle.digitButton)],
+        [(.digit("4"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.four.rawValue),
+         (.digit("5"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.five.rawValue),
+         (.digit("6"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.six.rawValue)],
         
-        [(.digit("1"), buttonStyle.digitButton),
-         (.digit("2"), buttonStyle.digitButton),
-         (.digit("3"), buttonStyle.digitButton)]
+        [(.digit("1"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.one.rawValue),
+         (.digit("2"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.two.rawValue),
+         (.digit("3"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.three.rawValue)]
     ]
     
     lazy var rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
@@ -42,21 +52,4 @@ class StackViewsData {
          (.specialSymbol("."), buttonStyle.digitButton)]
     ]
     
-    lazy var leftTopIdentifiers: [[AccessibilityIdentifiers.LeftTopIdentifiers]] = [
-        [.ac, .delete, .divide],
-        [.seven, .eight, .nine],
-        [.four, .five, .six],
-        [.one, .two, .three]
-    ]
-    
-    lazy var leftBottomIdentifiers: [[AccessibilityIdentifiers.LeftBottomIdentifiers]] = [
-        [.zero, .decimalPoint]
-    ]
-    
-    lazy var rightIdentifiers: [[AccessibilityIdentifiers.RightIdentifiers]] = [
-        [.multiply,
-         .minus,
-         .plus,
-         .equal]
-    ]
 }

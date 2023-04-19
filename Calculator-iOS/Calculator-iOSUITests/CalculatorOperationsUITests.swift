@@ -8,33 +8,11 @@
 @testable import Calculator_iOS_Dev
 import XCTest
 
+typealias identifier = AccessibilityIdentifiers
+
 final class CalculatorOperationsUITests: XCTestCase {
     
     var app: XCUIApplication!
-    let one = AccessibilityIdentifiers.LeftTopIdentifiers.one.name
-    let two = AccessibilityIdentifiers.LeftTopIdentifiers.two.name
-    let three = AccessibilityIdentifiers.LeftTopIdentifiers.three.name
-    let four = AccessibilityIdentifiers.LeftTopIdentifiers.four.name
-    let five = AccessibilityIdentifiers.LeftTopIdentifiers.five.name
-    let six = AccessibilityIdentifiers.LeftTopIdentifiers.six.name
-    let seven = AccessibilityIdentifiers.LeftTopIdentifiers.seven.name
-    let eight = AccessibilityIdentifiers.LeftTopIdentifiers.eight.name
-    let nine = AccessibilityIdentifiers.LeftTopIdentifiers.nine.name
-    
-    let zero = AccessibilityIdentifiers.LeftBottomIdentifiers.zero.name
-    let decimalPoint = AccessibilityIdentifiers.LeftBottomIdentifiers.decimalPoint.name
-    
-    let plus = AccessibilityIdentifiers.RightIdentifiers.plus.name
-    let minus = AccessibilityIdentifiers.RightIdentifiers.minus.name
-    let multiply = AccessibilityIdentifiers.RightIdentifiers.multiply.name
-    let divide = AccessibilityIdentifiers.LeftTopIdentifiers.divide.name
-    
-    let clearAll = AccessibilityIdentifiers.LeftTopIdentifiers.ac.name
-    let delete = AccessibilityIdentifiers.LeftTopIdentifiers.delete.name
-    let equal = AccessibilityIdentifiers.RightIdentifiers.equal.name
-    
-    let history = AccessibilityIdentifiers.Labels.history.rawValue
-    let result = AccessibilityIdentifiers.Labels.result.rawValue
 
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -49,91 +27,101 @@ final class CalculatorOperationsUITests: XCTestCase {
         for button in buttons {
             app.buttons[button].tap()
         }
-        app.buttons[equal].tap()
-        XCTAssertEqual(app.staticTexts[history].label, expectedHistory)
-        XCTAssertEqual(app.staticTexts[result].label, expectedResult)
+        app.buttons[identifier.RightIdentifiers.equal.rawValue].tap()
+        XCTAssertEqual(app.staticTexts[identifier.LabelIdentifiers.history.rawValue].label, expectedHistory)
+        XCTAssertEqual(app.staticTexts[identifier.LabelIdentifiers.result.rawValue].label, expectedResult)
     }
     
     // MARK: - Normal Operations
     func testAddition() {
-        calculate([seven, plus, eight], "=15", "7+8")
+        calculate([identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=15", "7+8")
     }
 
     func testSubtraction() {
-        calculate([seven, minus, eight], "=-1", "7-8")
+        calculate([identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=-1", "7-8")
     }
 
     func testMultiplication() {
-        calculate([seven, multiply, eight], "=56", "7*8")
+        calculate([identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=56", "7*8")
     }
 
     func testDivision() {
-        calculate([seven, divide, eight], "=0.875", "7/8")
+        calculate([identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.LeftTopIdentifiers.divide.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=0.875", "7/8")
     }
 
     // MARK: - Decimal Input
     func testDecimalInput() {
-        calculate([seven, decimalPoint, eight], "=7.8", "7.8")
+        calculate([identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=7.8", "7.8")
     }
 
     func testAdditionWithDecimalNumbers() {
-        calculate([seven,
-                   decimalPoint,
-                   seven,
-                   plus,
-                   eight,
-                   decimalPoint,
-                   eight], "=16.5", "7.7+8.8")
+        calculate([identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=16.5", "7.7+8.8")
     }
 
     func testSubtractionWithDecimalNumbers() {
-        calculate([seven,
-                   decimalPoint,
-                   seven,
-                   minus,
-                   eight,
-                   decimalPoint,
-                   eight], "=-1.1", "7.7-8.8")
+        calculate([identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=-1.1", "7.7-8.8")
     }
 
     func testMultiplicationWithDecimalNumbers() {
-        calculate([seven,
-                   decimalPoint,
-                   seven,
-                   multiply,
-                   eight,
-                   decimalPoint,
-                   eight], "=67.76", "7.7*8.8")
+        calculate([identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=67.76", "7.7*8.8")
     }
 
     func testDivisionWithDecimalNumbers() {
-        calculate([nine,
-                   decimalPoint,
-                   seven,
-                   divide,
-                   eight,
-                   decimalPoint,
-                   eight], "=1.10227", "9.7/8.8")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.LeftTopIdentifiers.divide.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue], "=1.10227", "9.7/8.8")
     }
     // MARK: - Negative numbers
     func testNegativeInput() {
-        calculate([minus,
-                   nine], "=-9", "-9")
+        calculate([identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue], "=-9", "-9")
     }
     
     func testNegativeOperation() {
-        calculate([minus,
-                   nine,
-                   multiply,
-                   nine], "=-81", "-9*9")
+        calculate([identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue], "=-81", "-9*9")
     }
     
     func testNegativeOperandsWithPositiveResult() {
-        calculate([minus,
-                   nine,
-                   multiply,
-                   minus,
-                   nine], "=81", "-9*-9")
+        calculate([identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue], "=81", "-9*-9")
     }
     
 }

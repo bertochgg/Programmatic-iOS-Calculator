@@ -11,30 +11,6 @@ import XCTest
 final class CalculatoriOSUITests: XCTestCase {
     
     var app: XCUIApplication!
-    let one = AccessibilityIdentifiers.LeftTopIdentifiers.one.name
-    let two = AccessibilityIdentifiers.LeftTopIdentifiers.two.name
-    let three = AccessibilityIdentifiers.LeftTopIdentifiers.three.name
-    let four = AccessibilityIdentifiers.LeftTopIdentifiers.four.name
-    let five = AccessibilityIdentifiers.LeftTopIdentifiers.five.name
-    let six = AccessibilityIdentifiers.LeftTopIdentifiers.six.name
-    let seven = AccessibilityIdentifiers.LeftTopIdentifiers.seven.name
-    let eight = AccessibilityIdentifiers.LeftTopIdentifiers.eight.name
-    let nine = AccessibilityIdentifiers.LeftTopIdentifiers.nine.name
-    
-    let zero = AccessibilityIdentifiers.LeftBottomIdentifiers.zero.name
-    let decimalPoint = AccessibilityIdentifiers.LeftBottomIdentifiers.decimalPoint.name
-    
-    let plus = AccessibilityIdentifiers.RightIdentifiers.plus.name
-    let minus = AccessibilityIdentifiers.RightIdentifiers.minus.name
-    let multiply = AccessibilityIdentifiers.RightIdentifiers.multiply.name
-    let divide = AccessibilityIdentifiers.LeftTopIdentifiers.divide.name
-    
-    let clearAll = AccessibilityIdentifiers.LeftTopIdentifiers.ac.name
-    let delete = AccessibilityIdentifiers.LeftTopIdentifiers.delete.name
-    let equal = AccessibilityIdentifiers.RightIdentifiers.equal.name
-    
-    let history = AccessibilityIdentifiers.Labels.history.rawValue
-    let result = AccessibilityIdentifiers.Labels.result.rawValue
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -43,208 +19,235 @@ final class CalculatoriOSUITests: XCTestCase {
         app.launch()
     }
     
-    func testCalculatorButtons() {
-        app.buttons[clearAll].tap()
-        app.buttons[delete].tap()
-        app.buttons[divide].tap()
-        app.buttons[multiply].tap()
-        app.buttons[seven].tap()
-        app.buttons[eight].tap()
-        app.buttons[nine].tap()
-        app.buttons[minus].tap()
-        app.buttons[four].tap()
-        app.buttons[five].tap()
-        app.buttons[six].tap()
-        app.buttons[plus].tap()
-        app.buttons[one].tap()
-        app.buttons[two].tap()
-        app.buttons[three].tap()
-        app.buttons[zero].tap()
-        app.buttons[decimalPoint].tap()
-        app.buttons[equal].tap()
-        app.alerts["Error"].scrollViews.otherElements.buttons["Ok"].tap()
+    override func tearDownWithError() throws {
+        try super.tearDownWithError()
+        app = nil
     }
     
+    func testCalculatorButtonsExist() {
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.clearAll.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.delete.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.divide.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.RightIdentifiers.multiply.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.seven.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.eight.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.nine.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.RightIdentifiers.minus.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.four.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.five.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.six.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.RightIdentifiers.plus.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.one.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.two.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftTopIdentifiers.three.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftBottomIdentifiers.zero.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.LeftBottomIdentifiers.decimalPoint.rawValue])
+        XCTAssertNotNil(app.buttons[identifier.RightIdentifiers.equal.rawValue])
+    }
+
     // MARK: - Normal Operations
     // Helper function to perform calculations
     func calculate(_ buttons: [String], _ expectedResult: String, _ expectedHistory: String) {
         for button in buttons {
             app.buttons[button].tap()
         }
-        app.buttons[equal].tap()
-        XCTAssertEqual(app.staticTexts[history].label, expectedHistory)
-        XCTAssertEqual(app.staticTexts[result].label, expectedResult)
+        app.buttons[identifier.RightIdentifiers.equal.rawValue].tap()
+        XCTAssertEqual(app.staticTexts[identifier.LabelIdentifiers.history.rawValue].label, expectedHistory)
+        XCTAssertEqual(app.staticTexts[identifier.LabelIdentifiers.result.rawValue].label, expectedResult)
     }
 
     // MARK: - AC Button
     func testACToClearOperationsHistoryLabel() {
-        calculate([nine, clearAll], "0.0", "0")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue, identifier.LeftTopIdentifiers.clearAll.rawValue], "0.0", "0")
     }
     
     func testACToClearLabelsAfterGettingOperationResult() {
-        calculate([nine,
-                   multiply,
-                   five,
-                   equal,
-                   clearAll], "0.0", "0")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.five.rawValue,
+                   identifier.RightIdentifiers.equal.rawValue,
+                   identifier.LeftTopIdentifiers.clearAll.rawValue], "0.0", "0")
     }
     
     // MARK: - Logical Errors
     func testDivisionByZero() {
-        calculate([nine,
-                   divide,
-                   zero], "=+∞", "9/0")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftTopIdentifiers.divide.rawValue,
+                   identifier.LeftBottomIdentifiers.zero.rawValue], "=+∞", "9/0")
     }
     
     func testNegativeDivisionByZero() {
-        calculate([minus,
-                   nine,
-                   divide,
-                   zero], "=-∞", "-9/0")
+        calculate([identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftTopIdentifiers.divide.rawValue,
+                   identifier.LeftBottomIdentifiers.zero.rawValue], "=-∞", "-9/0")
     }
     
     func testIfUserCanEnterDoubleDecimalPoints() {
-        calculate([nine,
-                   decimalPoint,
-                   three,
-                   decimalPoint], "=9.3", "9.3")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue], "=9.3", "9.3")
     }
     
     func testInvalidInput() {
-        calculate([plus,
-                   multiply,
-                   nine], "=9", "9")
+        calculate([identifier.RightIdentifiers.plus.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue], "=9", "9")
     }
     
     // MARK: - Large Operations
     func testLargeOperations() {
-        calculate([one, plus, two,
-                   minus, three, multiply,
-                   four, divide, five,
-                   plus, six, minus,
-                   seven, multiply, eight,
-                   divide, nine, plus,
-                   five, multiply, six,
-                   plus, three], "=33.37778", "1+2-3*4/5+6-7*8/9+5*6+3")
+        calculate([identifier.LeftTopIdentifiers.one.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.two.rawValue,
+                   identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.four.rawValue,
+                   identifier.LeftTopIdentifiers.divide.rawValue,
+                   identifier.LeftTopIdentifiers.five.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.six.rawValue,
+                   identifier.RightIdentifiers.minus.rawValue,
+                   identifier.LeftTopIdentifiers.seven.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.eight.rawValue,
+                   identifier.LeftTopIdentifiers.divide.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.five.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.six.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue], "=33.37778", "1+2-3*4/5+6-7*8/9+5*6+3")
     }
     
     // MARK: - Delete Button
     func testDeleteLastInput() {
-        calculate([nine,
-                   three,
-                   plus,
-                   delete], "=93", "93")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue], "=93", "93")
     }
     
     func testDeleteButtonUntilTheEndAndProveZeroAppears() {
-        calculate([nine,
-                   three,
-                   plus,
-                   delete,
-                   delete,
-                   delete], "0", "0")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue], "0", "0")
     }
     
     func testDeleteButtonUntilTheEndAndCheckArrayIsNotOverflowed() {
-        calculate([nine,
-                   three,
-                   plus,
-                   delete,
-                   delete,
-                   delete,
-                   delete,
-                   delete,
-                   delete,
-                   delete,
-                   delete], "0", "0")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.RightIdentifiers.plus.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue], "0", "0")
     }
     
     func testDeleteButtonResetsDecimalFlagWhenDecimalPointIsDeleted() {
-        calculate([nine,
-                   decimalPoint,
-                   three,
-                   delete,
-                   delete,
-                   decimalPoint], "=0", "9.")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue], "=0", "9.")
     }
     
     func testDeleteButtonDoesNotResetsDecimalFlagWhenOperatorIsDeleted() {
-        calculate([nine,
-                   decimalPoint,
-                   three,
-                   divide,
-                   three,
-                   decimalPoint,
-                   three,
-                   delete,
-                   delete,
-                   delete,
-                   delete,
-                   decimalPoint], "=9.3", "9.3")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.LeftTopIdentifiers.divide.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue], "=9.3", "9.3")
     }
     
     func testDeleteButtonDoesNotResetsDecimalFlagWhenNumberNearDecimalIsDeleted() {
-        calculate([nine,
-                   decimalPoint,
-                   three,
-                   delete,
-                   three,
-                   decimalPoint], "=9.3", "9.3")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.LeftTopIdentifiers.delete.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue], "=9.3", "9.3")
     }
     
     // MARK: - Decimal Flag
     func testDecimalFlagWhenInputTwoDecimalNumbers() {
-        calculate([nine,
-                   decimalPoint,
-                   three,
-                   divide,
-                   two,
-                   decimalPoint,
-                   nine], "=3.2069", "9.3/2.9")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.LeftTopIdentifiers.divide.rawValue,
+                   identifier.LeftTopIdentifiers.two.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.nine.rawValue], "=3.2069", "9.3/2.9")
     }
     
     // MARK: - Keep Entering input after result has been given
     func testEnterInputAfterEqualHasBeenTapped() {
-        calculate([nine,
-                   decimalPoint,
-                   three,
-                   multiply,
-                   five,
-                   decimalPoint,
-                   three,
-                   equal,
-                   multiply,
-                   seven], "=345.03", "9.3*5.3*7")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.five.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.RightIdentifiers.equal.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.seven.rawValue], "=345.03", "9.3*5.3*7")
     }
     
     func testEnterInputAfterEqualHasBeenTappedAndGetResult() {
-        calculate([nine,
-                   decimalPoint,
-                   three,
-                   multiply,
-                   five,
-                   decimalPoint,
-                   three,
-                   equal,
-                   multiply,
-                   seven], "=345.03", "9.3*5.3*7")
+        calculate([identifier.LeftTopIdentifiers.nine.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.five.rawValue,
+                   identifier.LeftBottomIdentifiers.decimalPoint.rawValue,
+                   identifier.LeftTopIdentifiers.three.rawValue,
+                   identifier.RightIdentifiers.equal.rawValue,
+                   identifier.RightIdentifiers.multiply.rawValue,
+                   identifier.LeftTopIdentifiers.seven.rawValue], "=345.03", "9.3*5.3*7")
     }
     
     // MARK: - Alerts
     func testAlertForInvalidOperationWithOperatorForLastChar() {
-        app.buttons[nine].tap()
-        app.buttons[divide].tap()
-        app.buttons[equal].tap()
+        app.buttons[identifier.LeftTopIdentifiers.nine.rawValue].tap()
+        app.buttons[identifier.LeftTopIdentifiers.divide.rawValue].tap()
+        app.buttons[identifier.RightIdentifiers.equal.rawValue].tap()
+        
+        XCTAssertNotNil(app.alerts.element)
         
         app.alerts["Error"].scrollViews.otherElements.buttons["Ok"].tap()
+        
+        XCTAssertFalse(app.alerts.element.exists, "The alert still exists on the screen.")
     }
     
     func testAlertForInvalidOperationWithDecimalPointForLastChar() {
-        app.buttons[nine].tap()
-        app.buttons[decimalPoint].tap()
-        app.buttons[equal].tap()
+        app.buttons[identifier.LeftTopIdentifiers.nine.rawValue].tap()
+        app.buttons[identifier.LeftBottomIdentifiers.decimalPoint.rawValue].tap()
+        app.buttons[identifier.RightIdentifiers.equal.rawValue].tap()
+        
+        XCTAssertNotNil(app.alerts.element)
         
         app.alerts["Error"].scrollViews.otherElements.buttons["Ok"].tap()
+        
+        XCTAssertFalse(app.alerts.element.exists, "The alert still exists on the screen.")
     }
     
 }

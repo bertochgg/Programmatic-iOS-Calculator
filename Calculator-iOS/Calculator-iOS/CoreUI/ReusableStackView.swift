@@ -39,24 +39,12 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             let stackView = ReusableStackView()
             stackView.setupStackView(viewModel: stackViewsStyles.leftTopStackView)
             
-            for (content, viewModel) in row {
+            for (content, viewModel, identifier) in row {
                 let button = CalculatorButton()
                 button.delegate = viewController as? OutputChangerDelegate
                 button.setupButton(with: viewModel, content: content)
+                button.accessibilityIdentifier = identifier
                 stackView.addArrangedSubview(button)
-                
-                for identifier in AccessibilityIdentifiers.LeftTopIdentifiers.allCases {
-                    if case .digit(let digit) = content, identifier.rawValue == digit {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    } else if case .sfSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    } else if case .specialSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    }
-                }
                 
             }
             return stackView
@@ -77,10 +65,11 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             let stackView = ReusableStackView()
             stackView.setupStackView(viewModel: stackViewsStyles.leftBottomStackView)
             
-            for (content, viewModel) in row {
+            for ((content, viewModel), identifier) in zip(row, AccessibilityIdentifiers.LeftBottomIdentifiers.allCases) {
                 let button = CalculatorButton()
                 button.delegate = viewController as? OutputChangerDelegate
                 button.setupButton(with: viewModel, content: content)
+                button.accessibilityIdentifier = identifier.rawValue
                 stackView.addArrangedSubview(button)
                 if content == .digit("0") {
                     button.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.92 / 3).isActive = true
@@ -89,18 +78,6 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
                     button.contentHorizontalAlignment = .center
                 }
                 
-                for identifier in AccessibilityIdentifiers.LeftBottomIdentifiers.allCases {
-                    if case .digit(let digit) = content, identifier.rawValue == digit {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    } else if case .sfSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    } else if case .specialSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    }
-                }
             }
             return stackView
         }
@@ -118,10 +95,11 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             let stackView = ReusableStackView()
             stackView.setupStackView(viewModel: stackViewsStyles.rightStackView)
             
-            for (content, viewModel) in row {
+            for ((content, viewModel), identifier) in zip(row, AccessibilityIdentifiers.RightIdentifiers.allCases) {
                 let button = CalculatorButton()
                 button.delegate = viewController as? OutputChangerDelegate
                 button.setupButton(with: viewModel, content: content)
+                button.accessibilityIdentifier = identifier.rawValue
                 stackView.addArrangedSubview(button)
                 
                 if content == .specialSymbol("+") {
@@ -132,18 +110,6 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
                     
                 }
                 
-                for identifier in AccessibilityIdentifiers.RightIdentifiers.allCases {
-                    if case .digit(let digit) = content, identifier.rawValue == digit {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    } else if case .sfSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    } else if case .specialSymbol(let symbol) = content, identifier.rawValue == symbol {
-                        button.accessibilityIdentifier = identifier.name
-                        break
-                    }
-                }
             }
             return stackView
         }
