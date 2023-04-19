@@ -243,7 +243,7 @@ final class CalculatoriOSUITests: XCTestCase {
         app.buttons[identifier.LeftBottomIdentifiers.decimalPoint.rawValue].tap()
         app.buttons[identifier.RightIdentifiers.equal.rawValue].tap()
         
-        XCTAssertNotNil(app.alerts.element)
+        XCTAssertTrue(app.alerts.element.exists)
         
         app.alerts["Error"].scrollViews.otherElements.buttons["Ok"].tap()
         
