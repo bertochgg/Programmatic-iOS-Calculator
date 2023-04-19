@@ -39,11 +39,11 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             let stackView = ReusableStackView()
             stackView.setupStackView(viewModel: stackViewsStyles.leftTopStackView)
             
-            for (content, viewModel, identifier) in row {
+            for data in row {
                 let button = CalculatorButton()
                 button.delegate = viewController as? OutputChangerDelegate
-                button.setupButton(with: viewModel, content: content)
-                button.accessibilityIdentifier = identifier
+                button.setupButton(with: data.style, content: data.content)
+                button.accessibilityIdentifier = data.identifier
                 stackView.addArrangedSubview(button)
                 
             }
@@ -65,15 +65,15 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             let stackView = ReusableStackView()
             stackView.setupStackView(viewModel: stackViewsStyles.leftBottomStackView)
             
-            for ((content, viewModel), identifier) in zip(row, AccessibilityIdentifiers.LeftBottomIdentifiers.allCases) {
+            for data in row {
                 let button = CalculatorButton()
                 button.delegate = viewController as? OutputChangerDelegate
-                button.setupButton(with: viewModel, content: content)
-                button.accessibilityIdentifier = identifier.rawValue
+                button.setupButton(with: data.style, content: data.content)
+                button.accessibilityIdentifier = data.identifier
                 stackView.addArrangedSubview(button)
-                if content == .digit("0") {
+                if data.content == .digit("0") {
                     button.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 1.92 / 3).isActive = true
-                } else if content == .specialSymbol(".") {
+                } else if data.content == .specialSymbol(".") {
                     button.contentVerticalAlignment = .top
                     button.contentHorizontalAlignment = .center
                 }
@@ -95,17 +95,17 @@ class ReusableStackView: UIStackView, ReusableStackViewProtocol {
             let stackView = ReusableStackView()
             stackView.setupStackView(viewModel: stackViewsStyles.rightStackView)
             
-            for ((content, viewModel), identifier) in zip(row, AccessibilityIdentifiers.RightIdentifiers.allCases) {
+            for data in row {
                 let button = CalculatorButton()
                 button.delegate = viewController as? OutputChangerDelegate
-                button.setupButton(with: viewModel, content: content)
-                button.accessibilityIdentifier = identifier.rawValue
+                button.setupButton(with: data.style, content: data.content)
+                button.accessibilityIdentifier = data.identifier
                 stackView.addArrangedSubview(button)
                 
-                if content == .specialSymbol("+") {
+                if data.content == .specialSymbol("+") {
                     button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.263).isActive = true
                     
-                } else if content == .specialSymbol("*") || content == .specialSymbol("-") {
+                } else if data.content == .specialSymbol("*") || data.content == .specialSymbol("-") {
                     button.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.155).isActive = true
                     
                 }

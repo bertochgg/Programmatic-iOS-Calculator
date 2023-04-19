@@ -10,46 +10,89 @@ import UIKit
 
 typealias identifier = AccessibilityIdentifiers
 
-struct StackViewData {
-    
-    let content: ButtonContent
-    let style: ReusableCommonButton
-    let identifier: String
-    
+struct ButtonData {
+    var content: ButtonContent
+    var style: ReusableCommonButton
+    var identifier: String
 }
 
 class StackViewsData {
 
     lazy var buttonStyle = ButtonStyles()
-    
-    lazy var leftTopStackViewData: [[(ButtonContent, ReusableCommonButton, String)]] = [
-        [(.specialSymbol("Ac"), buttonStyle.cleanButton, identifier.LeftTopIdentifiers.clearAll.rawValue),
-         (.sfSymbol("delete.left"), buttonStyle.cleanButton, identifier.LeftTopIdentifiers.delete.rawValue),
-         (.specialSymbol("/"), buttonStyle.operatorButton, identifier.LeftTopIdentifiers.divide.rawValue)],
-        
-        [(.digit("7"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.seven.rawValue),
-         (.digit("8"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.eight.rawValue),
-         (.digit("9"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.nine.rawValue)],
-        
-        [(.digit("4"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.four.rawValue),
-         (.digit("5"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.five.rawValue),
-         (.digit("6"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.six.rawValue)],
-        
-        [(.digit("1"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.one.rawValue),
-         (.digit("2"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.two.rawValue),
-         (.digit("3"), buttonStyle.digitButton, identifier.LeftTopIdentifiers.three.rawValue)]
+
+    lazy var leftTopStackViewData: [[ButtonData]] = [
+        [
+            ButtonData(content: .specialSymbol("Ac"),
+                       style: buttonStyle.cleanButton,
+                       identifier: identifier.LeftTopIdentifiers.clearAll.rawValue),
+            ButtonData(content: .sfSymbol("delete.left"),
+                       style: buttonStyle.cleanButton,
+                       identifier: identifier.LeftTopIdentifiers.delete.rawValue),
+            ButtonData(content: .specialSymbol("/"),
+                       style: buttonStyle.operatorButton,
+                       identifier: identifier.LeftTopIdentifiers.divide.rawValue)
+        ],
+        [
+            ButtonData(content: .digit("7"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.seven.rawValue),
+            ButtonData(content: .digit("8"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.eight.rawValue),
+            ButtonData(content: .digit("9"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.nine.rawValue)
+        ],
+        [
+            ButtonData(content: .digit("4"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.four.rawValue),
+            ButtonData(content: .digit("5"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.five.rawValue),
+            ButtonData(content: .digit("6"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.six.rawValue)
+        ],
+        [
+            ButtonData(content: .digit("1"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.one.rawValue),
+            ButtonData(content: .digit("2"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.two.rawValue),
+            ButtonData(content: .digit("3"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftTopIdentifiers.three.rawValue)
+        ]
     ]
-    
-    lazy var rightStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.specialSymbol("*"), buttonStyle.operatorButton),
-         (.specialSymbol("-"), buttonStyle.operatorButton),
-         (.specialSymbol("+"), buttonStyle.operatorButton),
-         (.specialSymbol("="), buttonStyle.equalButton)]
+
+    lazy var rightStackViewData: [[ButtonData]] = [
+        [
+            ButtonData(content: .specialSymbol("*"),
+                       style: buttonStyle.operatorButton,
+                       identifier: identifier.RightIdentifiers.multiply.rawValue),
+            ButtonData(content: .specialSymbol("-"),
+                       style: buttonStyle.operatorButton,
+                       identifier: identifier.RightIdentifiers.minus.rawValue),
+            ButtonData(content: .specialSymbol("+"),
+                       style: buttonStyle.operatorButton,
+                       identifier: identifier.RightIdentifiers.plus.rawValue),
+            ButtonData(content: .specialSymbol("="),
+                       style: buttonStyle.equalButton,
+                       identifier: identifier.RightIdentifiers.equal.rawValue)
+        ]
     ]
-    
-    lazy var leftBottomStackViewData: [[(ButtonContent, ReusableCommonButton)]] = [
-        [(.digit("0"), buttonStyle.digitButton),
-         (.specialSymbol("."), buttonStyle.digitButton)]
+
+    lazy var leftBottomStackViewData: [[ButtonData]] = [
+        [
+            ButtonData(content: .digit("0"),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftBottomIdentifiers.zero.rawValue),
+            ButtonData(content: .specialSymbol("."),
+                       style: buttonStyle.digitButton,
+                       identifier: identifier.LeftBottomIdentifiers.decimalPoint.rawValue)
+        ]
     ]
-    
+
 }
