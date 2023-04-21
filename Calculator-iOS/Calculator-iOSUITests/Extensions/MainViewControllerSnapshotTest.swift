@@ -17,13 +17,19 @@ final class MainViewControllerSnapshotTest: XCTestCase {
     }
     
     func testAddition() {
+        
         let calculator = MainViewController()
         let button = CalculatorButton()
         
-        button.content = .digit("9")
-        button.buttonTapped()
-        calculator.handleDigit("9")
-        assertSnapshot(matching: calculator, as: .image, record: true)
+        button.setupButton(with: ButtonStyles().digitButton, content: .digit("1"))
+        calculator.view.addSubview(button)
+        
+        button.delegate?.didChangeOutput(digit: "1")
+        button.delegate?.didChangeOutput(digit: "+")
+        button.delegate?.didChangeOutput(digit: "2")
+        button.delegate?.didChangeOutput(digit: "=")
+        assertSnapshot(matching: calculator, as: .image, record: false)
+        
     }
 
 }
