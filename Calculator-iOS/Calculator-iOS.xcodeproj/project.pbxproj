@@ -52,6 +52,7 @@
 		5F405CC729BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB529BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf */; };
 		5F405CC829BF864B00FB8687 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */; };
 		5F405CCA29BF95A300FB8687 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F405CC929BF95A300FB8687 /* CalculatorButton.swift */; };
+		5F5F593529F30C13000F047D /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5F593429F30C13000F047D /* SnapshotTesting.framework */; };
 		5F6CC45429DCD21C00D072B4 /* NSExpressionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6CC45329DCD21C00D072B4 /* NSExpressionExtension.swift */; };
 		5F6D071229E4D98200AE08D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E8F02801F3B800EF70CD /* MainViewController.swift */; };
 		5F6D071329E4D98200AE08D4 /* ReusableCommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F167CBA29C230680003799F /* ReusableCommonButton.swift */; };
@@ -92,13 +93,11 @@
 		5F6D073929E4D98200AE08D4 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CA529BF864A00FB8687 /* Poppins-BoldItalic.ttf */; };
 		5F93477529CBD4DF002D04BC /* CalculatorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */; };
 		5F93477729CBD4FA002D04BC /* CalculatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F93477629CBD4FA002D04BC /* CalculatorService.swift */; };
-		5FBF069929F1B40300020404 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 5FBF069829F1B40300020404 /* SnapshotTesting */; };
 		5FC863A629CE1B400095BD87 /* ReusableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A529CE1B400095BD87 /* ReusableStackView.swift */; };
 		5FC863A829CE1CA70095BD87 /* ReusableStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A729CE1CA70095BD87 /* ReusableStackViewModel.swift */; };
 		5FC863AA29CE2B350095BD87 /* StackViewsStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863A929CE2B350095BD87 /* StackViewsStyles.swift */; };
 		5FC863AC29CE6A6F0095BD87 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC863AB29CE6A6F0095BD87 /* Constraints.swift */; };
 		5FCC406529F2E91F008A6445 /* MainViewControllerSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF069329F1B2CA00020404 /* MainViewControllerSnapshotTest.swift */; };
-		5FCC406929F2E954008A6445 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 5FCC406829F2E954008A6445 /* SnapshotTesting */; };
 		5FEF7E6D29E7796200D6BFCC /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEF7E6C29E7796200D6BFCC /* AccessibilityIdentifiers.swift */; };
 		5FEF7E6E29E7796200D6BFCC /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEF7E6C29E7796200D6BFCC /* AccessibilityIdentifiers.swift */; };
 		5FFEF6E829CCB3CB003715AD /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6E729CCB3CB003715AD /* ButtonStyles.swift */; };
@@ -180,6 +179,7 @@
 		5F405CB529BF864B00FB8687 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		5F405CC929BF95A300FB8687 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
+		5F5F593429F30C13000F047D /* SnapshotTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapshotTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6CC45329DCD21C00D072B4 /* NSExpressionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSExpressionExtension.swift; sourceTree = "<group>"; };
 		5F6D073D29E4D98200AE08D4 /* Calculator-iOS-Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator-iOS-Release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F93477429CBD4DF002D04BC /* CalculatorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorServiceProtocol.swift; sourceTree = "<group>"; };
@@ -218,8 +218,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F5F593529F30C13000F047D /* SnapshotTesting.framework in Frameworks */,
 				20716530858533A383C96833 /* Pods_App_Calculator_iOSTests.framework in Frameworks */,
-				5FCC406929F2E954008A6445 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +228,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4C94A0200D56DBF180045C7 /* Pods_App_Calculator_iOSUITests.framework in Frameworks */,
-				5FBF069929F1B40300020404 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +461,7 @@
 		2515173EBCF14E4529C55904 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F5F593429F30C13000F047D /* SnapshotTesting.framework */,
 				5FCC406629F2E94A008A6445 /* SnapshotTesting.framework */,
 				5FBF069529F1B2F900020404 /* SnapshotTesting.framework */,
 				77C2F048D6901DC5382FCCED /* Pods_App_Calculator_iOSTests.framework */,
@@ -576,7 +576,6 @@
 			);
 			name = "Calculator-iOSTests";
 			packageProductDependencies = (
-				5FCC406829F2E954008A6445 /* SnapshotTesting */,
 			);
 			productName = "Calculator-iOSTests";
 			productReference = 04B8E8FF2801F3C300EF70CD /* Calculator-iOSTests.xctest */;
@@ -601,7 +600,6 @@
 			);
 			name = "Calculator-iOSUITests";
 			packageProductDependencies = (
-				5FBF069829F1B40300020404 /* SnapshotTesting */,
 			);
 			productName = "Calculator-iOSUITests";
 			productReference = 04B8E9092801F3C300EF70CD /* Calculator-iOSUITests.xctest */;
@@ -660,7 +658,6 @@
 			);
 			mainGroup = 04B8E8E02801F3B800EF70CD;
 			packageReferences = (
-				5FBF069729F1B40300020404 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 04B8E8EA2801F3B800EF70CD /* Products */;
 			projectDirPath = "";
@@ -1417,30 +1414,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5FBF069729F1B40300020404 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.9.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5FBF069829F1B40300020404 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5FBF069729F1B40300020404 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
-		};
-		5FCC406829F2E954008A6445 /* SnapshotTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5FBF069729F1B40300020404 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
-			productName = SnapshotTesting;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04B8E8E12801F3B800EF70CD /* Project object */;
 }
