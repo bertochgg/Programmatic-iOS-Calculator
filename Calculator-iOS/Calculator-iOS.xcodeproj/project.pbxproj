@@ -17,9 +17,7 @@
 		04B8E8ED2801F3B800EF70CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E8EC2801F3B800EF70CD /* AppDelegate.swift */; };
 		04B8E8EF2801F3B800EF70CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E8EE2801F3B800EF70CD /* SceneDelegate.swift */; };
 		04B8E8F12801F3B800EF70CD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E8F02801F3B800EF70CD /* MainViewController.swift */; };
-		04B8E8F42801F3B800EF70CD /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8E8F22801F3B800EF70CD /* MainViewController.storyboard */; };
 		04B8E8F62801F3C300EF70CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B8E8F52801F3C300EF70CD /* Assets.xcassets */; };
-		04B8E8F92801F3C300EF70CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8E8F72801F3C300EF70CD /* LaunchScreen.storyboard */; };
 		04B8E9042801F3C300EF70CD /* CalculatoriOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E9032801F3C300EF70CD /* CalculatoriOSTests.swift */; };
 		04B8E90E2801F3C300EF70CD /* CalculatoriOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E90D2801F3C300EF70CD /* CalculatoriOSUITests.swift */; };
 		04B8E9102801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8E90F2801F3C300EF70CD /* CalculatoriOSUITestsLaunchTests.swift */; };
@@ -76,7 +74,6 @@
 		5F6D072829E4D98200AE08D4 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CAB29BF864A00FB8687 /* Poppins-SemiBold.ttf */; };
 		5F6D072929E4D98200AE08D4 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CA829BF864A00FB8687 /* Poppins-MediumItalic.ttf */; };
 		5F6D072A29E4D98200AE08D4 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB429BF864B00FB8687 /* Poppins-SemiBoldItalic.ttf */; };
-		5F6D072B29E4D98200AE08D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8E8F72801F3C300EF70CD /* LaunchScreen.storyboard */; };
 		5F6D072C29E4D98200AE08D4 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB029BF864B00FB8687 /* Poppins-Medium.ttf */; };
 		5F6D072D29E4D98200AE08D4 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB629BF864B00FB8687 /* Poppins-Thin.ttf */; };
 		5F6D072E29E4D98200AE08D4 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CA929BF864A00FB8687 /* Poppins-Regular.ttf */; };
@@ -87,7 +84,6 @@
 		5F6D073329E4D98200AE08D4 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CA729BF864A00FB8687 /* Poppins-Black.ttf */; };
 		5F6D073429E4D98200AE08D4 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB229BF864B00FB8687 /* Poppins-ExtraLight.ttf */; };
 		5F6D073529E4D98200AE08D4 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CB129BF864B00FB8687 /* Poppins-Bold.ttf */; };
-		5F6D073629E4D98200AE08D4 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04B8E8F22801F3B800EF70CD /* MainViewController.storyboard */; };
 		5F6D073729E4D98200AE08D4 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CAF29BF864A00FB8687 /* Poppins-ThinItalic.ttf */; };
 		5F6D073829E4D98200AE08D4 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CA629BF864A00FB8687 /* Poppins-ExtraBold.ttf */; };
 		5F6D073929E4D98200AE08D4 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F405CA529BF864A00FB8687 /* Poppins-BoldItalic.ttf */; };
@@ -104,6 +100,7 @@
 		5FFEF6ED29CD1F7D003715AD /* StackViewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFEF6EC29CD1F7D003715AD /* StackViewsData.swift */; };
 		6D36B356A3C3C6808B2CBB40 /* Pods_App_Calculator_iOS_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7215F0D562535FD8E8DAA68 /* Pods_App_Calculator_iOS_Dev.framework */; };
 		D4C94A0200D56DBF180045C7 /* Pods_App_Calculator_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44ECBB306DB0E87790B171D8 /* Pods_App_Calculator_iOSUITests.framework */; };
+		DB4A7EDB2AF06FFD00EF7268 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4A7EDA2AF06FFD00EF7268 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,9 +139,7 @@
 		04B8E8EC2801F3B800EF70CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04B8E8EE2801F3B800EF70CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04B8E8F02801F3B800EF70CD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		04B8E8F32801F3B800EF70CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainViewController.storyboard; sourceTree = "<group>"; };
 		04B8E8F52801F3C300EF70CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04B8E8F82801F3C300EF70CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04B8E8FA2801F3C300EF70CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04B8E8FF2801F3C300EF70CD /* Calculator-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B8E9032801F3C300EF70CD /* CalculatoriOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatoriOSTests.swift; sourceTree = "<group>"; };
@@ -202,6 +197,7 @@
 		B18691BB1057DB73C976D52E /* Pods-App-Calculator-iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOSUITests/Pods-App-Calculator-iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C5C16A0132AA31A8EA5B4B45 /* Pods-App-Calculator-iOS-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Calculator-iOS-Dev.debug.xcconfig"; path = "Target Support Files/Pods-App-Calculator-iOS-Dev/Pods-App-Calculator-iOS-Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF9EF525AA496DB0438650C /* Pods_App_Calculator_iOS_Release.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Calculator_iOS_Release.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB4A7EDA2AF06FFD00EF7268 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7215F0D562535FD8E8DAA68 /* Pods_App_Calculator_iOS_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Calculator_iOS_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -394,7 +390,7 @@
 		04B8E9202801F54F00EF70CD /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				04B8E8F72801F3C300EF70CD /* LaunchScreen.storyboard */,
+				DB4A7EDA2AF06FFD00EF7268 /* LaunchScreen.storyboard */,
 			);
 			path = LaunchScreen;
 			sourceTree = "<group>";
@@ -427,7 +423,6 @@
 			isa = PBXGroup;
 			children = (
 				04B8E8F02801F3B800EF70CD /* MainViewController.swift */,
-				04B8E8F22801F3B800EF70CD /* MainViewController.storyboard */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -683,7 +678,6 @@
 				5F405CBD29BF864B00FB8687 /* Poppins-SemiBold.ttf in Resources */,
 				5F405CBA29BF864B00FB8687 /* Poppins-MediumItalic.ttf in Resources */,
 				5F405CC629BF864B00FB8687 /* Poppins-SemiBoldItalic.ttf in Resources */,
-				04B8E8F92801F3C300EF70CD /* LaunchScreen.storyboard in Resources */,
 				5F405CC229BF864B00FB8687 /* Poppins-Medium.ttf in Resources */,
 				5F405CC829BF864B00FB8687 /* Poppins-Thin.ttf in Resources */,
 				5F405CBB29BF864B00FB8687 /* Poppins-Regular.ttf in Resources */,
@@ -694,8 +688,8 @@
 				5F405CB929BF864B00FB8687 /* Poppins-Black.ttf in Resources */,
 				5F405CC429BF864B00FB8687 /* Poppins-ExtraLight.ttf in Resources */,
 				5F405CC329BF864B00FB8687 /* Poppins-Bold.ttf in Resources */,
-				04B8E8F42801F3B800EF70CD /* MainViewController.storyboard in Resources */,
 				5F405CC129BF864B00FB8687 /* Poppins-ThinItalic.ttf in Resources */,
+				DB4A7EDB2AF06FFD00EF7268 /* LaunchScreen.storyboard in Resources */,
 				5F405CB829BF864B00FB8687 /* Poppins-ExtraBold.ttf in Resources */,
 				5F405CB729BF864B00FB8687 /* Poppins-BoldItalic.ttf in Resources */,
 			);
@@ -726,7 +720,6 @@
 				5F6D072829E4D98200AE08D4 /* Poppins-SemiBold.ttf in Resources */,
 				5F6D072929E4D98200AE08D4 /* Poppins-MediumItalic.ttf in Resources */,
 				5F6D072A29E4D98200AE08D4 /* Poppins-SemiBoldItalic.ttf in Resources */,
-				5F6D072B29E4D98200AE08D4 /* LaunchScreen.storyboard in Resources */,
 				5F6D072C29E4D98200AE08D4 /* Poppins-Medium.ttf in Resources */,
 				5F6D072D29E4D98200AE08D4 /* Poppins-Thin.ttf in Resources */,
 				5F6D072E29E4D98200AE08D4 /* Poppins-Regular.ttf in Resources */,
@@ -737,7 +730,6 @@
 				5F6D073329E4D98200AE08D4 /* Poppins-Black.ttf in Resources */,
 				5F6D073429E4D98200AE08D4 /* Poppins-ExtraLight.ttf in Resources */,
 				5F6D073529E4D98200AE08D4 /* Poppins-Bold.ttf in Resources */,
-				5F6D073629E4D98200AE08D4 /* MainViewController.storyboard in Resources */,
 				5F6D073729E4D98200AE08D4 /* Poppins-ThinItalic.ttf in Resources */,
 				5F6D073829E4D98200AE08D4 /* Poppins-ExtraBold.ttf in Resources */,
 				5F6D073929E4D98200AE08D4 /* Poppins-BoldItalic.ttf in Resources */,
@@ -1035,25 +1027,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		04B8E8F22801F3B800EF70CD /* MainViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04B8E8F32801F3B800EF70CD /* Base */,
-			);
-			name = MainViewController.storyboard;
-			sourceTree = "<group>";
-		};
-		04B8E8F72801F3C300EF70CD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04B8E8F82801F3C300EF70CD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		04B8E9112801F3C300EF70CD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1179,12 +1152,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q5TA2MK66R;
+				DEVELOPMENT_TEAM = UV3M98YDVA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = MainViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1210,12 +1182,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q5TA2MK66R;
+				DEVELOPMENT_TEAM = UV3M98YDVA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UIMainStoryboardFile = MainViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1317,7 +1288,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q5TA2MK66R;
+				DEVELOPMENT_TEAM = UV3M98YDVA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1345,7 +1316,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q5TA2MK66R;
+				DEVELOPMENT_TEAM = UV3M98YDVA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Calculator-iOS/BundleFiles/Plist/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
